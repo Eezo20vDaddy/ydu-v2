@@ -19,7 +19,7 @@ Precedence: spec.md > Plans.md.
 
 | Task | Description | DoD | Depends | Status |
 |------|-------------|-----|---------|--------|
-| 1.1 | `git init` repo; scaffold hybrid theme `ydu`: style.css header, theme.json, functions.php with `add_theme_support('woocommerce')`, wp-scripts build pipeline. [tdd:skip:scaffold-only] | `npm run build` succeeds; theme activates on a clean local WP with zero PHP notices | - | cc:TODO |
+| 1.1 | `git init` repo; scaffold hybrid theme `ydu`: style.css header, theme.json, functions.php with `add_theme_support('woocommerce')`, wp-scripts build pipeline. [tdd:skip:scaffold-only] | `npm run build` succeeds; theme activates on a clean local WP with zero PHP notices | - | cc:WIP [11fb48d] — build passes, reviewer APPROVE, committed+merged; activation check pending 1.2 wp-env (Docker daemon not running) |
 | 1.2 | Local WP + WooCommerce 10.x environment (wp-env if Docker/WSL2 present, else LocalWP), seeded with exported real products and vehicle data. [tdd:skip:env-setup] | Local shop page renders ≥ 10 real YDU products with images and prices | 0.3, 1.1 | cc:TODO |
 | 1.3 | Design tokens + global shell per **approved Variant C mockup** (navy utility topbar, large search, persistent vehicle-selector bar with My Vehicle chip): theme.json palette & typography; responsive header, nav, footer. | Matches `docs/mockups/variant-c-catalog-utility.html` at 375px and 1440px; no horizontal scroll | 1.1 | cc:TODO |
 
