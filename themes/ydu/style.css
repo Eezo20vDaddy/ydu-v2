@@ -1,0 +1,16 @@
+/*
+Theme Name: YDU
+Theme URI: https://ydu.com.au
+Author: YDU PARTS
+Description: Custom hybrid WooCommerce theme for YDU PARTS — VW, Audi and VAG specialists. Trade-counter design per approved Variant C mockup. Classic PHP base with theme.json design tokens, block cart/checkout, and Interactivity API front-end.
+Version: 0.1.0
+Requires at least: 6.5
+Tested up to: 7.0
+Requires PHP: 8.0
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: ydu
+Tags: e-commerce
+*/
+
+/* Styles are compiled by wp-scripts into build/ and enqueued from there. */

@@ -1,0 +1,35 @@
+// YDU theme global styles. Design tokens come from theme.json as
+// --wp--preset--* custom properties; never hardcode brand values here.
+
+.skip-link {
+	position: absolute;
+	left: -9999px;
+
+	&:focus {
+		left: var(--wp--preset--spacing--30);
+		top: var(--wp--preset--spacing--30);
+		z-index: 100000;
+		background: var(--wp--preset--color--base);
+		color: var(--wp--preset--color--navy);
+		padding: var(--wp--preset--spacing--20) var(--wp--preset--spacing--30);
+	}
+}
+
+.site-header__inner,
+.site-footer__inner {
+	max-width: var(--wp--style--global--wide-size, 1440px);
+	margin-inline: auto;
+	padding-inline: var(--wp--preset--spacing--30);
+}
+
+.site-header {
+	background: var(--wp--preset--color--base);
+	border-bottom: 1px solid var(--wp--preset--color--border);
+}
+
+.site-footer {
+	background: var(--wp--preset--color--navy);
+	color: var(--wp--preset--color--base);
+	padding-block: var(--wp--preset--spacing--50);
+	margin-top: var(--wp--preset--spacing--60);
+}
