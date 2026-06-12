@@ -12,7 +12,8 @@ before any work.
 - WordPress 7.0 / WooCommerce 10.8 on LiteSpeed hosting (production: ydu.com.au)
 - Theme: hybrid (classic PHP templates + theme.json + block patterns), wp-scripts build
 - Front-end interactivity: WordPress Interactivity API (script modules), vanilla JS, no frameworks
-- Plugin `ydu-fitment`: hierarchical vehicle taxonomy, `fitment/v1` REST endpoints, importer
+- Plugin `ydu-fitment`: cascade endpoints (`fitment/v1`) + finder widget over the EXISTING
+  flat `pa_*` fitment attributes — no new taxonomy, no data migration (CEO decision 2026-06-13)
 - PHP 8.x; HPOS-safe CRUD only (no direct postmeta SQL); local dev via wp-env (or LocalWP)
 - Access to live site: REST API with Application Password only — **read-only until launch**
 

@@ -29,18 +29,19 @@ The product contract is `spec.md`; the task ledger is `Plans.md` (spec.md wins o
 
 ## Key Systems
 
-- **`vehicle` hierarchical taxonomy** — Make > Model > Submodel > Variant, registered for
-  products in the `ydu-fitment` plugin. NOTE: the live site's finder also exposes `year`
-  and `engine_code` fields (discovery task 0.1 found fields year/make/model/submodel/
-  variant/engine_code via the custom `ydu-woo-filter-script` admin-ajax handler).
-  Replicate exactly what's in use — confirm against `docs/discovery.md` whether year and
-  engine_code are taxonomy levels, term meta, or derived filters before modeling them.
-- **REST endpoints** — `fitment/v1/{makes,models,submodels,variants}`: GET, parent-filtered,
-  cacheable (send cache headers; transient-cache term lookups server-side).
-- **Data importer** — WP-CLI/REST importer from `data/vehicles.json` plus product↔vehicle
-  mappings; term counts per level must match discovery counts.
-- **Combined filtering** — active vehicle term ∧ `pa_*` attribute filters composed in a
-  single `tax_query`; `wc_product_attributes_lookup` enabled for layered nav.
+- **Flat `pa_*` fitment attributes (as-is — CEO decision 2026-06-13, spec §3)** — fitment
+  data is the site's existing attribute terms: `pa_year_alt`, `pa_make`, `pa_model`,
+  `pa_submodel`, `pa_variant`, `pa_engine_code`. NO new taxonomy, NO migration, NO term
+  rewrites. The hierarchy is derived at query time from term co-occurrence on products
+  (see `docs/discovery.md` for the verified live contract).
+- **Cascade query layer** — co-occurrence lookups (year→make→model→submodel→variant→
+  engine_code) in `ydu-fitment`, transient-cached, parity-verified against the live
+  admin-ajax captures in `data/`.
+- **REST endpoints** — `fitment/v1/{years,makes,models,submodels,variants,engine_codes}`:
+  GET, parent-filtered, cacheable, no nonce (public read-only data; fixes the live
+  site's stale-nonce-in-cached-page failure class).
+- **Combined filtering** — native WooCommerce layered nav via `filter_*` query params
+  (live-identical URLs); `wc_product_attributes_lookup` enabled.
 - **HPOS-safe CRUD** — all product/order data access through WooCommerce CRUD APIs
   (`WC_Product`, `WC_Order`, `wc_get_products`). Never direct postmeta SQL — HPOS
   sync-on-read is off by default since Woo 10.7.
@@ -61,15 +62,16 @@ The product contract is `spec.md`; the task ledger is `Plans.md` (spec.md wins o
    anything the connector depends on (product SKUs, stock fields, order creation flow).
    On the clone, the connector is **disabled before any test order** — verify this is
    true before running checkout tests.
-3. **Fitment lives in the plugin, not the theme.** All taxonomy registration, REST routes,
-   importer logic, and fitment query helpers go in `plugins/ydu-fitment/`. The theme may
-   only consume them. Fitment data must survive a future theme swap.
+3. **Fitment logic lives in the plugin, not the theme.** All cascade queries, REST routes,
+   and fitment query helpers go in `plugins/ydu-fitment/`. The theme may only consume
+   them. Fitment data is the existing attribute terms in the database — already
+   theme-independent; keep it that way (no parallel store).
 
 ## WordPress Patterns (follow these, don't invent parallel ones)
 
-- **Taxonomy:** `register_taxonomy('vehicle', 'product', [...])` with `hierarchical => true`,
-  `show_in_rest => true`, archive rewrite (e.g. `/vehicle/<slug>/`); register on `init`
-  from the plugin.
+- **Attribute term queries:** `get_terms()` / `wc_get_products()` over the existing
+  `pa_*` taxonomies; co-occurrence = distinct child-level terms among products carrying
+  all ancestor terms. Never modify, create, or delete attribute terms from plugin code.
 - **REST routes:** `register_rest_route('fitment/v1', ...)` — every route declares
   `permission_callback` (`__return_true` is acceptable for public GET fitment reads, but
   state it deliberately), `args` with `sanitize_callback` (`absint` for parent term IDs,
@@ -89,13 +91,13 @@ The product contract is `spec.md`; the task ledger is `Plans.md` (spec.md wins o
 
 ## TDD Requirements
 
-Tasks **3.1** (plugin scaffold + data model + importer) and **3.2** (fitment REST
+Tasks **3.1** (plugin scaffold + cascade query layer) and **3.2** (fitment REST
 endpoints) are marked `[tdd:required]` in Plans.md. For these: write the failing PHPUnit
 test FIRST (WP test suite via wp-env / `wp-scripts` tooling), watch it fail, then
 implement until green. Endpoint tests must cover empty-parent and invalid-parent cases
-and assert cache headers. Importer tests must assert term counts per level against
-discovery counts. Other tasks carry `[tdd:skip:*]` markers — respect them, but still
-write tests for any non-trivial PHP logic you add.
+and assert cache headers. Cascade tests must assert parity for ≥ 10 sampled parent
+chains against the live admin-ajax captures in `data/`. Other tasks carry `[tdd:skip:*]`
+markers — respect them, but still write tests for any non-trivial PHP logic you add.
 
 ## Change Management
 
@@ -147,7 +149,8 @@ When assigned a task by the cto-architect:
 
 ## Escalate to cto-architect
 
-- Vehicle taxonomy schema changes (adding/removing levels, term meta vs taxonomy decisions)
+- Any change to the fitment data shape (new attribute levels, term meta, or — forbidden
+  without CEO approval — any move away from the flat `pa_*` model)
 - New REST routes or breaking changes to `fitment/v1` responses
 - Anything touching checkout, payments, or order flow beyond template styling
 - Security boundary changes (auth model, Application Password scope)

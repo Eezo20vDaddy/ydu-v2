@@ -69,9 +69,9 @@ reused.**
 | Cart/Checkout | **Block cart & checkout** (Woo default since 8.3) | Forward-compatible; WooPayments supports blocks; avoid legacy shortcode flows |
 | Front-end interactivity | **WordPress Interactivity API** via wp-scripts script modules | First-party, stable since WP 6.5; right tool for cascading dropdowns. Heed WP 7.0 signal changes |
 | Vehicle finder home | **Separate plugin `ydu-fitment`** (never in the theme) | Fitment data and endpoints must survive future theme swaps |
-| Fitment data model | Hierarchical `vehicle` taxonomy (Make > Model > Submodel > Variant), terms attached to products | At <500 products / low-thousands of terms, performant and gives the owner native WP admin term management + SEO archive URLs. Documented upgrade path to custom tables if catalog grows 10× |
-| Fitment endpoints | Custom REST routes `fitment/v1/*` (GET, cacheable) | Faster than admin-ajax; edge-cacheable |
-| Attribute filtering | Native Woo `pa_*` attributes + layered nav, `wc_product_attributes_lookup` enabled | Fitment stays OUT of attributes; both combine in one `tax_query` |
+| Fitment data model | **As-is: flat WooCommerce attributes** (`pa_year_alt`, `pa_make`, `pa_model`, `pa_submodel`, `pa_variant`, `pa_engine_code`); cascade derived from term co-occurrence on products. **CEO decision 2026-06-13** after discovery showed the live site stores no tree | Zero data migration; owner's existing product-tagging workflow unchanged; all live `filter_*` URLs keep working (SEO parity). Known inherited quirk: multi-make parts can surface odd combos (already true on the live site) |
+| Fitment endpoints | Custom REST routes `fitment/v1/*` (GET, cacheable, no nonce — public read-only data) | Faster than admin-ajax; edge-cacheable; fixes the live site's stale-nonce-in-cached-page failure class |
+| Attribute filtering | Native Woo layered nav (`filter_*` params), `wc_product_attributes_lookup` enabled | Fitment IS attributes on this site; vehicle + spec filters combine natively |
 | Data access | HPOS-safe CRUD APIs only (no direct postmeta queries) | HPOS sync-on-read off by default since Woo 10.7 |
 | Build tooling | `@wordpress/scripts` (wp-scripts), npm | Canonical; handles script modules for Interactivity API |
 | Local dev | wp-env if Docker/WSL2 available on this machine, else LocalWP | Verified at task 1.2 |
@@ -97,14 +97,16 @@ reused.**
 ### 5.1 Vehicle finder (parity-critical)
 - Cascading selects: choosing a Make loads its Models; Model loads Submodels; Submodel
   loads Variants. Levels below the current selection are disabled until a parent is chosen.
-- Submitting a selection navigates to a filtered catalog view showing only products
-  fitted to that vehicle (term archive URL, e.g. `/vehicle/<variant-slug>/`).
+- Submitting a selection navigates to the natively filtered catalog using the exact
+  same URLs as the live site (`/shop/?filter_year_alt=…&filter_make=…&…`) — full URL
+  and SEO parity.
 - Selection persists across pages ("my vehicle") via localStorage + cookie; vehicle-aware
   UI renders client-side so full-page caching is never fragmented per user.
 - A visible control clears/changes the selected vehicle.
-- All existing make/model/submodel/variant data from the current custom implementation is
-  migrated 1:1, including product↔vehicle assignments (exact source schema determined in
-  Phase 0 discovery).
+- **No data migration:** the rebuild reads the same attribute terms in place (they live
+  in the database, independent of theme/plugin code). The `ydu-fitment` plugin provides
+  the cascade endpoints + widget; replies must match the live admin-ajax cascade
+  (parity-verified against captures in `data/`).
 - Finder widget appears on the home page hero and is reachable from the catalog.
 
 ### 5.2 Catalog & attributes
@@ -137,7 +139,7 @@ reused.**
 ### 5.4 SEO & performance
 - Permalink structure for products, categories, and pages is unchanged; any URL that must
   change gets a 301.
-- Variant-level vehicle archives canonicalize to model level (avoid thin-content bloat).
+- Filtered catalog URLs (`filter_*`) keep the live site's canonical behaviour (parity).
 - Lighthouse mobile performance ≥ 90 on home, category, and product pages (staging).
 
 ## 6. Launch criteria (go/no-go gate)

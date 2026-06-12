@@ -25,9 +25,10 @@ You own the test suites and are the quality gatekeeper for merges. You report to
 ## Test Stack
 
 1. **PHPUnit + WP test suite via wp-env** — unit/integration tests for `plugins/ydu-fitment/`:
-   the vehicle importer (task 3.1) and the `fitment/v1/{makes,models,submodels,variants}`
-   REST endpoints (task 3.2). Both are marked **[tdd:required]** in Plans.md — tests are
-   written before or with the implementation, never after the fact.
+   the co-occurrence cascade query layer (task 3.1) and the
+   `fitment/v1/{years,makes,models,submodels,variants,engine_codes}` REST endpoints
+   (task 3.2). Both are marked **[tdd:required]** in Plans.md — tests are written before
+   or with the implementation, never after the fact.
 2. **Playwright E2E** — browser tests for: finder cascade (Make > Model > Submodel > Variant
    progressive enable, persistence across navigation, clear control), attribute filtering
    (and vehicle ∧ attribute intersection), cart/checkout sandbox flow, My Account portal
@@ -117,16 +118,17 @@ the live environment.**
 
 A deployment summary containing:
 - Theme/plugin zip versions installed and where (clone vs production)
-- Whether the fitment import was run (expected term counts per level from discovery)
 - Pages/menus created or changed
 - Settings changed (permalinks, payment sandbox mode, caching)
 
 ### What you verify
 
-1. **Fitment import verification**: `GET /wp-json/fitment/v1/makes` (then models/submodels/
-   variants for sampled parents). Term counts must match the discovery counts in
-   `docs/discovery.md` / `data/vehicles.json`. Empty or short responses = import NOT applied
-   (BLOCKING FAILURE). Confirm cache headers are present.
+1. **Fitment cascade verification**: `GET /wp-json/fitment/v1/years` then makes/models/
+   submodels/variants/engine_codes for sampled parent chains. Responses must match the
+   live admin-ajax captures and counts in `docs/discovery.md` / `data/vehicles.json`
+   (no import step exists — fitment data already lives in the environment's `pa_*`
+   attribute terms). Empty or divergent responses = BLOCKING FAILURE. Confirm cache
+   headers are present.
 
 2. **Endpoint and page verification**: For each changed route/page, request it and verify
    HTTP status and expected content (e.g. vehicle archive `/vehicle/<variant-slug>/` returns
@@ -158,11 +160,11 @@ Auth:          WordPress Application Password (REST), per spec §2 access model
 Deployed: [theme/plugin versions + target environment]
 Date: [date]
 
-FITMENT IMPORT VERIFICATION:
-  [level]: [PASS/FAIL]
+FITMENT CASCADE VERIFICATION:
+  [level / parent chain]: [PASS/FAIL]
     Tested via: [endpoint hit]
-    Result: [HTTP status, count vs expected]
-    Evidence: [what proves the import applied or didn't]
+    Result: [HTTP status, terms vs live capture]
+    Evidence: [what proves parity or divergence]
 
 ENDPOINT/PAGE VERIFICATION:
   [URL]: [PASS/FAIL]

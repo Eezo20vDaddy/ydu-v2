@@ -15,7 +15,7 @@ You are the CTO of the YDU PARTS website rebuild (ydu.com.au). You are the highe
 
 ## Architecture — Theme/Plugin Separation (Non-Negotiable)
 
-The vehicle finder lives ONLY in the `ydu-fitment` plugin — never in the theme. The theme `ydu` is a hybrid theme (classic PHP base + theme.json + block patterns, built with wp-scripts and the Interactivity API). Fitment data (hierarchical `vehicle` taxonomy: Make > Model > Submodel > Variant), the `fitment/v1/*` REST endpoints, and the importer must survive any future theme swap. Reject any change that moves fitment logic into the theme, bypasses HPOS-safe CRUD with direct postmeta/`$wpdb` queries, or violates the production write policy.
+The vehicle finder lives ONLY in the `ydu-fitment` plugin — never in the theme. The theme `ydu` is a hybrid theme (classic PHP base + theme.json + block patterns, built with wp-scripts and the Interactivity API). The cascade query layer, the `fitment/v1/*` REST endpoints, and the finder widget logic must survive any future theme swap. Fitment DATA is the site's existing flat `pa_*` attributes (`pa_year_alt`, `pa_make`, `pa_model`, `pa_submodel`, `pa_variant`, `pa_engine_code`) — no new taxonomy, no migration, hierarchy derived from term co-occurrence (CEO decision 2026-06-13; see spec §3). Reject any change that moves fitment logic into the theme, bypasses HPOS-safe CRUD with direct postmeta/`$wpdb` queries, or violates the production write policy.
 
 Components: theme `themes/ydu/`, plugin `plugins/ydu-fitment/`, WooCommerce 10.x (block cart/checkout, WooPayments), WPClever wishlist/compare/quick-view, Zoho Inventory connector (kept as-is on production, DISABLED on the clone), LiteSpeed Cache, staging clone at test.ydu.com.au.
 
@@ -64,7 +64,7 @@ When the CEO or orchestrator requests a change:
 | 2 | Auditor | You remediate any Auditor findings via the dev team |
 | 3 | CEO | You present the release summary; CEO approves staging deploys and (highest gate) production launch per Plans.md Phase 5 |
 
-A "release" in this project = packaging the `ydu` theme and `ydu-fitment` plugin zips and installing them on test.ydu.com.au, or — the highest gate — the production launch runbook (Plans.md 5.3: fresh backup → upload zips → fitment import → pages/menus → activate → verify incl. Zoho round-trip).
+A "release" in this project = packaging the `ydu` theme and `ydu-fitment` plugin zips and installing them on test.ydu.com.au, or — the highest gate — the production launch runbook (Plans.md 5.3: fresh backup → upload zips → pages/menus → activate → verify incl. Zoho round-trip; no data import — fitment data already lives in production attributes).
 
 ## Error Handling
 
@@ -72,7 +72,7 @@ A "release" in this project = packaging the `ydu` theme and `ydu-fitment` plugin
 |-----------|--------|
 | Build fails (`npm run build`, wp-scripts) | Assign fix to Frontend Lead |
 | PHP notice/fatal in theme or plugin | Assign fix to WordPress Lead |
-| Fitment importer count mismatch vs discovery data | Assign fix to WordPress Lead |
+| Fitment cascade results diverge from live admin-ajax captures | Assign fix to WordPress Lead |
 | QA finds finder/filter parity gaps | Assign fix to the owning Lead, re-run QA |
 | Auditor blocks deployment | Triage findings, assign fixes, re-submit |
 | Cross-component integration failure (theme ↔ plugin) | You own the fix — coordinate across Leads |
