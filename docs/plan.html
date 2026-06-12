@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YDU PARTS Rebuild — Plan</title>
+<style>
+  :root { --blue:#0b4ea2; --blue-d:#083a7a; --bg:#f4f7fb; --ink:#1c2733; --ok:#1a7f4e; --warn:#b46900; --line:#dde6f0; }
+  * { box-sizing:border-box; margin:0; }
+  body { font-family:'Segoe UI',system-ui,sans-serif; background:var(--bg); color:var(--ink); line-height:1.5; padding:32px 16px; }
+  .wrap { max-width:960px; margin:0 auto; }
+  header.hero { background:linear-gradient(135deg,var(--blue),var(--blue-d)); color:#fff; border-radius:14px; padding:32px 36px; margin-bottom:24px; }
+  header.hero h1 { font-size:26px; letter-spacing:.5px; }
+  header.hero p { opacity:.9; margin-top:6px; font-size:15px; }
+  .badges { margin-top:14px; display:flex; flex-wrap:wrap; gap:8px; }
+  .badge { background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.35); padding:4px 12px; border-radius:999px; font-size:12.5px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; margin-bottom:24px; }
+  .card { background:#fff; border:1px solid var(--line); border-radius:12px; padding:20px 22px; }
+  .card h3 { font-size:14px; text-transform:uppercase; letter-spacing:1px; color:var(--blue); margin-bottom:10px; }
+  .card ul { padding-left:18px; font-size:14px; }
+  .card li { margin-bottom:5px; }
+  .phase { background:#fff; border:1px solid var(--line); border-radius:12px; margin-bottom:14px; overflow:hidden; }
+  .phase-h { display:flex; align-items:center; gap:12px; padding:14px 20px; background:#eaf1fa; }
+  .phase-h .num { background:var(--blue); color:#fff; font-weight:700; width:30px; height:30px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:14px; flex:none; }
+  .phase-h h2 { font-size:16px; }
+  .phase table { width:100%; border-collapse:collapse; font-size:13.5px; }
+  .phase th { text-align:left; padding:8px 14px; color:#5a6b7e; font-size:11.5px; text-transform:uppercase; letter-spacing:.6px; border-bottom:1px solid var(--line); }
+  .phase td { padding:9px 14px; border-bottom:1px solid #eef3f9; vertical-align:top; }
+  .phase tr:last-child td { border-bottom:none; }
+  .st { font-size:11px; font-weight:600; padding:2px 9px; border-radius:999px; white-space:nowrap; }
+  .st.todo { background:#e8eef6; color:#3c5a7d; }
+  .st.blocked { background:#fdecd3; color:var(--warn); }
+  .callout { border-left:4px solid var(--ok); background:#e9f6ef; border-radius:0 10px 10px 0; padding:14px 18px; font-size:14px; margin-bottom:24px; }
+  .callout strong { color:var(--ok); }
+  footer { text-align:center; font-size:12.5px; color:#7a8a9c; margin-top:28px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <h1>YDU PARTS — Ground-Up Rebuild</h1>
+    <p>ydu.com.au &middot; VW, Audi &amp; VAG specialists &middot; New custom theme + fitment plugin, zero reuse of KarPart / Elementor / Slider Revolution</p>
+    <div class="badges">
+      <span class="badge">Hybrid WP theme</span>
+      <span class="badge">WooCommerce 10.x</span>
+      <span class="badge">ydu-fitment plugin</span>
+      <span class="badge">Side-by-side until approved</span>
+      <span class="badge">&lt; 500 products</span>
+    </div>
+  </header>
+
+  <div class="callout">
+    <strong>Data-safety guarantee:</strong> production catalog, orders and customers are never edited or deleted by any task.
+    All build &amp; testing happens on a parallel staging clone. Launch installs the finished theme/plugin onto production —
+    the staging database is never copied over the live store, so orders taken during the evaluation period are safe.
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Architecture</h3>
+      <ul>
+        <li>Hybrid theme: classic PHP + theme.json + block cart/checkout</li>
+        <li>Vehicle finder lives in its own plugin — survives future theme swaps</li>
+        <li>Hierarchical <em>vehicle</em> taxonomy: Make &gt; Model &gt; Submodel &gt; Variant</li>
+        <li>REST <code>fitment/v1</code> endpoints + Interactivity API dropdowns</li>
+        <li>Static hero replaces Slider Revolution</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Kept / Dropped</h3>
+      <ul>
+        <li><b>Kept:</b> WooCommerce + WooPayments, WPClever wishlist / compare / quick view, LiteSpeed Cache, Google Listings &amp; Ads</li>
+        <li><b>Dropped:</b> KarPart theme + child, Elementor, Slider Revolution</li>
+        <li><b>Parity:</b> all attributes, vehicle data, pages, SEO URLs</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="phase">
+    <div class="phase-h"><span class="num">0</span><h2>Discovery &amp; Data Audit <small>(read-only)</small></h2></div>
+    <table>
+      <tr><th>Task</th><th>What</th><th>Status</th></tr>
+      <tr><td>0.1</td><td>Map existing finder from the public site (AJAX endpoints, full vehicle tree)</td><td><span class="st todo">TODO</span></td></tr>
+      <tr><td>0.2</td><td>Access setup: owner creates account (Admin, or Shop Manager + guided installs)</td><td><span class="st blocked">BLOCKED — owner</span></td></tr>
+      <tr><td>0.3</td><td>Read-only export: products, attributes, pages, menus, finder↔product mapping</td><td><span class="st todo">TODO</span></td></tr>
+      <tr><td>0.4</td><td>Create side-by-side staging clone (noindex, sandbox payments)</td><td><span class="st todo">TODO</span></td></tr>
+    </table>
+  </div>
+
+  <div class="phase">
+    <div class="phase-h"><span class="num">1</span><h2>Local Environment &amp; Theme Scaffold</h2></div>
+    <table>
+      <tr><td>1.1</td><td>git init; scaffold hybrid theme <code>ydu</code> with wp-scripts build</td><td><span class="st todo">TODO</span></td></tr>
+      <tr><td>1.2</td><td>Local WP + Woo dev environment seeded with real exported products</td><td><span class="st todo">TODO</span></td></tr>
+      <tr><td>1.3</td><td>Design tokens, responsive header / nav / footer (YDU blue &amp; white)</td><td><span class="st todo">TODO</span></td></tr>
+    </table>
+  </div>
+
+  <div class="phase">
+    <div class="phase-h"><span class="num">2</span><h2>WooCommerce Templates</h2></div>
+    <table>
+      <tr><td>2.1</td><td>Shop &amp; category archives, product cards, attribute layered-nav</td><td><span class="st todo">TODO</span></td></tr>
+      <tr><td>2.2</td><td>Single product page incl. “fits these vehicles” list</td><td><span class="st todo">TODO</span></td></tr>
+      <tr><td>2.3</td><td>Block cart &amp; checkout, WooPayments verified</td><td><span class="st todo">TODO</span></td></tr>
+      <tr><td>2.4</td><td>Restyle wishlist / compare / quick view</td><td><span class="st todo">TODO</span></td></tr>
+    </table>
+  </div>
+
+  <div class="phase">
+    <div class="phase-h"><span class="num">3</span><h2>Vehicle Finder (ydu-fitment plugin)</h2></div>
+    <table>
+      <tr><td>3.1</td><td>Vehicle taxonomy + importer from discovered data (TDD)</td><td><span class="st todo">TODO</span></td></tr>
+      <tr><td>3.2</td><td>REST endpoints: makes / models / submodels / variants (TDD)</td><td><span class="st todo">TODO</span></td></tr>
+      <tr><td>3.3</td><td>Cascading dropdown widget + persistent “my vehicle”</td><td><span class="st todo">TODO</span></td></tr>
+      <tr><td>3.4</td><td>Vehicle ∧ attribute combined filtering, canonical rules</td><td><span class="st todo">TODO</span></td></tr>
+    </table>
+  </div>
+
+  <div class="phase">
+    <div class="phase-h"><span class="num">4</span><h2>Content, SEO &amp; Performance</h2></div>
+    <table>
+      <tr><td>4.1</td><td>Home page: static hero + finder, category grid, editable promo banners</td><td><span class="st todo">TODO</span></td></tr>
+      <tr><td>4.2</td><td>Recreate all static pages as clean block content</td><td><span class="st todo">TODO</span></td></tr>
+      <tr><td>4.3</td><td>SEO parity: permalinks, 301s, sitemap, metas</td><td><span class="st todo">TODO</span></td></tr>
+      <tr><td>4.4</td><td>Performance: Lighthouse mobile ≥ 90</td><td><span class="st todo">TODO</span></td></tr>
+    </table>
+  </div>
+
+  <div class="phase">
+    <div class="phase-h"><span class="num">5</span><h2>Side-by-Side Review &amp; Launch</h2></div>
+    <table>
+      <tr><td>5.1</td><td>Deploy zips to clone, import fitment data, full QA checklist</td><td><span class="st todo">TODO</span></td></tr>
+      <tr><td>5.2</td><td>Owner evaluation period on clone — iterate until written go-ahead</td><td><span class="st todo">TODO</span></td></tr>
+      <tr><td>5.3</td><td>Launch: backup → install zips on production → activate → verify. No deletions, no DB copy</td><td><span class="st todo">TODO</span></td></tr>
+      <tr><td>5.4</td><td>Cleanup: remove old theme/plugins, delete temp account</td><td><span class="st todo">TODO</span></td></tr>
+    </table>
+  </div>
+
+  <footer>Generated 2026-06-12 · Contracts: spec.md (product) &amp; Plans.md (tasks)</footer>
+</div>
+</body>
+</html>

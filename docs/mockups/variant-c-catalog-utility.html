@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YDU PARTS — VW, Audi &amp; VAG Specialists | Genuine &amp; OEM Parts, Perth WA</title>
+<meta name="description" content="YDU PARTS — VW, AUDI and VAG specialists. Genuine and OEM parts with manufacturer warranty, fast nationwide delivery from Perth WA.">
+<link href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@400,500,600,700&display=swap" rel="stylesheet">
+<style>
+/* ============ Tokens ============ */
+:root{
+  --primary:#4A90E2;
+  --primary-hover:#6BB1FF;
+  --navy:#1B3A4B;
+  --navy-deep:#142E3C;
+  --grey:#65696D;
+  --bg:#F1F4F6;
+  --border:#DBDFE1;
+  --white:#FFFFFF;
+  --sale:#FF0000;
+  --ok:#1E7A46;
+  --ok-bg:#E7F4EC;
+  --low:#9A6200;
+  --low-bg:#FBF1DE;
+  --ship:#3B5E74;
+  --ship-bg:#E8EFF4;
+  --radius:6px;
+  --shadow:0 1px 2px rgba(27,58,75,.06),0 4px 12px rgba(27,58,75,.06);
+  --shadow-lift:0 2px 4px rgba(27,58,75,.08),0 10px 24px rgba(27,58,75,.10);
+  --font-head:'Clash Grotesk',sans-serif;
+  --font-body:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --font-mono:ui-monospace,'Cascadia Code',Consolas,'SF Mono',Menlo,monospace;
+  --t:180ms ease;
+  --hdr-h:118px; /* mobile: logo row 60 + search row 58 */
+}
+@media (min-width:1024px){ :root{ --hdr-h:72px; } }
+
+/* ============ Reset / base ============ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--font-body);
+  font-size:15px;line-height:1.5;
+  color:var(--navy);
+  background:var(--bg);
+  min-width:320px;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer;background:none;border:none}
+h1,h2,h3{font-family:var(--font-head);line-height:1.15;font-weight:600}
+ul{list-style:none}
+
+:focus-visible{outline:2px solid var(--primary);outline-offset:2px;border-radius:2px}
+.on-dark :focus-visible{outline-color:var(--primary-hover)}
+
+.skip-link{
+  position:absolute;left:8px;top:-48px;z-index:200;
+  background:var(--navy);color:#fff;padding:8px 16px;border-radius:var(--radius);
+  font-weight:600;transition:top var(--t);
+}
+.skip-link:focus{top:8px}
+
+.container{width:100%;max-width:1320px;margin:0 auto;padding:0 16px}
+@media (min-width:768px){.container{padding:0 24px}}
+
+.visually-hidden{
+  position:absolute;width:1px;height:1px;margin:-1px;padding:0;
+  overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;
+}
+
+/* ============ Utility topbar ============ */
+.topbar{background:var(--navy-deep);color:#C7D4DC;font-size:12.5px}
+.topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;height:32px}
+.topbar a{color:#fff;font-weight:600;display:inline-flex;align-items:center;gap:6px;transition:color var(--t)}
+.topbar a:hover{color:var(--primary-hover)}
+.topbar-mid{display:none;align-items:center;gap:6px;white-space:nowrap;overflow:hidden}
+.topbar-rating{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.stars{color:#F5B82E;letter-spacing:1px;font-size:11px}
+@media (min-width:768px){.topbar-mid{display:inline-flex}}
+
+/* ============ Main header ============ */
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:var(--white);
+  border-bottom:1px solid var(--border);
+}
+.header-grid{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
+.header-row1{display:flex;align-items:center;gap:8px;height:60px;width:100%}
+.logo-link{display:inline-flex;align-items:center;flex-shrink:0;margin-right:auto}
+.logo-link img{height:40px;width:auto}
+.tagline{
+  display:none;font-family:var(--font-head);font-weight:500;font-size:12px;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--grey);
+  border-left:1px solid var(--border);padding-left:14px;margin-left:2px;white-space:nowrap;
+}
+/* Combined search */
+.search-row{width:100%;padding-bottom:10px}
+.search-combo{
+  display:flex;align-items:stretch;width:100%;height:48px;
+  border:2px solid var(--navy);border-radius:var(--radius);overflow:hidden;background:#fff;
+  transition:border-color var(--t),box-shadow var(--t);
+}
+.search-combo:focus-within{border-color:var(--primary);box-shadow:0 0 0 3px rgba(74,144,226,.2)}
+.search-cat{
+  display:none;border:none;border-right:1px solid var(--border);background:var(--bg);
+  padding:0 10px;font-size:13.5px;font-weight:600;color:var(--navy);max-width:170px;cursor:pointer;
+}
+.search-cat:focus-visible{outline-offset:-2px}
+.search-input{flex:1;min-width:0;border:none;padding:0 14px;font-size:15px;color:var(--navy)}
+.search-input::placeholder{color:#8A9299}
+.search-input:focus{outline:none}
+.search-btn{
+  display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;
+  padding:0 18px;font-weight:600;font-size:14px;transition:background var(--t);flex-shrink:0;
+}
+.search-btn:hover{background:var(--primary)}
+.search-btn:focus-visible{outline-offset:-3px;outline-color:#fff}
+.search-btn svg{flex-shrink:0}
+/* Nav + icons */
+.main-nav{display:none}
+.main-nav ul{display:flex;align-items:center;gap:2px}
+.main-nav a{
+  display:block;padding:8px 10px;font-size:13.5px;font-weight:600;border-radius:var(--radius);
+  white-space:nowrap;transition:background var(--t),color var(--t);
+}
+.main-nav a:hover{background:var(--bg);color:var(--primary)}
+.header-icons{display:flex;align-items:center;gap:2px;flex-shrink:0}
+.icon-btn{
+  position:relative;display:inline-flex;align-items:center;justify-content:center;
+  width:42px;height:42px;border-radius:var(--radius);color:var(--navy);
+  transition:background var(--t),color var(--t);
+}
+.icon-btn:hover{background:var(--bg);color:var(--primary)}
+.icon-btn .badge{
+  position:absolute;top:3px;right:3px;min-width:17px;height:17px;padding:0 4px;
+  background:var(--primary);color:#fff;font-size:10.5px;font-weight:700;line-height:17px;
+  text-align:center;border-radius:999px;
+}
+.icon-hide-mobile{display:none}
+.hamburger{margin-left:-8px}
+@media (min-width:1024px){
+  .header-grid{flex-wrap:nowrap;height:var(--hdr-h)}
+  .header-row1{width:auto;height:auto;flex-shrink:0}
+  .logo-link{margin-right:0}
+  .logo-link img{height:44px}
+  .search-row{flex:1;min-width:220px;max-width:560px;padding-bottom:0}
+  .search-cat{display:block}
+  .main-nav{display:block}
+  .hamburger{display:none}
+  .icon-hide-mobile{display:inline-flex}
+}
+@media (min-width:1200px){.tagline{display:block}}
+
+/* Mobile drawer */
+.drawer-backdrop{
+  position:fixed;inset:0;background:rgba(20,46,60,.5);z-index:55;
+  opacity:0;pointer-events:none;transition:opacity var(--t);
+}
+.drawer-backdrop.open{opacity:1;pointer-events:auto}
+.mobile-drawer{
+  position:fixed;top:0;left:0;bottom:0;width:min(320px,85vw);z-index:60;
+  background:#fff;box-shadow:var(--shadow-lift);
+  transform:translateX(-105%);transition:transform 220ms ease;
+  display:flex;flex-direction:column;overflow-y:auto;
+}
+.mobile-drawer.open{transform:translateX(0)}
+.drawer-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 16px;border-bottom:1px solid var(--border);
+}
+.drawer-head img{height:36px;width:auto}
+.mobile-drawer nav a{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 20px;font-weight:600;font-size:15px;border-bottom:1px solid var(--bg);
+  transition:background var(--t),color var(--t);
+}
+.mobile-drawer nav a:hover{background:var(--bg);color:var(--primary)}
+.drawer-foot{margin-top:auto;padding:16px 20px;background:var(--bg);font-size:13px;color:var(--grey)}
+.drawer-foot a{display:block;font-weight:700;color:var(--navy);margin-bottom:4px}
+
+/* ============ Vehicle selector bar ============ */
+.vehicle-bar{
+  background:var(--navy);color:#fff;z-index:40;
+  border-bottom:3px solid var(--primary);
+}
+@media (min-width:1024px){
+  .vehicle-bar{position:sticky;top:var(--hdr-h)}
+}
+.vehicle-bar-inner{display:flex;flex-direction:column;gap:8px;padding:10px 0}
+.vb-label{
+  font-family:var(--font-head);font-weight:600;font-size:12px;letter-spacing:.12em;
+  text-transform:uppercase;color:#9FC4E8;white-space:nowrap;display:inline-flex;align-items:center;gap:8px;
+}
+.vb-form{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%}
+.vb-select{
+  height:38px;border:1px solid rgba(255,255,255,.25);border-radius:var(--radius);
+  background:var(--navy-deep);color:#fff;padding:0 8px;font-size:13.5px;font-weight:500;
+  width:100%;min-width:0;cursor:pointer;transition:border-color var(--t),background var(--t),opacity var(--t);
+}
+.vb-select:hover:not(:disabled){border-color:var(--primary-hover)}
+.vb-select:disabled{opacity:.45;cursor:not-allowed}
+.vb-actions{display:flex;gap:8px}
+.btn-find{
+  flex:1;display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  height:38px;padding:0 18px;background:var(--primary);color:#fff;font-weight:700;font-size:14px;
+  border-radius:var(--radius);transition:background var(--t),transform var(--t);white-space:nowrap;
+}
+.btn-find:hover:not(:disabled){background:var(--primary-hover)}
+.btn-find:active{transform:translateY(1px)}
+.btn-find:disabled{opacity:.45;cursor:not-allowed}
+.btn-reset{
+  display:inline-flex;align-items:center;justify-content:center;height:38px;padding:0 14px;
+  border:1px solid rgba(255,255,255,.3);border-radius:var(--radius);color:#C7D4DC;
+  font-weight:600;font-size:13.5px;transition:border-color var(--t),color var(--t);white-space:nowrap;
+}
+.btn-reset:hover{border-color:#fff;color:#fff}
+.my-vehicle-chip{
+  display:inline-flex;align-items:center;gap:8px;max-width:100%;
+  height:38px;padding:0 14px;border-radius:999px;
+  background:rgba(255,255,255,.08);border:1px dashed rgba(255,255,255,.35);
+  font-size:13px;color:#C7D4DC;white-space:nowrap;overflow:hidden;
+  transition:background var(--t),border-color var(--t),color var(--t);
+}
+.my-vehicle-chip strong{font-weight:700;color:#fff;overflow:hidden;text-overflow:ellipsis}
+.my-vehicle-chip.set{background:rgba(74,144,226,.25);border:1px solid var(--primary-hover);color:#E8F2FC}
+.my-vehicle-chip .chip-dot{width:8px;height:8px;border-radius:50%;background:#6B7E8A;flex-shrink:0;transition:background var(--t)}
+.my-vehicle-chip.set .chip-dot{background:#5BE08A}
+@media (min-width:768px){
+  .vb-form{grid-template-columns:repeat(4,1fr) auto}
+}
+@media (min-width:1024px){
+  .vehicle-bar-inner{flex-direction:row;align-items:center;gap:12px}
+  .vb-form{display:flex;flex:1;gap:8px}
+  .vb-select{flex:1}
+  .btn-find{flex:0 0 auto}
+  .my-vehicle-chip{flex-shrink:1;min-width:0;margin-left:auto}
+}
+
+/* ============ Hero ============ */
+.hero{background:linear-gradient(135deg,var(--navy-deep) 0%,var(--navy) 55%,#24506A 100%);color:#fff}
+.hero-inner{display:grid;gap:24px;padding:36px 0 40px}
+.hero-kicker{
+  display:inline-flex;align-items:center;gap:8px;font-family:var(--font-head);
+  font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--primary-hover);
+}
+.hero h1{font-size:clamp(26px,4.5vw,40px);font-weight:700;max-width:18ch;margin:10px 0 12px}
+.hero p.lede{color:#B9CAD4;max-width:54ch;font-size:15.5px}
+.hero-cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 22px;
+  background:var(--primary);color:#fff;font-weight:700;font-size:14.5px;border-radius:var(--radius);
+  transition:background var(--t),transform var(--t);
+}
+.btn-primary:hover{background:var(--primary-hover)}
+.btn-primary:active{transform:translateY(1px)}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 22px;
+  border:1px solid rgba(255,255,255,.35);color:#fff;font-weight:600;font-size:14.5px;border-radius:var(--radius);
+  transition:border-color var(--t),background var(--t);
+}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+.hero-stats{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.14);border-radius:var(--radius);overflow:hidden;align-self:start;
+}
+.hero-stat{background:rgba(20,46,60,.7);padding:16px}
+.hero-stat .num{font-family:var(--font-head);font-weight:700;font-size:22px;color:#fff}
+.hero-stat .lbl{font-size:12.5px;color:#9DB4C2;margin-top:2px}
+@media (min-width:1024px){
+  .hero-inner{grid-template-columns:1.4fr 1fr;align-items:center;padding:48px 0 52px}
+}
+
+/* ============ Trust strip ============ */
+.trust{background:#fff;border-bottom:1px solid var(--border)}
+.trust-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0}
+.trust-item{
+  display:flex;align-items:center;gap:12px;padding:16px 12px;
+  border-bottom:1px solid var(--border);font-size:13px;color:var(--grey);
+}
+.trust-item:nth-child(odd){border-right:1px solid var(--border)}
+.trust-item:nth-child(n+3){border-bottom:none}
+.trust-item svg{flex-shrink:0;color:var(--primary)}
+.trust-item strong{display:block;font-size:13.5px;color:var(--navy);font-weight:700}
+@media (min-width:1024px){
+  .trust-grid{grid-template-columns:repeat(4,1fr)}
+  .trust-item{border-bottom:none;border-right:1px solid var(--border);padding:18px 20px}
+  .trust-item:last-child{border-right:none}
+}
+
+/* ============ Sections ============ */
+.section{padding:36px 0}
+@media (min-width:1024px){.section{padding:48px 0}}
+.section-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:20px}
+.section-head h2{font-size:clamp(20px,2.6vw,26px);font-weight:600}
+.section-head .sub{font-size:13px;color:var(--grey);margin-top:4px}
+.section-link{
+  font-size:13.5px;font-weight:700;color:var(--primary);white-space:nowrap;
+  display:inline-flex;align-items:center;gap:4px;transition:color var(--t);
+}
+.section-link:hover{color:var(--primary-hover)}
+
+/* ============ Category grid ============ */
+.cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.cat-tile{
+  display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;
+  background:#fff;border:1px solid var(--border);border-radius:var(--radius);
+  padding:16px 8px 12px;font-size:12.5px;font-weight:600;color:var(--navy);
+  transition:border-color var(--t),box-shadow var(--t),transform var(--t),color var(--t);
+}
+.cat-tile svg{color:var(--grey);transition:color var(--t)}
+.cat-tile:hover{border-color:var(--primary);box-shadow:var(--shadow);transform:translateY(-2px);color:var(--primary)}
+.cat-tile:hover svg{color:var(--primary)}
+@media (min-width:768px){.cat-grid{grid-template-columns:repeat(4,1fr)}}
+@media (min-width:1024px){.cat-grid{grid-template-columns:repeat(6,1fr)}}
+@media (min-width:1280px){.cat-grid{grid-template-columns:repeat(12,1fr)}.cat-tile{padding:18px 4px 14px}}
+
+/* ============ Product cards ============ */
+.fitment-note{
+  display:none;align-items:center;gap:10px;margin:-8px 0 16px;padding:10px 14px;
+  background:#E8F2FC;border:1px solid var(--primary);border-radius:var(--radius);
+  font-size:13.5px;color:var(--navy);
+}
+.fitment-note.show{display:flex}
+.fitment-note strong{font-weight:700}
+.fitment-note button{margin-left:auto;font-size:12.5px;font-weight:700;color:var(--primary);white-space:nowrap}
+.fitment-note button:hover{color:var(--primary-hover)}
+
+.product-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+@media (min-width:768px){.product-grid{grid-template-columns:repeat(3,1fr);gap:12px}}
+@media (min-width:1024px){.product-grid{grid-template-columns:repeat(4,1fr)}}
+.product-card{
+  position:relative;display:flex;flex-direction:column;background:#fff;
+  border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;
+  transition:border-color var(--t),box-shadow var(--t);
+}
+.product-card:hover{border-color:var(--primary);box-shadow:var(--shadow-lift)}
+.pc-media{
+  position:relative;aspect-ratio:1/1;background:#fff;
+  border-bottom:1px solid var(--bg);padding:12px;
+}
+.pc-media img{width:100%;height:100%;object-fit:contain}
+.pc-placeholder{
+  width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:8px;background:repeating-linear-gradient(45deg,#F7F9FA 0 12px,#F1F4F6 12px 24px);
+  border-radius:var(--radius);color:var(--grey);
+}
+.pc-placeholder svg{color:#A9B2B8}
+.pc-placeholder span{font-family:var(--font-mono);font-size:12px;font-weight:700;letter-spacing:.04em}
+.pc-quick{
+  position:absolute;top:8px;right:8px;display:flex;flex-direction:column;gap:6px;
+  opacity:0;transform:translateY(-4px);transition:opacity var(--t),transform var(--t);
+}
+.product-card:hover .pc-quick,.product-card:focus-within .pc-quick{opacity:1;transform:translateY(0)}
+.pc-quick button{
+  width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;
+  background:#fff;border:1px solid var(--border);border-radius:50%;color:var(--grey);
+  box-shadow:var(--shadow);transition:color var(--t),border-color var(--t);
+}
+.pc-quick button:hover{color:var(--primary);border-color:var(--primary)}
+.pc-quick button:focus-visible{opacity:1}
+.pc-body{display:flex;flex-direction:column;gap:6px;padding:10px 12px 12px;flex:1}
+.pc-topline{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.part-no{
+  font-family:var(--font-mono);font-size:12.5px;font-weight:700;letter-spacing:.02em;
+  color:var(--navy);background:var(--bg);border:1px solid var(--border);
+  border-radius:4px;padding:2px 6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.stock-badge{
+  font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  padding:3px 7px;border-radius:999px;white-space:nowrap;flex-shrink:0;
+}
+.stock-in{color:var(--ok);background:var(--ok-bg)}
+.stock-low{color:var(--low);background:var(--low-bg)}
+.stock-ship{color:var(--ship);background:var(--ship-bg)}
+.pc-name{
+  font-size:13.5px;font-weight:600;line-height:1.35;color:var(--navy);
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+  min-height:2.7em;
+}
+a.pc-name-link:hover .pc-name{color:var(--primary)}
+.pc-chip{
+  align-self:flex-start;font-size:11px;font-weight:600;color:var(--grey);
+  background:var(--bg);border-radius:4px;padding:2px 8px;
+}
+.pc-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto;padding-top:8px}
+.pc-price{font-family:var(--font-head);font-size:17px;font-weight:700;color:var(--navy)}
+.btn-cart{
+  display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 12px;
+  background:var(--navy);color:#fff;font-size:12.5px;font-weight:700;border-radius:var(--radius);
+  transition:background var(--t),transform var(--t);white-space:nowrap;
+}
+.btn-cart:hover{background:var(--primary)}
+.btn-cart:active{transform:translateY(1px)}
+@media (max-width:420px){
+  .btn-cart span{display:none}
+  .btn-cart{padding:0 10px}
+}
+
+/* ============ Promo banners ============ */
+.promo-grid{display:grid;gap:12px}
+@media (min-width:768px){.promo-grid{grid-template-columns:3fr 2fr}}
+.promo{
+  position:relative;border-radius:var(--radius);overflow:hidden;padding:28px 24px;
+  display:flex;flex-direction:column;gap:10px;justify-content:center;min-height:180px;
+}
+.promo-battery{background:linear-gradient(120deg,var(--navy-deep),var(--navy) 70%);color:#fff}
+.promo-battery::after{
+  content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;
+  background:radial-gradient(circle,rgba(74,144,226,.35),transparent 70%);pointer-events:none;
+}
+.promo-eyebrow{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#9FC4E8}
+.promo-battery h3{font-size:clamp(22px,3vw,30px);font-weight:700}
+.promo-battery h3 .pct{color:var(--sale);background:#fff;padding:0 8px;border-radius:4px;display:inline-block}
+.promo p{font-size:13.5px;max-width:42ch}
+.promo-battery p{color:#B9CAD4}
+.promo-welcome{background:#fff;border:1px solid var(--border)}
+.promo-welcome h3{font-size:clamp(19px,2.4vw,24px);font-weight:600;color:var(--navy)}
+.promo-welcome p{color:var(--grey)}
+.code-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.code-chip{
+  font-family:var(--font-mono);font-weight:700;font-size:15px;letter-spacing:.08em;
+  border:2px dashed var(--primary);color:var(--primary);border-radius:var(--radius);
+  padding:8px 16px;background:#F4F9FE;
+}
+.btn-copy{
+  height:38px;padding:0 16px;border:1px solid var(--border);border-radius:var(--radius);
+  font-size:13px;font-weight:700;color:var(--navy);transition:border-color var(--t),color var(--t),background var(--t);
+}
+.btn-copy:hover{border-color:var(--primary);color:var(--primary)}
+.btn-copy.copied{background:var(--ok-bg);border-color:var(--ok);color:var(--ok)}
+
+/* ============ Footer ============ */
+.site-footer{background:var(--navy-deep);color:#A9BCC7;font-size:13.5px;margin-top:8px}
+.footer-grid{display:grid;gap:32px;padding:44px 0 32px}
+.footer-brand img{height:44px;width:auto;margin-bottom:14px}
+.footer-brand p{max-width:34ch;line-height:1.7}
+.footer-brand a{color:#fff;font-weight:600;transition:color var(--t)}
+.footer-brand a:hover{color:var(--primary-hover)}
+.site-footer h3{font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#fff;margin-bottom:14px}
+.footer-links li{margin-bottom:8px}
+.footer-links a{transition:color var(--t)}
+.footer-links a:hover{color:var(--primary-hover)}
+.pay-badges{display:flex;flex-wrap:wrap;gap:6px}
+.pay-badge{
+  font-size:11px;font-weight:700;letter-spacing:.04em;color:var(--navy);
+  background:#E8EDF0;border-radius:4px;padding:4px 9px;white-space:nowrap;
+}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.12);padding:16px 0;
+  display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;font-size:12px;color:#7E94A1;
+}
+@media (min-width:768px){.footer-grid{grid-template-columns:2fr 1fr 1fr 1.2fr}}
+
+/* ============ Reduced motion ============ */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition-duration:.01ms !important;animation-duration:.01ms !important}
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ===== Utility topbar ===== -->
+<div class="topbar">
+  <div class="container topbar-inner">
+    <a href="tel:0409853662" aria-label="Call YDU Parts on 0409 853 662">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      0409 853 662
+    </a>
+    <span class="topbar-mid">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+      Same-day dispatch before 1pm AWST &middot; Fast nationwide delivery
+    </span>
+    <span class="topbar-rating">
+      <span class="stars" aria-hidden="true">★★★★★</span>
+      <strong style="color:#fff">Google 4.8</strong><span aria-hidden="true">rated</span>
+      <span class="visually-hidden">star rating on Google</span>
+    </span>
+  </div>
+</div>
+
+<!-- ===== Main header ===== -->
+<header class="site-header">
+  <div class="container header-grid">
+    <div class="header-row1">
+      <button class="icon-btn hamburger" id="hamburgerBtn" aria-expanded="false" aria-controls="mobileDrawer" aria-label="Open menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <a class="logo-link" href="#" aria-label="YDU PARTS home">
+        <img src="https://ydu.com.au/wp-content/uploads/2024/11/banner-300x103.png" alt="YDU PARTS" width="300" height="103" fetchpriority="high">
+      </a>
+      <span class="tagline">VW, AUDI and VAG Specialists</span>
+      <div class="header-icons">
+        <a class="icon-btn icon-hide-mobile" href="#" aria-label="My account">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </a>
+        <a class="icon-btn icon-hide-mobile" href="#" aria-label="Wishlist, 3 items">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <span class="badge" aria-hidden="true">3</span>
+        </a>
+        <a class="icon-btn icon-hide-mobile" href="#" aria-label="Compare, 1 item">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+          <span class="badge" aria-hidden="true">1</span>
+        </a>
+        <a class="icon-btn" href="#" aria-label="Cart, 2 items">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span class="badge" aria-hidden="true">2</span>
+        </a>
+      </div>
+    </div>
+
+    <form class="search-row" role="search" aria-label="Product search" onsubmit="return false">
+      <div class="search-combo">
+        <label class="visually-hidden" for="searchCat">Search in category</label>
+        <select class="search-cat" id="searchCat">
+          <option>All Categories</option>
+          <option>Engine</option><option>Gaskets &amp; Seals</option><option>Filters</option>
+          <option>Cooling System</option><option>Transmission</option><option>Electrical</option>
+          <option>Fuel System</option><option>Suspension</option><option>Body Parts</option>
+          <option>Performance</option><option>Interior</option>
+        </select>
+        <label class="visually-hidden" for="searchInput">Search by part number or keyword</label>
+        <input class="search-input" id="searchInput" type="search" autocomplete="off"
+               placeholder="Search part number or keyword&hellip; e.g. 06L145612L, wastegate, coolant sensor">
+        <button class="search-btn" type="submit">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <span>Search</span>
+        </button>
+      </div>
+    </form>
+
+    <nav class="main-nav" aria-label="Main">
+      <ul>
+        <li><a href="#categories">Shop</a></li>
+        <li><a href="#footer">Contact</a></li>
+        <li><a href="#">Check Your Order</a></li>
+        <li><a href="#footer">Find Us</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== Mobile drawer ===== -->
+<div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
+<div class="mobile-drawer" id="mobileDrawer" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+  <div class="drawer-head">
+    <img src="https://ydu.com.au/wp-content/uploads/2024/11/banner-300x103.png" alt="YDU PARTS" width="300" height="103" loading="lazy">
+    <button class="icon-btn" id="drawerCloseBtn" aria-label="Close menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <nav aria-label="Mobile">
+    <a href="#categories">Shop</a>
+    <a href="#footer">Contact</a>
+    <a href="#">Check Your Order</a>
+    <a href="#footer">Find Us</a>
+    <a href="#">My Account</a>
+    <a href="#">Wishlist (3)</a>
+    <a href="#">Compare (1)</a>
+  </nav>
+  <div class="drawer-foot">
+    <a href="tel:0409853662">0409 853 662</a>
+    Unit 4/11 Weedon Road, Forrestdale WA 6112<br>
+    <span class="stars" aria-hidden="true">★★★★★</span> Google 4.8 rated
+  </div>
+</div>
+
+<!-- ===== Vehicle selector bar (persistent fitment context) ===== -->
+<section class="vehicle-bar on-dark" aria-label="Vehicle finder">
+  <div class="container vehicle-bar-inner">
+    <span class="vb-label">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11l1.5-4.5A2 2 0 0 1 8.4 5h7.2a2 2 0 0 1 1.9 1.5L19 11"/><rect x="3" y="11" width="18" height="6" rx="1.5"/><circle cx="7" cy="17" r="1.6"/><circle cx="17" cy="17" r="1.6"/></svg>
+      Find parts for:
+    </span>
+    <form class="vb-form" id="vehicleForm" onsubmit="return false">
+      <label class="visually-hidden" for="selMake">Make</label>
+      <select class="vb-select" id="selMake"><option value="">Make</option></select>
+      <label class="visually-hidden" for="selModel">Model</label>
+      <select class="vb-select" id="selModel" disabled><option value="">Model</option></select>
+      <label class="visually-hidden" for="selSubmodel">Submodel</label>
+      <select class="vb-select" id="selSubmodel" disabled><option value="">Submodel</option></select>
+      <label class="visually-hidden" for="selVariant">Variant</label>
+      <select class="vb-select" id="selVariant" disabled><option value="">Variant</option></select>
+      <div class="vb-actions">
+        <button class="btn-find" id="btnFind" type="submit" disabled>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          Find Parts
+        </button>
+        <button class="btn-reset" id="btnReset" type="reset">Reset</button>
+      </div>
+    </form>
+    <span class="my-vehicle-chip" id="myVehicleChip" aria-live="polite">
+      <span class="chip-dot" aria-hidden="true"></span>
+      My Vehicle:&nbsp;<strong id="myVehicleText">—</strong>
+    </span>
+  </div>
+</section>
+
+<main id="main">
+
+  <!-- ===== Hero ===== -->
+  <section class="hero on-dark">
+    <div class="container hero-inner">
+      <div>
+        <span class="hero-kicker">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          VW, AUDI and VAG Specialists
+        </span>
+        <h1>The trade counter for genuine &amp; OEM VAG parts.</h1>
+        <p class="lede">Know your part number? Search it straight in. Otherwise set your vehicle in the selector above and we'll filter the whole catalogue to exact-fit parts — genuine and OEM, with manufacturer warranty, shipped fast from Perth WA.</p>
+        <div class="hero-cta-row">
+          <a class="btn-primary" href="#categories">
+            Browse Catalogue
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a class="btn-ghost" href="#featured">Featured Parts</a>
+        </div>
+      </div>
+      <div class="hero-stats" role="list" aria-label="Why buy from YDU Parts">
+        <div class="hero-stat" role="listitem"><div class="num">4.8★</div><div class="lbl">Google rating</div></div>
+        <div class="hero-stat" role="listitem"><div class="num">10,000+</div><div class="lbl">VAG part lines</div></div>
+        <div class="hero-stat" role="listitem"><div class="num">1pm</div><div class="lbl">Same-day dispatch cut-off</div></div>
+        <div class="hero-stat" role="listitem"><div class="num">Perth WA</div><div class="lbl">Local stock &amp; support</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Trust strip ===== -->
+  <section class="trust" aria-label="Why shop with us">
+    <div class="container trust-grid">
+      <div class="trust-item">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <div><strong>Google 4.8★ rated</strong>Trusted by VAG owners &amp; workshops</div>
+      </div>
+      <div class="trust-item">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        <div><strong>Fast nationwide delivery</strong>Same-day dispatch before 1pm AWST</div>
+      </div>
+      <div class="trust-item">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+        <div><strong>Genuine &amp; OEM parts</strong>With manufacturer warranty</div>
+      </div>
+      <div class="trust-item">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <div><strong>Perth WA based</strong>Forrestdale warehouse &amp; pickup</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Category grid ===== -->
+  <section class="section" id="categories" aria-labelledby="catHeading">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2 id="catHeading">Shop by Category</h2>
+          <p class="sub">Every line, catalogued by system — the fast way in when you don't have a part number.</p>
+        </div>
+        <a class="section-link" href="#">All categories →</a>
+      </div>
+      <div class="cat-grid">
+        <a class="cat-tile" href="#"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>Engine</a>
+        <a class="cat-tile" href="#"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 22 8.5 12 15 2 8.5 12 2"/><polyline points="2 13 12 19.5 22 13"/><polyline points="2 17.5 12 24 22 17.5" transform="translate(0,-2)"/></svg>Gaskets &amp; Seals</a>
+        <a class="cat-tile" href="#"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>Filters</a>
+        <a class="cat-tile" href="#"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="4.9" y1="4.9" x2="19.1" y2="19.1"/><line x1="19.1" y1="4.9" x2="4.9" y2="19.1"/><circle cx="12" cy="12" r="3.2" fill="#fff"/></svg>Cooling System</a>
+        <a class="cat-tile" href="#"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="5"/><circle cx="16.5" cy="16.5" r="4"/><path d="M8 3v2M8 11v2M3 8h2M11 8h2"/></svg>Transmission</a>
+        <a class="cat-tile" href="#"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Electrical</a>
+        <a class="cat-tile" href="#"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="7" width="10" height="14" rx="1.5"/><path d="M4 11h10M14 10h3l2 2v5a2 2 0 0 1-4 0v-7"/><path d="M7 3h4v4"/></svg>Fuel System</a>
+        <a class="cat-tile" href="#"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21c4-1.5 2-5 6-6.5S17 9 17 9M7 17c4-1.5 2-5 6-6.5"/><circle cx="18.5" cy="5.5" r="2.5"/><circle cx="5" cy="20.5" r="1.8"/></svg>Suspension</a>
+        <a class="cat-tile" href="#"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 13l1.5-4.5A2 2 0 0 1 6.4 7h11.2a2 2 0 0 1 1.9 1.5L21 13"/><rect x="2" y="13" width="20" height="5" rx="1.5"/><circle cx="6.5" cy="18" r="1.8"/><circle cx="17.5" cy="18" r="1.8"/></svg>Body Parts</a>
+        <a class="cat-tile" href="#"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20a8 8 0 1 1 8-8"/><path d="M12 12l5-3"/><path d="M19.5 16.5L22 19"/></svg>Performance</a>
+        <a class="cat-tile" href="#"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v12"/><path d="M5 18h12a2 2 0 0 1 2 2v1H5a2 2 0 0 1-2-2v-7"/></svg>Interior</a>
+        <a class="cat-tile" href="#" style="color:var(--primary)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>View All</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Featured products ===== -->
+  <section class="section" id="featured" aria-labelledby="featHeading" style="padding-top:0">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2 id="featHeading">Featured Parts</h2>
+          <p class="sub">Genuine &amp; OEM, priced in AUD inc. GST. Part numbers shown — cross-check yours before ordering.</p>
+        </div>
+        <a class="section-link" href="#">Shop all →</a>
+      </div>
+
+      <div class="fitment-note" id="fitmentNote" role="status">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        <span>Showing parts that fit <strong id="fitmentVehicle"></strong></span>
+        <button type="button" id="fitmentClear">Clear vehicle</button>
+      </div>
+
+      <div class="product-grid">
+
+        <article class="product-card">
+          <div class="pc-media">
+            <img src="https://ydu.com.au/wp-content/uploads/2026/06/SMP132532.png" alt="SMP132532 Pressure Sensor" width="400" height="400" loading="lazy">
+            <div class="pc-quick">
+              <button type="button" aria-label="Add SMP132532 to wishlist"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+              <button type="button" aria-label="Quick view SMP132532"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+            </div>
+          </div>
+          <div class="pc-body">
+            <div class="pc-topline"><span class="part-no">SMP132532</span><span class="stock-badge stock-in">In Stock</span></div>
+            <a class="pc-name-link" href="#"><h3 class="pc-name">Pressure Sensor</h3></a>
+            <span class="pc-chip">Transmission</span>
+            <div class="pc-foot">
+              <span class="pc-price">$118.14</span>
+              <button class="btn-cart" type="button"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span>Add to Cart</span></button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="pc-media">
+            <img src="https://ydu.com.au/wp-content/uploads/2026/06/06L145612L-2.webp" alt="06L145612L Turbo Electronic Wastegate Actuator" width="400" height="400" loading="lazy">
+            <div class="pc-quick">
+              <button type="button" aria-label="Add 06L145612L to wishlist"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+              <button type="button" aria-label="Quick view 06L145612L"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+            </div>
+          </div>
+          <div class="pc-body">
+            <div class="pc-topline"><span class="part-no">06L145612L</span><span class="stock-badge stock-in">In Stock</span></div>
+            <a class="pc-name-link" href="#"><h3 class="pc-name">Turbo Electronic Wastegate Actuator</h3></a>
+            <span class="pc-chip">Engine</span>
+            <div class="pc-foot">
+              <span class="pc-price">$472.68</span>
+              <button class="btn-cart" type="button"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span>Add to Cart</span></button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="pc-media">
+            <div class="pc-placeholder" role="img" aria-label="Image coming soon for part 06K121600E">
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              <span>06K121600E</span>
+            </div>
+            <div class="pc-quick">
+              <button type="button" aria-label="Add 06K121600E to wishlist"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+              <button type="button" aria-label="Quick view 06K121600E"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+            </div>
+          </div>
+          <div class="pc-body">
+            <div class="pc-topline"><span class="part-no">06K121600E</span><span class="stock-badge stock-ship">3–5 Days</span></div>
+            <a class="pc-name-link" href="#"><h3 class="pc-name">HYBRID Water Pump (complete)</h3></a>
+            <span class="pc-chip">Engine</span>
+            <div class="pc-foot">
+              <span class="pc-price">$649.95</span>
+              <button class="btn-cart" type="button"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span>Add to Cart</span></button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="pc-media">
+            <img src="https://ydu.com.au/wp-content/uploads/2026/01/N90316801.webp" alt="N90316801 Coolant Temp Sensor O-Ring" width="400" height="400" loading="lazy">
+            <div class="pc-quick">
+              <button type="button" aria-label="Add N90316801 to wishlist"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+              <button type="button" aria-label="Quick view N90316801"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+            </div>
+          </div>
+          <div class="pc-body">
+            <div class="pc-topline"><span class="part-no">N90316801</span><span class="stock-badge stock-in">In Stock</span></div>
+            <a class="pc-name-link" href="#"><h3 class="pc-name">Coolant Temp Sensor O-Ring, VW Golf Mk4 Mk5 / Audi A4 B6 B7</h3></a>
+            <span class="pc-chip">Engine</span>
+            <div class="pc-foot">
+              <span class="pc-price">$11.32</span>
+              <button class="btn-cart" type="button"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span>Add to Cart</span></button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="pc-media">
+            <img src="https://ydu.com.au/wp-content/uploads/2026/01/WHT006407.webp" alt="WHT006407 Engine Coolant Pipe O-Ring" width="400" height="400" loading="lazy">
+            <div class="pc-quick">
+              <button type="button" aria-label="Add WHT006407 to wishlist"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+              <button type="button" aria-label="Quick view WHT006407"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+            </div>
+          </div>
+          <div class="pc-body">
+            <div class="pc-topline"><span class="part-no">WHT006407</span><span class="stock-badge stock-in">In Stock</span></div>
+            <a class="pc-name-link" href="#"><h3 class="pc-name">Engine Coolant Pipe O-Ring, VW Golf Mk5 Mk6 / Audi A4 B7 B8</h3></a>
+            <span class="pc-chip">Engine</span>
+            <div class="pc-foot">
+              <span class="pc-price">$8.14</span>
+              <button class="btn-cart" type="button"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span>Add to Cart</span></button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="pc-media">
+            <img src="https://ydu.com.au/wp-content/uploads/2026/01/079919523B.webp" alt="079919523B Genuine Coolant Temp Sensor" width="400" height="400" loading="lazy">
+            <div class="pc-quick">
+              <button type="button" aria-label="Add 079919523B to wishlist"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+              <button type="button" aria-label="Quick view 079919523B"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+            </div>
+          </div>
+          <div class="pc-body">
+            <div class="pc-topline"><span class="part-no">079919523B</span><span class="stock-badge stock-low">Low Stock</span></div>
+            <a class="pc-name-link" href="#"><h3 class="pc-name">Genuine Coolant Temp Sensor, Audi A4 B7 B8 / A6 C6</h3></a>
+            <span class="pc-chip">Engine</span>
+            <div class="pc-foot">
+              <span class="pc-price">$41.77</span>
+              <button class="btn-cart" type="button"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span>Add to Cart</span></button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="pc-media">
+            <img src="https://ydu.com.au/wp-content/uploads/2026/01/1K0959455EA.webp" alt="1K0959455EA Radiator Cooling Fan Large" width="400" height="400" loading="lazy">
+            <div class="pc-quick">
+              <button type="button" aria-label="Add 1K0959455EA to wishlist"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+              <button type="button" aria-label="Quick view 1K0959455EA"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+            </div>
+          </div>
+          <div class="pc-body">
+            <div class="pc-topline"><span class="part-no">1K0959455EA</span><span class="stock-badge stock-in">In Stock</span></div>
+            <a class="pc-name-link" href="#"><h3 class="pc-name">Radiator Cooling Fan Large, VW Golf Mk5 Mk6 / Audi A3 8P</h3></a>
+            <span class="pc-chip">Engine</span>
+            <div class="pc-foot">
+              <span class="pc-price">$209.05</span>
+              <button class="btn-cart" type="button"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span>Add to Cart</span></button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="pc-media">
+            <img src="https://ydu.com.au/wp-content/uploads/2026/01/1K0959455ES.webp" alt="1K0959455ES Radiator Cooling Fan Small" width="400" height="400" loading="lazy">
+            <div class="pc-quick">
+              <button type="button" aria-label="Add 1K0959455ES to wishlist"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+              <button type="button" aria-label="Quick view 1K0959455ES"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+            </div>
+          </div>
+          <div class="pc-body">
+            <div class="pc-topline"><span class="part-no">1K0959455ES</span><span class="stock-badge stock-low">Low Stock</span></div>
+            <a class="pc-name-link" href="#"><h3 class="pc-name">Radiator Cooling Fan Small, VW Golf Mk5 Mk6 / Audi A3 8P</h3></a>
+            <span class="pc-chip">Engine</span>
+            <div class="pc-foot">
+              <span class="pc-price">$181.77</span>
+              <button class="btn-cart" type="button"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span>Add to Cart</span></button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Promo banners ===== -->
+  <section class="section" aria-label="Current offers" style="padding-top:0">
+    <div class="container promo-grid">
+      <div class="promo promo-battery on-dark">
+        <span class="promo-eyebrow">Limited time</span>
+        <h3><span class="pct">60% OFF</span>&nbsp;Car Batteries</h3>
+        <p>Premium-fit batteries for VW, Audi &amp; Skoda. While stocks last — fitment checked against your vehicle.</p>
+        <div><a class="btn-primary" href="#" style="height:40px;padding:0 18px;font-size:13.5px">Shop Batteries</a></div>
+      </div>
+      <div class="promo promo-welcome">
+        <span class="promo-eyebrow" style="color:var(--primary)">New customers</span>
+        <h3>5% off storewide on your first order</h3>
+        <p>Use the code at checkout. Stacks with everyday trade pricing.</p>
+        <div class="code-row">
+          <span class="code-chip" id="welcomeCode">WELCOME5</span>
+          <button class="btn-copy" id="btnCopy" type="button">Copy code</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== Footer ===== -->
+<footer class="site-footer on-dark" id="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="https://ydu.com.au/wp-content/uploads/2024/11/banner-300x103.png" alt="YDU PARTS" width="300" height="103" loading="lazy" style="background:#fff;border-radius:6px;padding:4px 10px">
+        <p>VW, AUDI and VAG Specialists. Genuine &amp; OEM parts with manufacturer warranty, shipped Australia-wide from Perth.</p>
+        <p style="margin-top:12px">
+          Unit 4/11 Weedon Road, Forrestdale WA 6112<br>
+          <a href="tel:0409853662">0409 853 662</a><br>
+          <a href="mailto:info@ydu.com.au">info@ydu.com.au</a>
+        </p>
+      </div>
+      <nav aria-label="Footer shop links">
+        <h3>Shop</h3>
+        <ul class="footer-links">
+          <li><a href="#categories">Shop</a></li>
+          <li><a href="#featured">Featured Parts</a></li>
+          <li><a href="#">Check Your Order</a></li>
+          <li><a href="#">Returns</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Footer help links">
+        <h3>Help</h3>
+        <ul class="footer-links">
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Find Us</a></li>
+          <li><a href="#">Shipping &amp; Delivery</a></li>
+          <li><a href="#">Warranty</a></li>
+        </ul>
+      </nav>
+      <div>
+        <h3>We accept</h3>
+        <div class="pay-badges">
+          <span class="pay-badge">VISA</span>
+          <span class="pay-badge">Mastercard</span>
+          <span class="pay-badge">AMEX</span>
+          <span class="pay-badge">Apple Pay</span>
+          <span class="pay-badge">Google Pay</span>
+        </div>
+        <p style="margin-top:18px;font-size:12.5px">
+          <span class="stars" aria-hidden="true">★★★★★</span>
+          <strong style="color:#fff">Google 4.8</strong> rated by VAG owners &amp; workshops
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 YDU PARTS. All rights reserved.</span>
+      <span>ABN 00 000 000 000</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ============ Vehicle finder (cascading selects) ============ */
+  var FITMENT = {
+    'Audi': {
+      'A3 8P': { 'Sportback': ['2.0 TFSI', '1.8 TFSI'] },
+      'A4 B7': { 'Sedan': ['2.0 TDI'] }
+    },
+    'Volkswagen': {
+      'Golf Mk5': { 'Hatch': ['GTI', '2.0 FSI'] },
+      'Golf Mk6': { 'Hatch': ['R'] }
+    },
+    'Skoda': {
+      'Octavia': { 'vRS': ['2.0 TSI'] }
+    }
+  };
+
+  var selMake = document.getElementById('selMake');
+  var selModel = document.getElementById('selModel');
+  var selSubmodel = document.getElementById('selSubmodel');
+  var selVariant = document.getElementById('selVariant');
+  var btnFind = document.getElementById('btnFind');
+  var btnReset = document.getElementById('btnReset');
+  var chip = document.getElementById('myVehicleChip');
+  var chipText = document.getElementById('myVehicleText');
+  var fitmentNote = document.getElementById('fitmentNote');
+  var fitmentVehicle = document.getElementById('fitmentVehicle');
+  var fitmentClear = document.getElementById('fitmentClear');
+
+  function fill(select, placeholder, options) {
+    select.innerHTML = '';
+    var ph = document.createElement('option');
+    ph.value = '';
+    ph.textContent = placeholder;
+    select.appendChild(ph);
+    (options || []).forEach(function (name) {
+      var opt = document.createElement('option');
+      opt.value = name;
+      opt.textContent = name;
+      select.appendChild(opt);
+    });
+    select.disabled = !options || options.length === 0;
+  }
+
+  function refreshFindState() {
+    btnFind.disabled = !selVariant.value;
+  }
+
+  fill(selMake, 'Make', Object.keys(FITMENT));
+
+  selMake.addEventListener('change', function () {
+    var models = selMake.value ? Object.keys(FITMENT[selMake.value]) : null;
+    fill(selModel, 'Model', models);
+    fill(selSubmodel, 'Submodel', null);
+    fill(selVariant, 'Variant', null);
+    refreshFindState();
+  });
+
+  selModel.addEventListener('change', function () {
+    var subs = selModel.value ? Object.keys(FITMENT[selMake.value][selModel.value]) : null;
+    fill(selSubmodel, 'Submodel', subs);
+    fill(selVariant, 'Variant', null);
+    refreshFindState();
+  });
+
+  selSubmodel.addEventListener('change', function () {
+    var variants = selSubmodel.value
+      ? FITMENT[selMake.value][selModel.value][selSubmodel.value]
+      : null;
+    fill(selVariant, 'Variant', variants);
+    refreshFindState();
+  });
+
+  selVariant.addEventListener('change', refreshFindState);
+
+  btnFind.addEventListener('click', function () {
+    if (!selVariant.value) return;
+    var label = [selMake.value, selModel.value, selSubmodel.value, selVariant.value].join(' ');
+    chipText.textContent = label;
+    chip.classList.add('set');
+    fitmentVehicle.textContent = label;
+    fitmentNote.classList.add('show');
+    document.getElementById('featured').scrollIntoView({ block: 'start' });
+  });
+
+  function resetVehicle() {
+    fill(selMake, 'Make', Object.keys(FITMENT));
+    fill(selModel, 'Model', null);
+    fill(selSubmodel, 'Submodel', null);
+    fill(selVariant, 'Variant', null);
+    refreshFindState();
+    chipText.textContent = '—';
+    chip.classList.remove('set');
+    fitmentNote.classList.remove('show');
+    fitmentVehicle.textContent = '';
+  }
+
+  btnReset.addEventListener('click', function (e) {
+    e.preventDefault();
+    resetVehicle();
+  });
+  fitmentClear.addEventListener('click', resetVehicle);
+  refreshFindState();
+
+  /* ============ Mobile drawer ============ */
+  var hamburger = document.getElementById('hamburgerBtn');
+  var drawer = document.getElementById('mobileDrawer');
+  var backdrop = document.getElementById('drawerBackdrop');
+  var closeBtn = document.getElementById('drawerCloseBtn');
+  var lastFocused = null;
+
+  function openDrawer() {
+    lastFocused = document.activeElement;
+    drawer.hidden = false;
+    backdrop.hidden = false;
+    // force a frame so the transition runs
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        drawer.classList.add('open');
+        backdrop.classList.add('open');
+      });
+    });
+    hamburger.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+    closeBtn.focus();
+  }
+
+  function closeDrawer() {
+    drawer.classList.remove('open');
+    backdrop.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    window.setTimeout(function () {
+      drawer.hidden = true;
+      backdrop.hidden = true;
+    }, 240);
+    if (lastFocused) lastFocused.focus();
+  }
+
+  hamburger.addEventListener('click', openDrawer);
+  closeBtn.addEventListener('click', closeDrawer);
+  backdrop.addEventListener('click', closeDrawer);
+  drawer.querySelectorAll('nav a').forEach(function (a) {
+    a.addEventListener('click', closeDrawer);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !drawer.hidden) closeDrawer();
+  });
+
+  // Simple focus trap inside drawer
+  drawer.addEventListener('keydown', function (e) {
+    if (e.key !== 'Tab') return;
+    var focusables = drawer.querySelectorAll('a[href], button');
+    if (!focusables.length) return;
+    var first = focusables[0];
+    var last = focusables[focusables.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault(); last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault(); first.focus();
+    }
+  });
+
+  /* ============ WELCOME5 copy ============ */
+  var btnCopy = document.getElementById('btnCopy');
+  btnCopy.addEventListener('click', function () {
+    var code = document.getElementById('welcomeCode').textContent.trim();
+    function done() {
+      btnCopy.classList.add('copied');
+      btnCopy.textContent = 'Copied!';
+      window.setTimeout(function () {
+        btnCopy.classList.remove('copied');
+        btnCopy.textContent = 'Copy code';
+      }, 1800);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(code).then(done, done);
+    } else {
+      done();
+    }
+  });
+}());
+</script>
+</body>
+</html>

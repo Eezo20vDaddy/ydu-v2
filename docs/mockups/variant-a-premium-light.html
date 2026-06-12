@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YDU PARTS — VW, AUDI and VAG Specialists | Genuine &amp; OEM Parts Perth</title>
+<meta name="description" content="YDU PARTS — Perth-based VW, Audi and VAG specialists. Genuine &amp; OEM parts with manufacturer warranty, fast nationwide delivery.">
+<link href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@400,500,600,700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   YDU PARTS — Variant A: Premium Light
+   Tokens
+   ============================================================ */
+:root{
+  --blue:        #4A90E2;
+  --blue-hover:  #6BB1FF;
+  --blue-tint:   #EDF4FC;
+  --navy:        #1B3A4B;
+  --grey:        #65696D;
+  --bg-light:    #F1F4F6;
+  --border:      #DBDFE1;
+  --white:       #FFFFFF;
+  --sale:        #FF0000;
+
+  --font-head: 'Clash Grotesk', sans-serif;
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  --radius-lg: 20px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+
+  --shadow-sm: 0 1px 2px rgba(27,58,75,.06), 0 2px 8px rgba(27,58,75,.05);
+  --shadow-md: 0 2px 6px rgba(27,58,75,.07), 0 10px 28px rgba(27,58,75,.09);
+  --shadow-lg: 0 4px 10px rgba(27,58,75,.08), 0 24px 56px rgba(27,58,75,.14);
+
+  --t: 180ms cubic-bezier(.4,0,.2,1);
+
+  --s1: 4px;  --s2: 8px;  --s3: 12px; --s4: 16px;
+  --s5: 20px; --s6: 24px; --s8: 32px; --s10: 40px;
+  --s12: 48px; --s16: 64px; --s20: 80px;
+}
+
+/* ---------- Reset ---------- */
+*,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
+body{
+  font-family:var(--font-body);
+  font-size:16px; line-height:1.55;
+  color:var(--navy);
+  background:var(--white);
+  overflow-x:hidden;
+}
+img{ display:block; max-width:100%; }
+button{ font:inherit; cursor:pointer; border:0; background:none; color:inherit; }
+a{ color:inherit; text-decoration:none; }
+ul{ list-style:none; }
+h1,h2,h3,h4{ font-family:var(--font-head); line-height:1.12; font-weight:600; }
+
+/* ---------- Accessibility ---------- */
+:focus{ outline:none; }
+:focus-visible{
+  outline:2px solid var(--blue);
+  outline-offset:2px;
+  border-radius:4px;
+}
+.skip-link{
+  position:absolute; left:var(--s4); top:-60px;
+  background:var(--navy); color:#fff;
+  padding:var(--s3) var(--s5); border-radius:var(--radius-sm);
+  z-index:300; transition:top var(--t); font-weight:600; font-size:14px;
+}
+.skip-link:focus{ top:var(--s4); }
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
+    scroll-behavior:auto !important;
+  }
+}
+
+.visually-hidden{
+  position:absolute !important; width:1px; height:1px;
+  margin:-1px; padding:0; overflow:hidden;
+  clip:rect(0 0 0 0); white-space:nowrap; border:0;
+}
+
+/* ---------- Layout helpers ---------- */
+.wrap{ width:100%; max-width:1240px; margin-inline:auto; padding-inline:var(--s4); }
+@media (min-width:768px){ .wrap{ padding-inline:var(--s8); } }
+
+.section-head{
+  display:flex; align-items:baseline; justify-content:space-between;
+  gap:var(--s4); margin-bottom:var(--s6);
+}
+.section-head h2{ font-size:clamp(24px,3.2vw,34px); letter-spacing:-.01em; }
+.section-head .all-link{
+  font-size:14px; font-weight:600; color:var(--blue);
+  white-space:nowrap; display:inline-flex; align-items:center; gap:6px;
+  transition:color var(--t);
+}
+.section-head .all-link:hover{ color:var(--blue-hover); }
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.site-header{
+  position:sticky; top:0; z-index:200;
+  background:var(--white);
+  border-bottom:1px solid var(--border);
+  transition:box-shadow var(--t);
+}
+.site-header.is-stuck{ box-shadow:var(--shadow-md); }
+
+.header-top{
+  display:flex; align-items:center; gap:var(--s4);
+  padding-block:var(--s3);
+  min-height:72px;
+}
+.logo-link{ flex-shrink:0; display:inline-flex; border-radius:6px; }
+.logo-link img{ height:44px; width:auto; }
+@media (min-width:1024px){ .logo-link img{ height:52px; } }
+
+/* Search */
+.header-search{
+  flex:1 1 auto; max-width:520px; margin-inline:auto;
+  display:none; position:relative;
+}
+@media (min-width:768px){ .header-search{ display:block; } }
+.header-search input{
+  width:100%;
+  padding:11px 48px 11px 18px;
+  font:inherit; font-size:15px; color:var(--navy);
+  background:var(--bg-light);
+  border:1px solid transparent;
+  border-radius:999px;
+  transition:border-color var(--t), background var(--t), box-shadow var(--t);
+}
+.header-search input::placeholder{ color:var(--grey); }
+.header-search input:hover{ border-color:var(--border); }
+.header-search input:focus-visible{
+  outline:none; background:var(--white);
+  border-color:var(--blue);
+  box-shadow:0 0 0 3px rgba(74,144,226,.18);
+}
+.header-search .search-btn{
+  position:absolute; right:5px; top:50%; transform:translateY(-50%);
+  width:36px; height:36px; border-radius:50%;
+  display:grid; place-items:center;
+  background:var(--blue); color:#fff;
+  transition:background var(--t);
+}
+.header-search .search-btn:hover{ background:var(--blue-hover); }
+.header-search .search-btn svg{ width:16px; height:16px; }
+
+/* Icon actions */
+.header-actions{
+  display:flex; align-items:center; gap:var(--s1);
+  margin-left:auto; flex-shrink:0;
+}
+.icon-btn{
+  position:relative; width:44px; height:44px;
+  display:grid; place-items:center;
+  border-radius:50%; color:var(--navy);
+  transition:background var(--t), color var(--t);
+}
+.icon-btn:hover{ background:var(--bg-light); color:var(--blue); }
+.icon-btn svg{ width:21px; height:21px; }
+.icon-btn .badge{
+  position:absolute; top:3px; right:1px;
+  min-width:17px; height:17px; padding:0 4px;
+  display:grid; place-items:center;
+  font-size:10.5px; font-weight:700; line-height:1;
+  color:#fff; background:var(--blue);
+  border-radius:999px; border:2px solid var(--white);
+}
+.icon-btn--account, .icon-btn--compare{ display:none; }
+@media (min-width:560px){ .icon-btn--account, .icon-btn--compare{ display:grid; } }
+
+/* Hamburger */
+.hamburger{
+  width:44px; height:44px; border-radius:var(--radius-sm);
+  display:grid; place-items:center; color:var(--navy);
+  transition:background var(--t);
+}
+.hamburger:hover{ background:var(--bg-light); }
+@media (min-width:1024px){ .hamburger{ display:none; } }
+.hamburger .bars{ position:relative; width:20px; height:14px; }
+.hamburger .bars span{
+  position:absolute; left:0; width:100%; height:2px;
+  background:currentColor; border-radius:2px;
+  transition:transform var(--t), opacity var(--t), top var(--t);
+}
+.hamburger .bars span:nth-child(1){ top:0; }
+.hamburger .bars span:nth-child(2){ top:6px; }
+.hamburger .bars span:nth-child(3){ top:12px; }
+.hamburger[aria-expanded="true"] .bars span:nth-child(1){ top:6px; transform:rotate(45deg); }
+.hamburger[aria-expanded="true"] .bars span:nth-child(2){ opacity:0; }
+.hamburger[aria-expanded="true"] .bars span:nth-child(3){ top:6px; transform:rotate(-45deg); }
+
+/* Desktop nav */
+.header-nav{ display:none; border-top:1px solid var(--border); }
+@media (min-width:1024px){ .header-nav{ display:block; } }
+.header-nav ul{
+  display:flex; gap:var(--s2);
+}
+.header-nav a{
+  display:inline-block; padding:12px 16px;
+  font-family:var(--font-head); font-weight:500; font-size:15px;
+  color:var(--navy); border-radius:6px 6px 0 0;
+  position:relative; transition:color var(--t);
+}
+.header-nav a::after{
+  content:""; position:absolute; left:16px; right:16px; bottom:0;
+  height:2px; background:var(--blue);
+  transform:scaleX(0); transform-origin:left;
+  transition:transform var(--t);
+}
+.header-nav a:hover{ color:var(--blue); }
+.header-nav a:hover::after,
+.header-nav a[aria-current="page"]::after{ transform:scaleX(1); }
+.header-nav a[aria-current="page"]{ color:var(--blue); }
+
+/* Mobile menu */
+.mobile-menu{
+  display:none;
+  border-top:1px solid var(--border);
+  background:var(--white);
+  padding:var(--s4) var(--s4) var(--s6);
+}
+.mobile-menu.is-open{ display:block; }
+@media (min-width:1024px){ .mobile-menu{ display:none !important; } }
+.mobile-menu .mobile-search{ position:relative; margin-bottom:var(--s4); }
+.mobile-menu .mobile-search input{
+  width:100%; padding:12px 48px 12px 16px;
+  font:inherit; font-size:15px;
+  background:var(--bg-light); border:1px solid transparent;
+  border-radius:999px; color:var(--navy);
+}
+.mobile-menu .mobile-search input:focus-visible{
+  outline:none; border-color:var(--blue); background:var(--white);
+  box-shadow:0 0 0 3px rgba(74,144,226,.18);
+}
+.mobile-menu .mobile-search .search-btn{
+  position:absolute; right:5px; top:50%; transform:translateY(-50%);
+  width:36px; height:36px; border-radius:50%;
+  display:grid; place-items:center; background:var(--blue); color:#fff;
+}
+.mobile-menu .mobile-search .search-btn svg{ width:16px; height:16px; }
+.mobile-menu nav a{
+  display:block; padding:14px var(--s2);
+  font-family:var(--font-head); font-weight:500; font-size:17px;
+  border-bottom:1px solid var(--bg-light);
+  transition:color var(--t), padding-left var(--t);
+}
+.mobile-menu nav a:hover{ color:var(--blue); padding-left:var(--s4); }
+.mobile-menu .mobile-account{
+  display:flex; gap:var(--s5); margin-top:var(--s4);
+  font-size:14px; font-weight:600; color:var(--grey);
+}
+.mobile-menu .mobile-account a:hover{ color:var(--blue); }
+
+/* ============================================================
+   HERO + VEHICLE FINDER
+   ============================================================ */
+.hero{
+  background-color:var(--bg-light);
+  background-image:
+    linear-gradient(rgba(74,144,226,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(74,144,226,.045) 1px, transparent 1px);
+  background-size:36px 36px;
+  position:relative;
+  overflow:hidden;
+}
+.hero::after{ /* soft vignette so the grid fades at edges */
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:radial-gradient(120% 90% at 30% 20%, transparent 40%, rgba(241,244,246,.92) 100%);
+}
+.hero .wrap{
+  position:relative; z-index:1;
+  display:grid; grid-template-columns:1fr; gap:var(--s8);
+  padding-block:var(--s12) var(--s12);
+}
+@media (min-width:1024px){
+  .hero .wrap{
+    grid-template-columns: 1.1fr .9fr;
+    align-items:center;
+    gap:var(--s16);
+    padding-block:var(--s20) calc(var(--s20) + var(--s4));
+  }
+}
+
+.hero-copy .eyebrow{
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:13px; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--blue); margin-bottom:var(--s4);
+}
+.hero-copy .eyebrow::before{
+  content:""; width:28px; height:2px; background:var(--blue); border-radius:2px;
+}
+.hero-copy h1{
+  font-size:clamp(34px,5.4vw,60px);
+  font-weight:600; letter-spacing:-.018em;
+  max-width:14ch;
+  margin-bottom:var(--s5);
+}
+.hero-copy h1 em{ font-style:normal; color:var(--blue); }
+.hero-copy p{
+  font-size:clamp(16px,1.6vw,18px); color:var(--grey);
+  max-width:46ch; margin-bottom:var(--s8);
+}
+.hero-points{ display:flex; flex-wrap:wrap; gap:var(--s2) var(--s6); }
+.hero-points li{
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:14px; font-weight:600; color:var(--navy);
+}
+.hero-points svg{ width:16px; height:16px; color:var(--blue); flex-shrink:0; }
+
+/* Finder card */
+.finder-card{
+  background:var(--white);
+  border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-lg);
+  border:1px solid rgba(219,223,225,.6);
+  padding:var(--s6);
+}
+@media (min-width:768px){ .finder-card{ padding:var(--s8); } }
+@media (min-width:1024px){ .finder-card{ margin-bottom:calc(-1 * var(--s10)); } }
+
+.finder-card .finder-head{ margin-bottom:var(--s5); }
+.finder-card h2{ font-size:22px; letter-spacing:-.01em; }
+.finder-card .finder-sub{ font-size:14px; color:var(--grey); margin-top:var(--s1); }
+
+.finder-grid{ display:grid; gap:var(--s3); }
+@media (min-width:560px) and (max-width:1023.98px){
+  .finder-grid{ grid-template-columns:1fr 1fr; }
+}
+.finder-field label{
+  display:block; font-size:12px; font-weight:700;
+  letter-spacing:.08em; text-transform:uppercase;
+  color:var(--grey); margin-bottom:6px;
+}
+.finder-field select{
+  width:100%; appearance:none; -webkit-appearance:none;
+  font:inherit; font-size:15px; color:var(--navy);
+  padding:12px 40px 12px 14px;
+  background:var(--white)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%231B3A4B' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E")
+    no-repeat right 14px center;
+  border:1px solid var(--border);
+  border-radius:var(--radius-sm);
+  transition:border-color var(--t), box-shadow var(--t), background-color var(--t);
+}
+.finder-field select:hover:not(:disabled){ border-color:var(--blue); }
+.finder-field select:focus-visible{
+  outline:none; border-color:var(--blue);
+  box-shadow:0 0 0 3px rgba(74,144,226,.18);
+}
+.finder-field select:disabled{
+  background-color:var(--bg-light); color:var(--grey);
+  cursor:not-allowed; opacity:.75;
+}
+.finder-actions{
+  display:flex; gap:var(--s3); align-items:center;
+  margin-top:var(--s5);
+}
+@media (min-width:560px) and (max-width:1023.98px){
+  .finder-actions{ grid-column:1 / -1; }
+}
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  font-family:var(--font-head); font-weight:600; font-size:15px;
+  padding:13px 26px; border-radius:999px;
+  transition:background var(--t), color var(--t), transform var(--t), box-shadow var(--t), border-color var(--t);
+}
+.btn:active{ transform:translateY(1px); }
+.btn-primary{
+  background:var(--blue); color:#fff;
+  box-shadow:0 6px 16px rgba(74,144,226,.32);
+}
+.btn-primary:hover:not(:disabled){ background:var(--blue-hover); box-shadow:0 8px 20px rgba(74,144,226,.4); }
+.btn-primary:disabled{
+  background:var(--border); color:var(--grey);
+  box-shadow:none; cursor:not-allowed;
+}
+.btn-ghost{
+  background:transparent; color:var(--grey);
+  padding-inline:var(--s4);
+}
+.btn-ghost:hover{ color:var(--navy); background:var(--bg-light); }
+#finderFind{ flex:1 1 auto; }
+
+.finder-result{
+  margin-top:var(--s4); padding:var(--s3) var(--s4);
+  border-radius:var(--radius-sm);
+  background:var(--blue-tint);
+  border:1px solid rgba(74,144,226,.35);
+  font-size:14px; color:var(--navy);
+  display:none; align-items:flex-start; gap:10px;
+}
+.finder-result.is-visible{ display:flex; }
+.finder-result svg{ width:18px; height:18px; color:var(--blue); flex-shrink:0; margin-top:1px; }
+.finder-result strong{ font-weight:700; }
+.finder-result a{ color:var(--blue); font-weight:600; }
+.finder-result a:hover{ color:var(--blue-hover); }
+
+/* ============================================================
+   TRUST STRIP
+   ============================================================ */
+.trust{
+  background:var(--white);
+  border-bottom:1px solid var(--border);
+}
+.trust .wrap{
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:var(--s5) var(--s4);
+  padding-block:var(--s6);
+}
+@media (min-width:1024px){
+  .trust .wrap{ grid-template-columns:repeat(4,1fr); padding-block:var(--s8); margin-top:var(--s2); }
+}
+.trust-item{ display:flex; align-items:flex-start; gap:var(--s3); }
+.trust-item .t-icon{
+  width:40px; height:40px; flex-shrink:0;
+  display:grid; place-items:center;
+  border-radius:var(--radius-md);
+  background:var(--blue-tint); color:var(--blue);
+}
+.trust-item .t-icon svg{ width:20px; height:20px; }
+.trust-item h3{
+  font-size:15px; font-weight:600; margin-bottom:2px;
+  font-family:var(--font-head);
+}
+.trust-item p{ font-size:13px; color:var(--grey); line-height:1.45; }
+.stars{ color:#F5A623; letter-spacing:1px; font-size:12px; }
+
+/* ============================================================
+   CATEGORY GRID
+   ============================================================ */
+.categories{ padding-block:var(--s16) var(--s12); }
+.cat-grid{
+  display:grid; gap:var(--s3);
+  grid-template-columns:repeat(2,1fr);
+}
+@media (min-width:600px){ .cat-grid{ grid-template-columns:repeat(3,1fr); } }
+@media (min-width:1024px){ .cat-grid{ grid-template-columns:repeat(4,1fr); gap:var(--s4); } }
+.cat-tile{
+  display:flex; align-items:center; justify-content:space-between; gap:var(--s3);
+  padding:var(--s5) var(--s5);
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:var(--radius-md);
+  font-family:var(--font-head); font-weight:500; font-size:16px;
+  transition:transform var(--t), box-shadow var(--t), border-color var(--t), color var(--t);
+}
+.cat-tile .arrow{
+  width:18px; height:18px; flex-shrink:0; color:var(--grey);
+  transition:transform var(--t), color var(--t);
+}
+.cat-tile:hover{
+  transform:translateY(-3px);
+  box-shadow:var(--shadow-md);
+  border-color:rgba(74,144,226,.5);
+  color:var(--blue);
+}
+.cat-tile:hover .arrow{ color:var(--blue); transform:translateX(3px); }
+.cat-tile--all{
+  background:var(--navy); color:#fff; border-color:var(--navy);
+}
+.cat-tile--all .arrow{ color:rgba(255,255,255,.7); }
+.cat-tile--all:hover{ color:#fff; background:#234a5f; border-color:#234a5f; }
+.cat-tile--all:hover .arrow{ color:#fff; }
+
+/* ============================================================
+   FEATURED PRODUCTS
+   ============================================================ */
+.featured{
+  background:var(--bg-light);
+  padding-block:var(--s16);
+}
+.product-grid{
+  display:grid; gap:var(--s4);
+  grid-auto-flow:column;
+  grid-auto-columns:min(68%, 290px);
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  padding:var(--s2) var(--s4) var(--s5);
+  margin-inline:calc(-1 * var(--s4));
+  scrollbar-width:thin;
+  scrollbar-color:var(--border) transparent;
+}
+.product-grid > *{ scroll-snap-align:start; }
+@media (min-width:768px){
+  .product-grid{
+    grid-auto-flow:row; grid-auto-columns:unset;
+    grid-template-columns:repeat(2,1fr);
+    overflow:visible; margin-inline:0; padding:0;
+  }
+}
+@media (min-width:1140px){
+  .product-grid{ grid-template-columns:repeat(4,1fr); gap:var(--s5); }
+}
+
+.product-card{
+  position:relative;
+  display:flex; flex-direction:column;
+  background:var(--white);
+  border:1px solid rgba(219,223,225,.7);
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  box-shadow:var(--shadow-sm);
+  transition:transform var(--t), box-shadow var(--t);
+}
+.product-card:hover{ transform:translateY(-4px); box-shadow:var(--shadow-md); }
+
+.product-media{
+  position:relative;
+  aspect-ratio:1 / 1;
+  background:var(--white);
+  border-bottom:1px solid var(--bg-light);
+  display:grid; place-items:center;
+  padding:var(--s5);
+}
+.product-media img{
+  width:100%; height:100%;
+  object-fit:contain;
+}
+.product-media .ph{
+  width:100%; height:100%;
+  display:grid; place-items:center; text-align:center;
+  border:1.5px dashed var(--border); border-radius:var(--radius-md);
+  background:var(--bg-light);
+}
+.product-media .ph span{
+  font-family:var(--font-head); font-weight:600;
+  color:var(--grey); font-size:15px; letter-spacing:.04em;
+  padding:var(--s3);
+}
+.card-actions{
+  position:absolute; top:var(--s3); right:var(--s3);
+  display:flex; flex-direction:column; gap:var(--s2);
+  opacity:0; transform:translateX(6px);
+  transition:opacity var(--t), transform var(--t);
+}
+.product-card:hover .card-actions,
+.product-card:focus-within .card-actions{ opacity:1; transform:translateX(0); }
+@media (hover:none){ .card-actions{ opacity:1; transform:none; } }
+.card-actions button{
+  width:38px; height:38px; border-radius:50%;
+  display:grid; place-items:center;
+  background:var(--white); color:var(--navy);
+  border:1px solid var(--border);
+  box-shadow:var(--shadow-sm);
+  transition:color var(--t), border-color var(--t), background var(--t);
+}
+.card-actions button:hover{ color:var(--blue); border-color:var(--blue); }
+.card-actions button.is-active{ color:#fff; background:var(--blue); border-color:var(--blue); }
+.card-actions svg{ width:17px; height:17px; }
+
+.product-body{
+  display:flex; flex-direction:column; flex:1;
+  padding:var(--s4) var(--s5) var(--s5);
+  gap:var(--s2);
+}
+.chip{
+  align-self:flex-start;
+  font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--blue); background:var(--blue-tint);
+  padding:4px 10px; border-radius:999px;
+}
+.product-body h3{
+  font-family:var(--font-body);
+  font-size:14.5px; font-weight:600; line-height:1.4;
+  color:var(--navy);
+  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical;
+  overflow:hidden;
+  min-height:calc(2 * 1.4em);
+}
+.product-foot{
+  margin-top:auto; padding-top:var(--s2);
+  display:flex; align-items:center; justify-content:space-between; gap:var(--s3);
+}
+.price{
+  font-family:var(--font-head); font-weight:700;
+  font-size:19px; letter-spacing:-.01em;
+}
+.add-btn{
+  display:inline-flex; align-items:center; gap:7px;
+  font-family:var(--font-head); font-weight:600; font-size:13.5px;
+  padding:9px 16px; border-radius:999px;
+  background:var(--navy); color:#fff;
+  transition:background var(--t), transform var(--t);
+  white-space:nowrap;
+}
+.add-btn svg{ width:15px; height:15px; }
+.add-btn:hover{ background:var(--blue); }
+.add-btn:active{ transform:scale(.97); }
+.add-btn.is-added{ background:var(--blue); }
+
+/* ============================================================
+   PROMO BANNERS
+   ============================================================ */
+.promos{ padding-block:var(--s16) var(--s8); }
+.promo-grid{
+  display:grid; gap:var(--s4); grid-template-columns:1fr;
+}
+@media (min-width:768px){ .promo-grid{ grid-template-columns:1fr 1fr; gap:var(--s5); } }
+.promo{
+  position:relative; overflow:hidden;
+  border-radius:var(--radius-lg);
+  padding:var(--s8) var(--s6);
+  min-height:220px;
+  display:flex; flex-direction:column; justify-content:center; gap:var(--s3);
+  transition:transform var(--t), box-shadow var(--t);
+}
+@media (min-width:768px){ .promo{ padding:var(--s10) var(--s8); } }
+.promo:hover{ transform:translateY(-3px); box-shadow:var(--shadow-md); }
+.promo .promo-tag{
+  font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+}
+.promo h3{ font-size:clamp(24px,2.8vw,32px); letter-spacing:-.015em; max-width:16ch; }
+.promo p{ font-size:15px; max-width:38ch; }
+.promo .btn{ align-self:flex-start; margin-top:var(--s2); }
+
+.promo--battery{
+  background:var(--navy);
+  background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+  background-size:28px 28px;
+  color:#fff;
+}
+.promo--battery .promo-tag{ color:#FF6B6B; }
+.promo--battery .promo-tag .off{ color:var(--sale); background:#fff; padding:2px 8px; border-radius:4px; margin-right:8px; }
+.promo--battery p{ color:rgba(255,255,255,.75); }
+.promo--battery .btn{ background:#fff; color:var(--navy); box-shadow:none; }
+.promo--battery .btn:hover{ background:var(--blue-hover); color:#fff; }
+
+.promo--welcome{
+  background:var(--blue-tint);
+  border:1px solid rgba(74,144,226,.35);
+  color:var(--navy);
+}
+.promo--welcome .promo-tag{ color:var(--blue); }
+.promo--welcome p{ color:var(--grey); }
+.promo--welcome .code{
+  display:inline-block;
+  font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-weight:700; font-size:15px; letter-spacing:.06em;
+  background:var(--white); border:1.5px dashed var(--blue);
+  color:var(--blue);
+  padding:6px 14px; border-radius:var(--radius-sm);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer{
+  background:var(--navy); color:rgba(255,255,255,.82);
+  margin-top:var(--s12);
+}
+.footer-main{
+  display:grid; gap:var(--s8);
+  grid-template-columns:1fr;
+  padding-block:var(--s12) var(--s8);
+}
+@media (min-width:768px){ .footer-main{ grid-template-columns:1.4fr 1fr 1fr; gap:var(--s10); } }
+.footer-brand h3{
+  font-size:24px; color:#fff; letter-spacing:.02em; margin-bottom:var(--s2);
+}
+.footer-brand .tagline{
+  font-size:13px; font-weight:600; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--blue-hover); margin-bottom:var(--s5);
+}
+.footer-brand address{
+  font-style:normal; font-size:14.5px; line-height:1.8;
+}
+.footer-brand address a{ transition:color var(--t); }
+.footer-brand address a:hover{ color:#fff; }
+.footer-col h4{
+  font-size:13px; font-weight:600; letter-spacing:.12em; text-transform:uppercase;
+  color:#fff; margin-bottom:var(--s4);
+}
+.footer-col ul{ display:grid; gap:var(--s2); }
+.footer-col a{
+  font-size:14.5px; transition:color var(--t), padding-left var(--t);
+}
+.footer-col a:hover{ color:#fff; padding-left:4px; }
+.pay-badges{ display:flex; flex-wrap:wrap; gap:var(--s2); }
+.pay-badges span{
+  font-size:12px; font-weight:700; letter-spacing:.03em;
+  padding:6px 12px; border-radius:6px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.14);
+  color:rgba(255,255,255,.9);
+}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.12);
+  padding-block:var(--s5);
+  display:flex; flex-wrap:wrap; gap:var(--s2) var(--s6);
+  justify-content:space-between;
+  font-size:13px; color:rgba(255,255,255,.55);
+}
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<!-- ================= HEADER ================= -->
+<header class="site-header" id="siteHeader">
+  <div class="wrap header-top">
+    <a class="logo-link" href="#" aria-label="YDU PARTS — home">
+      <img src="https://ydu.com.au/wp-content/uploads/2024/11/banner-300x103.png"
+           alt="YDU PARTS — VW, AUDI and VAG Specialists" width="128" height="44">
+    </a>
+
+    <form class="header-search" role="search" aria-label="Product search" onsubmit="return false">
+      <label class="visually-hidden" for="searchDesktop">Search parts</label>
+      <input id="searchDesktop" type="search" placeholder="Search by part number, name or vehicle…" autocomplete="off">
+      <button class="search-btn" type="submit" aria-label="Search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg>
+      </button>
+    </form>
+
+    <div class="header-actions">
+      <a class="icon-btn icon-btn--account" href="#" aria-label="My account">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg>
+      </a>
+      <a class="icon-btn" href="#" aria-label="Wishlist, 2 items">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21S3.5 15.4 3.5 9.6C3.5 6.6 5.9 4.5 8.5 4.5c1.6 0 2.8.8 3.5 2 0.7-1.2 1.9-2 3.5-2 2.6 0 5 2.1 5 5.1C20.5 15.4 12 21 12 21Z"/></svg>
+        <span class="badge" aria-hidden="true">2</span>
+      </a>
+      <a class="icon-btn icon-btn--compare" href="#" aria-label="Compare, 1 item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3h5v5"/><path d="M8 21H3v-5"/><path d="M21 3 3 21"/><path d="M3 8V3h5"/><path d="M21 16v5h-5"/></svg>
+        <span class="badge" aria-hidden="true">1</span>
+      </a>
+      <a class="icon-btn" href="#" aria-label="Cart, 3 items">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.6"/><circle cx="18" cy="20" r="1.6"/><path d="M2.5 3.5h2.5l2.5 12h11l2-8.5H6"/></svg>
+        <span class="badge" id="cartBadge" aria-hidden="true">3</span>
+      </a>
+      <button class="hamburger" id="hamburgerBtn" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+        <span class="bars" aria-hidden="true"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </div>
+
+  <nav class="header-nav wrap" aria-label="Primary">
+    <ul>
+      <li><a href="#" aria-current="page">Shop</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">Check Your Order</a></li>
+      <li><a href="#">Find Us</a></li>
+    </ul>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <form class="mobile-search" role="search" aria-label="Product search (mobile)" onsubmit="return false">
+      <label class="visually-hidden" for="searchMobile">Search parts</label>
+      <input id="searchMobile" type="search" placeholder="Search parts…" autocomplete="off">
+      <button class="search-btn" type="submit" aria-label="Search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg>
+      </button>
+    </form>
+    <nav aria-label="Primary mobile">
+      <a href="#">Shop</a>
+      <a href="#">Contact</a>
+      <a href="#">Check Your Order</a>
+      <a href="#">Find Us</a>
+    </nav>
+    <div class="mobile-account">
+      <a href="#">My Account</a>
+      <a href="#">Wishlist (2)</a>
+      <a href="#">Compare (1)</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ================= HERO + FINDER ================= -->
+  <section class="hero" aria-labelledby="heroHeading">
+    <div class="wrap">
+      <div class="hero-copy">
+        <span class="eyebrow">VW, AUDI and VAG Specialists</span>
+        <h1 id="heroHeading">Find the right part for your <em>VW</em> or <em>Audi</em></h1>
+        <p>Genuine and OEM parts matched precisely to your vehicle — picked, packed and shipped Australia-wide from our Perth warehouse.</p>
+        <ul class="hero-points">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4.5 12.5 5 5 10-11"/></svg>Genuine &amp; OEM only</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4.5 12.5 5 5 10-11"/></svg>Manufacturer warranty</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4.5 12.5 5 5 10-11"/></svg>Fast nationwide delivery</li>
+        </ul>
+      </div>
+
+      <div class="finder-card" role="region" aria-labelledby="finderHeading">
+        <div class="finder-head">
+          <h2 id="finderHeading">Vehicle finder</h2>
+          <p class="finder-sub">Select your vehicle to see parts that fit — guaranteed.</p>
+        </div>
+        <form class="finder-grid" id="finderForm" onsubmit="return false">
+          <div class="finder-field">
+            <label for="selMake">Make</label>
+            <select id="selMake">
+              <option value="">Select make</option>
+            </select>
+          </div>
+          <div class="finder-field">
+            <label for="selModel">Model</label>
+            <select id="selModel" disabled>
+              <option value="">Select model</option>
+            </select>
+          </div>
+          <div class="finder-field">
+            <label for="selSubmodel">Submodel</label>
+            <select id="selSubmodel" disabled>
+              <option value="">Select submodel</option>
+            </select>
+          </div>
+          <div class="finder-field">
+            <label for="selVariant">Variant</label>
+            <select id="selVariant" disabled>
+              <option value="">Select variant</option>
+            </select>
+          </div>
+          <div class="finder-actions">
+            <button class="btn btn-primary" id="finderFind" type="submit" disabled>
+              Find Parts
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+            </button>
+            <button class="btn btn-ghost" id="finderReset" type="reset">Reset</button>
+          </div>
+        </form>
+        <p class="finder-result" id="finderResult" role="status" aria-live="polite">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/></svg>
+          <span id="finderResultText"></span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TRUST STRIP ================= -->
+  <section class="trust" aria-label="Why shop with YDU PARTS">
+    <div class="wrap">
+      <div class="trust-item">
+        <span class="t-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2.8 2.7 5.7 6.1.8-4.5 4.3 1.1 6.1L12 16.8l-5.4 2.9 1.1-6.1L3.2 9.3l6.1-.8L12 2.8Z"/></svg>
+        </span>
+        <div>
+          <h3>Google rated 4.8 <span class="stars" aria-hidden="true">★★★★★</span></h3>
+          <p>Hundreds of verified reviews from VAG owners.</p>
+        </div>
+      </div>
+      <div class="trust-item">
+        <span class="t-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v9H3z"/><path d="M14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="1.8"/><circle cx="17.5" cy="18" r="1.8"/></svg>
+        </span>
+        <div>
+          <h3>Fast nationwide delivery</h3>
+          <p>Same-day dispatch on in-stock parts, Australia-wide.</p>
+        </div>
+      </div>
+      <div class="trust-item">
+        <span class="t-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4.5 6v5.5c0 4.5 3 7.7 7.5 9.5 4.5-1.8 7.5-5 7.5-9.5V6L12 3Z"/><path d="m9 12 2.2 2.2L15.5 9.8"/></svg>
+        </span>
+        <div>
+          <h3>Genuine &amp; OEM parts</h3>
+          <p>With full manufacturer warranty on every order.</p>
+        </div>
+      </div>
+      <div class="trust-item">
+        <span class="t-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+        </span>
+        <div>
+          <h3>Perth WA based</h3>
+          <p>Local specialists in Forrestdale — real people, real advice.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CATEGORY GRID ================= -->
+  <section class="categories wrap" aria-labelledby="catHeading">
+    <div class="section-head">
+      <h2 id="catHeading">Shop by category</h2>
+      <a class="all-link" href="#">View all parts
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+      </a>
+    </div>
+    <div class="cat-grid" id="catGrid"></div>
+  </section>
+
+  <!-- ================= FEATURED PRODUCTS ================= -->
+  <section class="featured" aria-labelledby="featHeading">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="featHeading">Featured parts</h2>
+        <a class="all-link" href="#">Shop all
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+        </a>
+      </div>
+      <div class="product-grid" id="productGrid"></div>
+    </div>
+  </section>
+
+  <!-- ================= PROMOS ================= -->
+  <section class="promos wrap" aria-label="Current offers">
+    <div class="promo-grid">
+      <article class="promo promo--battery">
+        <span class="promo-tag"><span class="off">60% OFF</span> Limited time</span>
+        <h3>Car batteries — 60% off</h3>
+        <p>Premium VAG-fit batteries at our biggest discount of the year. While stocks last.</p>
+        <a class="btn" href="#">Shop batteries</a>
+      </article>
+      <article class="promo promo--welcome">
+        <span class="promo-tag">New customers</span>
+        <h3>5% off storewide</h3>
+        <p>Use code <span class="code">WELCOME5</span> at checkout on your first order.</p>
+        <a class="btn btn-primary" href="#">Start shopping</a>
+      </article>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  <div class="wrap footer-main">
+    <div class="footer-brand">
+      <h3>YDU PARTS</h3>
+      <p class="tagline">VW, AUDI and VAG Specialists</p>
+      <address>
+        Unit 4/11 Weedon Road,<br>
+        Forrestdale WA 6112<br>
+        <a href="tel:+61409853662">0409 853 662</a><br>
+        <a href="mailto:info@ydu.com.au">info@ydu.com.au</a>
+      </address>
+    </div>
+    <nav class="footer-col" aria-label="Footer">
+      <h4>Quick links</h4>
+      <ul>
+        <li><a href="#">Shop</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Check Your Order</a></li>
+        <li><a href="#">Find Us</a></li>
+        <li><a href="#">Returns</a></li>
+      </ul>
+    </nav>
+    <div class="footer-col">
+      <h4>We accept</h4>
+      <div class="pay-badges">
+        <span>Visa</span>
+        <span>Mastercard</span>
+        <span>Amex</span>
+        <span>Apple Pay</span>
+        <span>Google Pay</span>
+      </div>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© 2026 YDU PARTS. All rights reserved.</span>
+    <span>ABN 00 000 000 000</span>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   YDU PARTS — Variant A · vanilla JS
+   ============================================================ */
+(function(){
+  'use strict';
+
+  /* ---------- Sticky header shadow ---------- */
+  var header = document.getElementById('siteHeader');
+  var onScroll = function(){
+    header.classList.toggle('is-stuck', window.scrollY > 4);
+  };
+  window.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+
+  /* ---------- Mobile hamburger ---------- */
+  var burger = document.getElementById('hamburgerBtn');
+  var menu   = document.getElementById('mobileMenu');
+  function setMenu(open){
+    burger.setAttribute('aria-expanded', String(open));
+    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    menu.classList.toggle('is-open', open);
+  }
+  burger.addEventListener('click', function(){
+    setMenu(burger.getAttribute('aria-expanded') !== 'true');
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && burger.getAttribute('aria-expanded') === 'true'){
+      setMenu(false); burger.focus();
+    }
+  });
+
+  /* ---------- Vehicle finder (cascading, progressive enable) ---------- */
+  var VEHICLES = {
+    'Audi': {
+      'A3 8P': { 'Sportback': ['2.0 TFSI', '1.8 TFSI'] },
+      'A4 B7': { 'Sedan': ['2.0 TDI'] }
+    },
+    'Volkswagen': {
+      'Golf Mk5': { 'Hatch': ['GTI', '2.0 FSI'] },
+      'Golf Mk6': { 'Hatch': ['R'] }
+    },
+    'Skoda': {
+      'Octavia': { 'vRS': ['2.0 TSI'] }
+    }
+  };
+
+  var selMake     = document.getElementById('selMake');
+  var selModel    = document.getElementById('selModel');
+  var selSubmodel = document.getElementById('selSubmodel');
+  var selVariant  = document.getElementById('selVariant');
+  var btnFind     = document.getElementById('finderFind');
+  var form        = document.getElementById('finderForm');
+  var resultBox   = document.getElementById('finderResult');
+  var resultText  = document.getElementById('finderResultText');
+
+  function fill(select, items, placeholder){
+    select.innerHTML = '';
+    var opt = document.createElement('option');
+    opt.value = ''; opt.textContent = placeholder;
+    select.appendChild(opt);
+    items.forEach(function(item){
+      var o = document.createElement('option');
+      o.value = item; o.textContent = item;
+      select.appendChild(o);
+    });
+    select.disabled = items.length === 0;
+  }
+
+  function resetFrom(level){
+    if (level <= 1) fill(selModel,    [], 'Select model');
+    if (level <= 2) fill(selSubmodel, [], 'Select submodel');
+    if (level <= 3) fill(selVariant,  [], 'Select variant');
+    btnFind.disabled = true;
+    resultBox.classList.remove('is-visible');
+  }
+
+  fill(selMake, Object.keys(VEHICLES), 'Select make');
+  resetFrom(1);
+
+  selMake.addEventListener('change', function(){
+    resetFrom(1);
+    if (selMake.value) fill(selModel, Object.keys(VEHICLES[selMake.value]), 'Select model');
+  });
+  selModel.addEventListener('change', function(){
+    resetFrom(2);
+    if (selModel.value) fill(selSubmodel, Object.keys(VEHICLES[selMake.value][selModel.value]), 'Select submodel');
+  });
+  selSubmodel.addEventListener('change', function(){
+    resetFrom(3);
+    if (selSubmodel.value) fill(selVariant, VEHICLES[selMake.value][selModel.value][selSubmodel.value], 'Select variant');
+  });
+  selVariant.addEventListener('change', function(){
+    btnFind.disabled = !selVariant.value;
+    resultBox.classList.remove('is-visible');
+  });
+
+  form.addEventListener('submit', function(){
+    if (btnFind.disabled) return;
+    resultText.innerHTML =
+      'Showing parts for <strong>' +
+      [selMake.value, selModel.value, selSubmodel.value, selVariant.value].join(' · ') +
+      '</strong> — <a href="#">view 128 matching parts</a>';
+    resultBox.classList.add('is-visible');
+  });
+
+  form.addEventListener('reset', function(){
+    // let native reset run first, then rebuild state
+    requestAnimationFrame(function(){
+      selMake.value = '';
+      resetFrom(1);
+    });
+  });
+
+  /* ---------- Category grid ---------- */
+  var CATEGORIES = [
+    'Engine', 'Gaskets & Seals', 'Filters', 'Cooling System',
+    'Transmission', 'Electrical', 'Fuel System', 'Suspension',
+    'Body Parts', 'Performance', 'Interior'
+  ];
+  var catGrid = document.getElementById('catGrid');
+  var arrowSvg = '<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>';
+  CATEGORIES.forEach(function(name){
+    var a = document.createElement('a');
+    a.className = 'cat-tile';
+    a.href = '#';
+    a.innerHTML = '<span>' + name + '</span>' + arrowSvg;
+    catGrid.appendChild(a);
+  });
+  var allTile = document.createElement('a');
+  allTile.className = 'cat-tile cat-tile--all';
+  allTile.href = '#';
+  allTile.innerHTML = '<span>All categories</span>' + arrowSvg;
+  catGrid.appendChild(allTile);
+
+  /* ---------- Featured products (real data, prices in AUD cents) ---------- */
+  var PRODUCTS = [
+    { name:'SMP132532 – Pressure Sensor', cents:11814, cat:'Transmission',
+      img:'https://ydu.com.au/wp-content/uploads/2026/06/SMP132532.png' },
+    { name:'06L145612L – Turbo Electronic Wastegate Actuator', cents:47268, cat:'Engine',
+      img:'https://ydu.com.au/wp-content/uploads/2026/06/06L145612L-2.webp' },
+    { name:'06K121600E – HYBRID Water Pump (complete)', cents:64995, cat:'Engine',
+      img:null, partNo:'06K121600E' },
+    { name:'N90316801 – Coolant Temp Sensor O-Ring, VW Golf Mk4 Mk5 / Audi A4 B6 B7', cents:1132, cat:'Engine',
+      img:'https://ydu.com.au/wp-content/uploads/2026/01/N90316801.webp' },
+    { name:'WHT006407 – Engine Coolant Pipe O-Ring, VW Golf Mk5 Mk6 / Audi A4 B7 B8', cents:814, cat:'Engine',
+      img:'https://ydu.com.au/wp-content/uploads/2026/01/WHT006407.webp' },
+    { name:'079919523B – Genuine Coolant Temp Sensor, Audi A4 B7 B8 / A6 C6', cents:4177, cat:'Engine',
+      img:'https://ydu.com.au/wp-content/uploads/2026/01/079919523B.webp' },
+    { name:'1K0959455EA – Radiator Cooling Fan Large, VW Golf Mk5 Mk6 / Audi A3 8P', cents:20905, cat:'Engine',
+      img:'https://ydu.com.au/wp-content/uploads/2026/01/1K0959455EA.webp' },
+    { name:'1K0959455ES – Radiator Cooling Fan Small, VW Golf Mk5 Mk6 / Audi A3 8P', cents:18177, cat:'Engine',
+      img:'https://ydu.com.au/wp-content/uploads/2026/01/1K0959455ES.webp' }
+  ];
+
+  function formatAUD(cents){
+    return '$' + (cents / 100).toLocaleString('en-AU', {
+      minimumFractionDigits: 2, maximumFractionDigits: 2
+    });
+  }
+
+  var heartSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21S3.5 15.4 3.5 9.6C3.5 6.6 5.9 4.5 8.5 4.5c1.6 0 2.8.8 3.5 2 0.7-1.2 1.9-2 3.5-2 2.6 0 5 2.1 5 5.1C20.5 15.4 12 21 12 21Z"/></svg>';
+  var eyeSvg   = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="3"/></svg>';
+  var cartSvg  = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.6"/><circle cx="18" cy="20" r="1.6"/><path d="M2.5 3.5h2.5l2.5 12h11l2-8.5H6"/></svg>';
+  var tickSvg  = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4.5 12.5 5 5 10-11"/></svg>';
+
+  var productGrid = document.getElementById('productGrid');
+  PRODUCTS.forEach(function(p){
+    var card = document.createElement('article');
+    card.className = 'product-card';
+
+    var media = p.img
+      ? '<img src="' + p.img + '" alt="' + p.name.replace(/"/g,'&quot;') + '" loading="lazy" width="400" height="400">'
+      : '<div class="ph" role="img" aria-label="Image coming soon for part ' + p.partNo + '"><span>' + p.partNo + '<br>Image coming soon</span></div>';
+
+    card.innerHTML =
+      '<div class="product-media">' + media +
+        '<div class="card-actions">' +
+          '<button type="button" class="wish-btn" aria-label="Add to wishlist" aria-pressed="false">' + heartSvg + '</button>' +
+          '<button type="button" aria-label="Quick view">' + eyeSvg + '</button>' +
+        '</div>' +
+      '</div>' +
+      '<div class="product-body">' +
+        '<span class="chip">' + p.cat + '</span>' +
+        '<h3>' + p.name + '</h3>' +
+        '<div class="product-foot">' +
+          '<span class="price">' + formatAUD(p.cents) + '</span>' +
+          '<button type="button" class="add-btn">' + cartSvg + '<span class="add-label">Add to Cart</span></button>' +
+        '</div>' +
+      '</div>';
+    productGrid.appendChild(card);
+  });
+
+  /* Add to cart: bump badge + brief confirmation */
+  var cartBadge = document.getElementById('cartBadge');
+  productGrid.addEventListener('click', function(e){
+    var addBtn = e.target.closest('.add-btn');
+    var wishBtn = e.target.closest('.wish-btn');
+    if (addBtn){
+      cartBadge.textContent = String(parseInt(cartBadge.textContent, 10) + 1);
+      addBtn.classList.add('is-added');
+      var label = addBtn.querySelector('.add-label');
+      var icon = addBtn.querySelector('svg');
+      label.textContent = 'Added';
+      icon.outerHTML = tickSvg;
+      setTimeout(function(){
+        addBtn.classList.remove('is-added');
+        label.textContent = 'Add to Cart';
+        addBtn.querySelector('svg').outerHTML = cartSvg;
+      }, 1400);
+    }
+    if (wishBtn){
+      var active = wishBtn.classList.toggle('is-active');
+      wishBtn.setAttribute('aria-pressed', String(active));
+    }
+  });
+})();
+</script>
+</body>
+</html>

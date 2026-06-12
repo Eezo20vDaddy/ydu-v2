@@ -1,0 +1,8 @@
+node_modules/
+build/
+dist/
+*.zip
+*.log
+.DS_Store
+.claude/state/
+.claude/worktrees/
