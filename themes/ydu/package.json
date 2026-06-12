@@ -1,0 +1,16 @@
+{
+	"name": "ydu-theme",
+	"version": "0.1.0",
+	"private": true,
+	"description": "YDU PARTS custom hybrid WooCommerce theme",
+	"scripts": {
+		"build": "wp-scripts build",
+		"start": "wp-scripts start",
+		"lint:js": "wp-scripts lint-js",
+		"lint:css": "wp-scripts lint-style",
+		"packages-update": "wp-scripts packages-update"
+	},
+	"devDependencies": {
+		"@wordpress/scripts": "^31.0.0"
+	}
+}
