@@ -13,4 +13,5 @@ define( 'YDU_URI', get_template_directory_uri() );
 
 require YDU_DIR . '/inc/setup.php';
 require YDU_DIR . '/inc/assets.php';
+require YDU_DIR . '/inc/template-helpers.php';
 require YDU_DIR . '/inc/woocommerce.php';
