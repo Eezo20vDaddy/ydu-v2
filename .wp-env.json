@@ -3,7 +3,8 @@
 	"themes": [ "./themes/ydu" ],
 	"plugins": [
 		"https://downloads.wordpress.org/plugin/woocommerce.zip",
-		"./plugins/ydu-fitment"
+		"./plugins/ydu-fitment",
+		"./plugins/ydu-trade"
 	],
 	"mappings": {
 		"wp-content/ydu-seed/data": "./data",

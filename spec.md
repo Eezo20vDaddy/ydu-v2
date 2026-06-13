@@ -136,9 +136,26 @@ reused.**
 - Downloadable PDF tax invoices per order (via a maintained plugin, e.g. PDF Invoices &
   Packing Slips, unless discovery finds one already installed — keep whatever Zoho/
   existing setup already generates if adequate).
-- Trade/B2B: wholesale pricing tier(s) for workshop customers. Mechanism decided in
-  discovery (check what exists today; otherwise evaluate B2BKing vs Wholesale Suite vs
-  native roles + pricing rules — must be compatible with the Zoho price sync).
+- **Trade/B2B — per-customer "last price paid" (CEO decision 2026-06-13).** NOT flat
+  discounts (margins vary per item). Each trade customer sees their own individual price
+  per item, defined as the last price they actually paid for it. Flow (feedback loop):
+  1. Trade customer with no stored price for an item sees **standard price**.
+  2. They order; the order/invoice integrates to **Zoho** (existing connector).
+  3. In Zoho the line price may be **edited** (negotiated/actual invoiced price).
+  4. That edited price **feeds back to the website** and is stored against
+     (customer, item).
+  5. **Next time**, that customer sees their stored individual price for that item.
+  - **Build decomposition:**
+    - *Foundation (buildable now, testable):* a `trade` customer role; a per-customer
+      per-product price store (`ydu_trade_prices`); a display layer that substitutes a
+      trade customer's stored price for an item (fallback to standard); an authenticated
+      **ingestion endpoint/API** (the defined entry point the Zoho sync calls to write a
+      customer's last-paid price). Display is a read layer — it NEVER overwrites the
+      product's stored/Zoho-synced base price.
+    - *Zoho feedback sync (needs Zoho API credentials + connector discovery — separate
+      task):* read edited line prices from Zoho sales orders/invoices and POST them to the
+      ingestion endpoint. Requires Zoho OAuth + confirming what the existing connector
+      exposes. Not built blind.
 
 ### 5.4 SEO & performance
 - Permalink structure for products, categories, and pages is unchanged; any URL that must
