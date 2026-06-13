@@ -1,0 +1,1152 @@
+{
+  "environment": {
+    "home_url": "https://ydu.com.au",
+    "site_url": "https://ydu.com.au",
+    "store_id": "f4eda28f-eea2-4e48-8d5f-01c801acb392",
+    "version": "10.8.1",
+    "log_directory": "/home/wcmzpia87u9p/public_html/wp-content/uploads/wc-logs/",
+    "log_directory_writable": true,
+    "wp_version": "7.0",
+    "wp_multisite": false,
+    "wp_memory_limit": 268435456,
+    "wp_debug_mode": true,
+    "wp_cron": true,
+    "wp_environment_type": "production",
+    "language": "en_AU",
+    "external_object_cache": null,
+    "server_info": "Apache",
+    "server_architecture": "Linux 4.18.0-553.124.4.lve.el8.x86_64 x86_64",
+    "php_version": "8.1.34",
+    "php_post_max_size": 33554432,
+    "php_max_execution_time": 30,
+    "php_max_input_vars": 1000,
+    "curl_version": "8.19.0, OpenSSL/1.1.1w",
+    "suhosin_installed": false,
+    "max_upload_size": 33554432,
+    "mysql_version": "10.11.16",
+    "mysql_version_string": "10.11.16-MariaDB-cll-lve",
+    "default_timezone": "UTC",
+    "fsockopen_or_curl_enabled": true,
+    "soapclient_enabled": true,
+    "domdocument_enabled": true,
+    "gzip_enabled": true,
+    "mbstring_enabled": true,
+    "remote_post_successful": true,
+    "remote_post_response": 200,
+    "remote_get_successful": true,
+    "remote_get_response": 200
+  },
+  "database": {
+    "wc_database_version": "10.8.1",
+    "database_prefix": "gdhe_",
+    "maxmind_geoip_database": "",
+    "database_tables": {
+      "woocommerce": {
+        "gdhe_woocommerce_sessions": {
+          "data": "1.02",
+          "index": "0.03",
+          "engine": "InnoDB"
+        },
+        "gdhe_woocommerce_api_keys": {
+          "data": "0.02",
+          "index": "0.03",
+          "engine": "InnoDB"
+        },
+        "gdhe_woocommerce_attribute_taxonomies": {
+          "data": "0.02",
+          "index": "0.02",
+          "engine": "InnoDB"
+        },
+        "gdhe_woocommerce_downloadable_product_permissions": {
+          "data": "0.02",
+          "index": "0.08",
+          "engine": "InnoDB"
+        },
+        "gdhe_woocommerce_order_items": {
+          "data": "0.06",
+          "index": "0.02",
+          "engine": "InnoDB"
+        },
+        "gdhe_woocommerce_order_itemmeta": {
+          "data": "1.19",
+          "index": "0.22",
+          "engine": "InnoDB"
+        },
+        "gdhe_woocommerce_tax_rates": {
+          "data": "0.02",
+          "index": "0.06",
+          "engine": "InnoDB"
+        },
+        "gdhe_woocommerce_tax_rate_locations": {
+          "data": "0.02",
+          "index": "0.03",
+          "engine": "InnoDB"
+        },
+        "gdhe_woocommerce_shipping_zones": {
+          "data": "0.02",
+          "index": "0.02",
+          "engine": "InnoDB"
+        },
+        "gdhe_woocommerce_shipping_zone_locations": {
+          "data": "0.02",
+          "index": "0.03",
+          "engine": "InnoDB"
+        },
+        "gdhe_woocommerce_shipping_zone_methods": {
+          "data": "0.02",
+          "index": "0.03",
+          "engine": "InnoDB"
+        },
+        "gdhe_woocommerce_payment_tokens": {
+          "data": "0.02",
+          "index": "0.02",
+          "engine": "InnoDB"
+        },
+        "gdhe_woocommerce_payment_tokenmeta": {
+          "data": "0.02",
+          "index": "0.03",
+          "engine": "InnoDB"
+        },
+        "gdhe_woocommerce_log": {
+          "data": "0.02",
+          "index": "0.02",
+          "engine": "InnoDB"
+        }
+      },
+      "other": {
+        "gdhe_actionscheduler_actions": {
+          "data": "12.17",
+          "index": "16.20",
+          "engine": "InnoDB"
+        },
+        "gdhe_actionscheduler_claims": {
+          "data": "0.02",
+          "index": "0.02",
+          "engine": "InnoDB"
+        },
+        "gdhe_actionscheduler_groups": {
+          "data": "0.02",
+          "index": "0.02",
+          "engine": "InnoDB"
+        },
+        "gdhe_actionscheduler_logs": {
+          "data": "6.14",
+          "index": "6.09",
+          "engine": "InnoDB"
+        },
+        "gdhe_commentmeta": {
+          "data": "0.02",
+          "index": "0.03",
+          "engine": "InnoDB"
+        },
+        "gdhe_comments": {
+          "data": "0.11",
+          "index": "0.19",
+          "engine": "InnoDB"
+        },
+        "gdhe_e_events": {
+          "data": "0.02",
+          "index": "0.02",
+          "engine": "InnoDB"
+        },
+        "gdhe_e_notes": {
+          "data": "0.02",
+          "index": "0.17",
+          "engine": "InnoDB"
+        },
+        "gdhe_e_notes_users_relations": {
+          "data": "0.02",
+          "index": "0.05",
+          "engine": "InnoDB"
+        },
+        "gdhe_e_submissions": {
+          "data": "0.02",
+          "index": "0.27",
+          "engine": "InnoDB"
+        },
+        "gdhe_e_submissions_actions_log": {
+          "data": "0.02",
+          "index": "0.11",
+          "engine": "InnoDB"
+        },
+        "gdhe_e_submissions_values": {
+          "data": "0.02",
+          "index": "0.03",
+          "engine": "InnoDB"
+        },
+        "gdhe_gla_attribute_mapping_rules": {
+          "data": "0.02",
+          "index": "0.00",
+          "engine": "InnoDB"
+        },
+        "gdhe_gla_budget_recommendations": {
+          "data": "0.19",
+          "index": "0.14",
+          "engine": "InnoDB"
+        },
+        "gdhe_gla_merchant_issues": {
+          "data": "0.06",
+          "index": "0.00",
+          "engine": "InnoDB"
+        },
+        "gdhe_gla_merchant_price_benchmarks": {
+          "data": "0.02",
+          "index": "0.05",
+          "engine": "InnoDB"
+        },
+        "gdhe_gla_shipping_rates": {
+          "data": "0.02",
+          "index": "0.03",
+          "engine": "InnoDB"
+        },
+        "gdhe_gla_shipping_times": {
+          "data": "0.02",
+          "index": "0.02",
+          "engine": "InnoDB"
+        },
+        "gdhe_jetpack_sync_queue": {
+          "data": "0.02",
+          "index": "0.06",
+          "engine": "InnoDB"
+        },
+        "gdhe_links": {
+          "data": "0.02",
+          "index": "0.02",
+          "engine": "InnoDB"
+        },
+        "gdhe_litespeed_avatar": {
+          "data": "0.02",
+          "index": "0.03",
+          "engine": "InnoDB"
+        },
+        "gdhe_litespeed_img_optming": {
+          "data": "0.02",
+          "index": "0.05",
+          "engine": "InnoDB"
+        },
+        "gdhe_litespeed_url": {
+          "data": "0.06",
+          "index": "0.08",
+          "engine": "InnoDB"
+        },
+        "gdhe_litespeed_url_file": {
+          "data": "0.13",
+          "index": "0.28",
+          "engine": "InnoDB"
+        },
+        "gdhe_mailchimp_carts": {
+          "data": "0.02",
+          "index": "0.00",
+          "engine": "InnoDB"
+        },
+        "gdhe_mailchimp_jobs": {
+          "data": "0.02",
+          "index": "0.00",
+          "engine": "InnoDB"
+        },
+        "gdhe_options": {
+          "data": "8.05",
+          "index": "2.20",
+          "engine": "InnoDB"
+        },
+        "gdhe_postmeta": {
+          "data": "8.44",
+          "index": "1.75",
+          "engine": "InnoDB"
+        },
+        "gdhe_posts": {
+          "data": "3.50",
+          "index": "0.50",
+          "engine": "InnoDB"
+        },
+        "gdhe_revslider_css": {
+          "data": "0.13",
+          "index": "0.02",
+          "engine": "InnoDB"
+        },
+        "gdhe_revslider_layer_animations": {
+          "data": "0.02",
+          "index": "0.00",
+          "engine": "InnoDB"
+        },
+        "gdhe_revslider_navigations": {
+          "data": "0.02",
+          "index": "0.00",
+          "engine": "InnoDB"
+        },
+        "gdhe_revslider_sliders": {
+          "data": "0.06",
+          "index": "0.02",
+          "engine": "InnoDB"
+        },
+        "gdhe_revslider_sliders7": {
+          "data": "0.02",
+          "index": "0.02",
+          "engine": "InnoDB"
+        },
+        "gdhe_revslider_slides": {
+          "data": "0.20",
+          "index": "0.02",
+          "engine": "InnoDB"
+        },
+        "gdhe_revslider_slides7": {
+          "data": "0.20",
+          "index": "0.02",
+          "engine": "InnoDB"
+        },
+        "gdhe_revslider_static_slides": {
+          "data": "0.02",
+          "index": "0.02",
+          "engine": "InnoDB"
+        },
+        "gdhe_termmeta": {
+          "data": "0.36",
+          "index": "0.45",
+          "engine": "InnoDB"
+        },
+        "gdhe_terms": {
+          "data": "0.28",
+          "index": "0.34",
+          "engine": "InnoDB"
+        },
+        "gdhe_term_relationships": {
+          "data": "3.30",
+          "index": "1.47",
+          "engine": "InnoDB"
+        },
+        "gdhe_term_taxonomy": {
+          "data": "0.27",
+          "index": "0.30",
+          "engine": "InnoDB"
+        },
+        "gdhe_usermeta": {
+          "data": "0.30",
+          "index": "0.22",
+          "engine": "InnoDB"
+        },
+        "gdhe_users": {
+          "data": "0.02",
+          "index": "0.05",
+          "engine": "InnoDB"
+        },
+        "gdhe_vxc_zoho_accounts": {
+          "data": "0.02",
+          "index": "0.00",
+          "engine": "InnoDB"
+        },
+        "gdhe_vxc_zoho_log": {
+          "data": "2.52",
+          "index": "0.02",
+          "engine": "InnoDB"
+        },
+        "gdhe_wc_admin_notes": {
+          "data": "0.08",
+          "index": "0.00",
+          "engine": "InnoDB"
+        },
+        "gdhe_wc_admin_note_actions": {
+          "data": "0.06",
+          "index": "0.02",
+          "engine": "InnoDB"
+        },
+        "gdhe_wc_category_lookup": {
+          "data": "0.02",
+          "index": "0.00",
+          "engine": "InnoDB"
+        },
+        "gdhe_wc_customer_lookup": {
+          "data": "0.05",
+          "index": "0.03",
+          "engine": "InnoDB"
+        },
+        "gdhe_wc_download_log": {
+          "data": "0.02",
+          "index": "0.03",
+          "engine": "InnoDB"
+        },
+        "gdhe_wc_orders": {
+          "data": "0.06",
+          "index": "0.14",
+          "engine": "InnoDB"
+        },
+        "gdhe_wc_orders_meta": {
+          "data": "1.31",
+          "index": "1.72",
+          "engine": "InnoDB"
+        },
+        "gdhe_wc_order_addresses": {
+          "data": "0.06",
+          "index": "0.06",
+          "engine": "InnoDB"
+        },
+        "gdhe_wc_order_coupon_lookup": {
+          "data": "0.02",
+          "index": "0.03",
+          "engine": "InnoDB"
+        },
+        "gdhe_wc_order_operational_data": {
+          "data": "0.05",
+          "index": "0.03",
+          "engine": "InnoDB"
+        },
+        "gdhe_wc_order_product_lookup": {
+          "data": "0.05",
+          "index": "0.08",
+          "engine": "InnoDB"
+        },
+        "gdhe_wc_order_stats": {
+          "data": "0.02",
+          "index": "0.06",
+          "engine": "InnoDB"
+        },
+        "gdhe_wc_order_tax_lookup": {
+          "data": "0.02",
+          "index": "0.03",
+          "engine": "InnoDB"
+        },
+        "gdhe_wc_product_attributes_lookup": {
+          "data": "4.16",
+          "index": "5.73",
+          "engine": "InnoDB"
+        },
+        "gdhe_wc_product_download_directories": {
+          "data": "0.02",
+          "index": "0.02",
+          "engine": "InnoDB"
+        },
+        "gdhe_wc_product_meta_lookup": {
+          "data": "0.08",
+          "index": "0.11",
+          "engine": "InnoDB"
+        },
+        "gdhe_wc_rate_limits": {
+          "data": "0.02",
+          "index": "0.02",
+          "engine": "InnoDB"
+        },
+        "gdhe_wc_reserved_stock": {
+          "data": "0.02",
+          "index": "0.02",
+          "engine": "InnoDB"
+        },
+        "gdhe_wc_tax_rate_classes": {
+          "data": "0.02",
+          "index": "0.02",
+          "engine": "InnoDB"
+        },
+        "gdhe_wc_webhooks": {
+          "data": "0.02",
+          "index": "0.02",
+          "engine": "InnoDB"
+        },
+        "gdhe_wpc_wishlist_stats": {
+          "data": "0.02",
+          "index": "0.03",
+          "engine": "InnoDB"
+        },
+        "gdhe_wpf_filters": {
+          "data": "0.02",
+          "index": "0.00",
+          "engine": "InnoDB"
+        },
+        "gdhe_wpf_meta_keys": {
+          "data": "0.02",
+          "index": "0.02",
+          "engine": "InnoDB"
+        },
+        "gdhe_wpf_meta_values": {
+          "data": "0.02",
+          "index": "0.03",
+          "engine": "InnoDB"
+        },
+        "gdhe_wpf_meta_values_bk": {
+          "data": "0.02",
+          "index": "0.02",
+          "engine": "InnoDB"
+        },
+        "gdhe_wps_woo_zoho_books_log": {
+          "data": "0.05",
+          "index": "0.00",
+          "engine": "InnoDB"
+        },
+        "gdhe_wt_iew_action_history": {
+          "data": "0.05",
+          "index": "0.00",
+          "engine": "InnoDB"
+        },
+        "gdhe_wt_iew_mapping_template": {
+          "data": "0.02",
+          "index": "0.00",
+          "engine": "InnoDB"
+        },
+        "gdhe_ydu_product_to_configurations": {
+          "data": "0.02",
+          "index": "0.02",
+          "engine": "InnoDB"
+        },
+        "gdhe_ydu_vehicle_configurations": {
+          "data": "2.52",
+          "index": "12.61",
+          "engine": "InnoDB"
+        }
+      }
+    },
+    "database_size": {
+      "data": 58.3800000000001,
+      "index": 52.92000000000005
+    }
+  },
+  "active_plugins": [
+    {
+      "plugin": "contact-form-7/wp-contact-form-7.php",
+      "name": "Contact Form 7",
+      "version": "6.1.6",
+      "version_latest": "6.1.6",
+      "url": "https://contactform7.com/",
+      "author_name": "Rock Lobster Inc.",
+      "author_url": "https://github.com/rocklobster-in/",
+      "network_activated": false
+    },
+    {
+      "plugin": "elementor/elementor.php",
+      "name": "Elementor",
+      "version": "4.1.3",
+      "version_latest": "4.1.3",
+      "url": "https://elementor.com/?utm_source=wp-plugins&#038;utm_campaign=plugin-uri&#038;utm_medium=wp-dash",
+      "author_name": "Elementor.com",
+      "author_url": "https://elementor.com/?utm_source=wp-plugins&#038;utm_campaign=author-uri&#038;utm_medium=wp-dash",
+      "network_activated": false
+    },
+    {
+      "plugin": "facebook-for-woocommerce/facebook-for-woocommerce.php",
+      "name": "Meta for WooCommerce",
+      "version": "3.7.1",
+      "version_latest": "3.7.1",
+      "url": "https://github.com/woocommerce/facebook-for-woocommerce/",
+      "author_name": "Meta",
+      "author_url": "https://www.meta.com/",
+      "network_activated": false
+    },
+    {
+      "plugin": "google-listings-and-ads/google-listings-and-ads.php",
+      "name": "Google for WooCommerce",
+      "version": "3.7.1",
+      "version_latest": "3.7.1",
+      "url": "",
+      "author_name": "WooCommerce",
+      "author_url": "https://woocommerce.com/",
+      "network_activated": false
+    },
+    {
+      "plugin": "header-footer-elementor/header-footer-elementor.php",
+      "name": "Ultimate Addons for Elementor (UAE)",
+      "version": "2.8.8",
+      "version_latest": "2.8.8",
+      "url": "https://wordpress.org/plugins/header-footer-elementor/",
+      "author_name": "Brainstorm Force",
+      "author_url": "https://www.brainstormforce.com/",
+      "network_activated": false
+    },
+    {
+      "plugin": "honeypot/wp-armour.php",
+      "name": "WP Armour - Honeypot Anti Spam",
+      "version": "2.3.04",
+      "version_latest": "2.3.04",
+      "url": "http://wordpress.org/plugins/honeypot/",
+      "author_name": "Dnesscarkey",
+      "author_url": "https://dineshkarki.com.np/wp-armour-anti-spam",
+      "network_activated": false
+    },
+    {
+      "plugin": "limit-login-attempts-reloaded/limit-login-attempts-reloaded.php",
+      "name": "Limit Login Attempts Reloaded",
+      "version": "3.2.4",
+      "version_latest": "3.2.4",
+      "url": "",
+      "author_name": "Limit Login Attempts Reloaded",
+      "author_url": "https://www.limitloginattempts.com/",
+      "network_activated": false
+    },
+    {
+      "plugin": "litespeed-cache/litespeed-cache.php",
+      "name": "LiteSpeed Cache",
+      "version": "7.8.1",
+      "version_latest": "7.8.1",
+      "url": "https://www.litespeedtech.com/products/cache-plugins/wordpress-acceleration",
+      "author_name": "LiteSpeed Technologies",
+      "author_url": "https://www.litespeedtech.com",
+      "network_activated": false
+    },
+    {
+      "plugin": "mailchimp-for-woocommerce/mailchimp-woocommerce.php",
+      "name": "Mailchimp for WooCommerce",
+      "version": "6.1.1",
+      "version_latest": "6.1.1",
+      "url": "https://mailchimp.com/connect-your-store/",
+      "author_name": "Mailchimp",
+      "author_url": "https://mailchimp.com",
+      "network_activated": false
+    },
+    {
+      "plugin": "mailchimp-for-wp/mailchimp-for-wp.php",
+      "name": "MC4WP: Mailchimp for WordPress",
+      "version": "4.13.0",
+      "version_latest": "4.13.0",
+      "url": "https://www.mc4wp.com/#utm_source=wp-plugin&#038;utm_medium=mailchimp-for-wp&#038;utm_campaign=plugins-page",
+      "author_name": "ibericode",
+      "author_url": "https://www.ibericode.com/",
+      "network_activated": false
+    },
+    {
+      "plugin": "pinterest-for-woocommerce/pinterest-for-woocommerce.php",
+      "name": "Pinterest for WooCommerce",
+      "version": "1.4.27",
+      "version_latest": "1.4.27",
+      "url": "https://woocommerce.com/products/pinterest-for-woocommerce/",
+      "author_name": "WooCommerce",
+      "author_url": "https://woocommerce.com",
+      "network_activated": false
+    },
+    {
+      "plugin": "product-import-export-for-woo/product-import-export-for-woo.php",
+      "name": "Product Import Export for WooCommerce",
+      "version": "2.6.4",
+      "version_latest": "2.6.4",
+      "url": "https://wordpress.org/plugins/product-import-export-for-woo/",
+      "author_name": "WebToffee",
+      "author_url": "https://www.webtoffee.com/product/product-import-export-woocommerce/",
+      "network_activated": false
+    },
+    {
+      "plugin": "revslider/revslider.php",
+      "name": "Slider Revolution",
+      "version": "6.7.12",
+      "version_latest": "6.7.12",
+      "url": "https://www.sliderrevolution.com/?utm_source=admin&#038;utm_medium=button&#038;utm_campaign=srusers&#038;utm_content=info",
+      "author_name": "ThemePunch",
+      "author_url": "https://themepunch.com/?utm_source=admin&#038;utm_medium=button&#038;utm_campaign=srusers&#038;utm_content=info",
+      "network_activated": false
+    },
+    {
+      "plugin": "theme-my-login/theme-my-login.php",
+      "name": "Theme My Login",
+      "version": "7.1.14",
+      "version_latest": "7.1.14",
+      "url": "https://thememylogin.com",
+      "author_name": "Theme My Login",
+      "author_url": "https://thememylogin.com",
+      "network_activated": true
+    },
+    {
+      "plugin": "tiktok-for-business/tiktok-for-woocommerce.php",
+      "name": "TikTok",
+      "version": "1.4.0",
+      "version_latest": "1.4.0",
+      "url": "https://wordpress.org/plugins/tiktok-for-business",
+      "author_name": "TikTok",
+      "author_url": "",
+      "network_activated": false
+    },
+    {
+      "plugin": "woo-smart-compare/wpc-smart-compare.php",
+      "name": "WPC Smart Compare for WooCommerce",
+      "version": "6.5.7",
+      "version_latest": "6.5.7",
+      "url": "https://wpclever.net/",
+      "author_name": "WPClever",
+      "author_url": "https://wpclever.net",
+      "network_activated": false
+    },
+    {
+      "plugin": "woo-smart-quick-view/wpc-smart-quick-view.php",
+      "name": "WPC Smart Quick View for WooCommerce",
+      "version": "4.3.2",
+      "version_latest": "4.3.2",
+      "url": "https://wpclever.net/",
+      "author_name": "WPClever",
+      "author_url": "https://wpclever.net",
+      "network_activated": false
+    },
+    {
+      "plugin": "woo-smart-wishlist/wpc-smart-wishlist.php",
+      "name": "WPC Smart Wishlist for WooCommerce",
+      "version": "6.0.4",
+      "version_latest": "6.0.4",
+      "url": "https://wpclever.net/",
+      "author_name": "WPClever",
+      "author_url": "https://wpclever.net",
+      "network_activated": false
+    },
+    {
+      "plugin": "woo-update-manager/woo-update-manager.php",
+      "name": "WooCommerce.com Update Manager",
+      "version": "1.0.3",
+      "version_latest": "1.0.3",
+      "url": "",
+      "author_name": "Automattic",
+      "author_url": "https://woocommerce.com/",
+      "network_activated": false
+    },
+    {
+      "plugin": "woo-variation-swatches/woo-variation-swatches.php",
+      "name": "Variation Swatches for WooCommerce",
+      "version": "2.3.0",
+      "version_latest": "2.3.0",
+      "url": "https://wordpress.org/plugins/woo-variation-swatches/",
+      "author_name": "Emran Ahmed",
+      "author_url": "https://getwooplugins.com/",
+      "network_activated": false
+    },
+    {
+      "plugin": "woo-zoho-crm-perks-pro/woo-zoho-crm-perks-pro.php",
+      "name": "Integration for WooCommerce and Zoho Pro",
+      "version": "1.5.8",
+      "version_latest": "1.5.8",
+      "url": "https://www.crmperks.com/plugins/woocommerce-plugins/woocommerce-zoho-plugin/",
+      "author_name": "CRM Perks",
+      "author_url": "https://www.crmperks.com",
+      "network_activated": false
+    },
+    {
+      "plugin": "woo-zoho/woo-zoho.php",
+      "name": "Integration for WooCommerce and Zoho",
+      "version": "1.6.2",
+      "version_latest": "1.6.2",
+      "url": "https://www.crmperks.com/plugins/woocommerce-plugins/woocommerce-zoho-plugin/",
+      "author_name": "CRM Perks",
+      "author_url": "https://www.crmperks.com",
+      "network_activated": false
+    },
+    {
+      "plugin": "woocommerce-currency-switcher/index.php",
+      "name": "FOX - Currency Switcher Professional for WooCommerce",
+      "version": "1.4.8",
+      "version_latest": "1.4.8",
+      "url": "https://currency-switcher.com/",
+      "author_name": "realmag777",
+      "author_url": "https://pluginus.net/",
+      "network_activated": false
+    },
+    {
+      "plugin": "woocommerce-delivery-notes/woocommerce-delivery-notes.php",
+      "name": "Print Invoice &amp; Delivery Notes for WooCommerce",
+      "version": "7.1.2",
+      "version_latest": "7.1.2",
+      "url": "https://www.tychesoftwares.com",
+      "author_name": "Tyche Softwares",
+      "author_url": "https://www.tychesoftwares.com",
+      "network_activated": false
+    },
+    {
+      "plugin": "woocommerce-payments/woocommerce-payments.php",
+      "name": "WooPayments",
+      "version": "10.8.0",
+      "version_latest": "10.8.0",
+      "url": "https://woocommerce.com/payments/",
+      "author_name": "WooCommerce",
+      "author_url": "https://woocommerce.com/",
+      "network_activated": false
+    },
+    {
+      "plugin": "woocommerce-paypal-payments/woocommerce-paypal-payments.php",
+      "name": "WooCommerce PayPal Payments",
+      "version": "4.0.4",
+      "version_latest": "4.0.4",
+      "url": "https://woocommerce.com/products/woocommerce-paypal-payments/",
+      "author_name": "PayPal",
+      "author_url": "https://paypal.com/",
+      "network_activated": false
+    },
+    {
+      "plugin": "woocommerce-services/woocommerce-services.php",
+      "name": "WooCommerce Tax",
+      "version": "3.6.5",
+      "version_latest": "3.6.5",
+      "url": "https://woocommerce.com/",
+      "author_name": "WooCommerce",
+      "author_url": "https://woocommerce.com/",
+      "network_activated": false
+    },
+    {
+      "plugin": "woocommerce/woocommerce.php",
+      "name": "WooCommerce",
+      "version": "10.8.1",
+      "version_latest": "10.8.1",
+      "url": "https://woocommerce.com/",
+      "author_name": "Automattic",
+      "author_url": "https://woocommerce.com",
+      "network_activated": false
+    },
+    {
+      "plugin": "z-ydu-woo-filter/ydu-woo-filter.php",
+      "name": "YDU WooCommerce Filter",
+      "version": "2.0 // Updated version for new architecture",
+      "version_latest": "2.0 // Updated version for new architecture",
+      "url": "",
+      "author_name": "YDU Holdings Pty Ltd",
+      "author_url": "",
+      "network_activated": false
+    }
+  ],
+  "inactive_plugins": [
+    {
+      "plugin": "elementor-pro/elementor-pro.php",
+      "name": "Elementor Pro",
+      "version": "3.34.0",
+      "version_latest": "3.34.0",
+      "url": "https://go.elementor.com/wp-dash-wp-plugins-author-uri/",
+      "author_name": "Elementor.com",
+      "author_url": "https://go.elementor.com/wp-dash-wp-plugins-author-uri/",
+      "network_activated": false
+    }
+  ],
+  "dropins_mu_plugins": {
+    "dropins": [],
+    "mu_plugins": [
+      {
+        "plugin": "automation-by-installatron.php",
+        "name": "WordPress automation by Installatron",
+        "version": "",
+        "url": "",
+        "author_name": "",
+        "author_url": ""
+      }
+    ]
+  },
+  "theme": {
+    "name": "Karpart Child",
+    "version": "1.0.8",
+    "version_latest": 0,
+    "author_url": "",
+    "is_child_theme": true,
+    "is_block_theme": false,
+    "has_woocommerce_support": true,
+    "has_woocommerce_file": false,
+    "has_outdated_templates": true,
+    "overrides": [
+      {
+        "file": "wp-content/themes/karpart/woocommerce/archive-product.php",
+        "version": "8.6.0",
+        "core_version": "8.6.0"
+      },
+      {
+        "file": "wp-content/themes/karpart/woocommerce/cart/mini-cart.php",
+        "version": "7.9.0",
+        "core_version": "10.0.0"
+      },
+      {
+        "file": "wp-content/themes/karpart/woocommerce/checkout/form-checkout.php",
+        "version": "3.5.0",
+        "core_version": "9.4.0"
+      },
+      {
+        "file": "wp-content/themes/karpart/woocommerce/content-product.php",
+        "version": "3.6.0",
+        "core_version": "9.4.0"
+      },
+      {
+        "file": "wp-content/themes/karpart/woocommerce/content-single-product.php",
+        "version": "3.6.0",
+        "core_version": "3.6.0"
+      },
+      {
+        "file": "wp-content/themes/karpart/woocommerce/content-widget-product.php",
+        "version": "3.5.5",
+        "core_version": "3.5.5"
+      },
+      {
+        "file": "wp-content/themes/karpart/woocommerce/content-widget-reviews.php",
+        "version": "3.4.0",
+        "core_version": "3.4.0"
+      },
+      {
+        "file": "wp-content/themes/karpart/woocommerce/loop/loop-end.php",
+        "version": "2.0.0",
+        "core_version": "2.0.0"
+      },
+      {
+        "file": "wp-content/themes/karpart/woocommerce/loop/loop-start.php",
+        "version": "3.3.0",
+        "core_version": "3.3.0"
+      },
+      {
+        "file": "wp-content/themes/karpart/woocommerce/loop/pagination.php",
+        "version": "3.3.1",
+        "core_version": "9.3.0"
+      },
+      {
+        "file": "wp-content/themes/karpart/woocommerce/myaccount/form-login.php",
+        "version": "9.2.0",
+        "core_version": "9.9.0"
+      },
+      {
+        "file": "wp-content/themes/karpart/woocommerce/order/form-tracking.php",
+        "version": "7.0.1",
+        "core_version": "7.0.1"
+      },
+      {
+        "file": "wp-content/themes/karpart/woocommerce/product-searchform.php",
+        "version": "7.0.1",
+        "core_version": "7.0.1"
+      },
+      {
+        "file": "wp-content/themes/karpart/woocommerce/single-product/add-to-cart/grouped.php",
+        "version": "7.0.1",
+        "core_version": "10.2.0"
+      },
+      {
+        "file": "wp-content/themes/karpart/woocommerce/single-product/meta.php",
+        "version": "3.0.0",
+        "core_version": "9.7.0"
+      },
+      {
+        "file": "wp-content/themes/karpart/woocommerce/single-product/photoswipe.php",
+        "version": "3.0.0",
+        "core_version": "10.2.0"
+      },
+      {
+        "file": "wp-content/themes/karpart/woocommerce/single-product/product-image.php",
+        "version": "9.0.0",
+        "core_version": "10.5.0"
+      },
+      {
+        "file": "wp-content/themes/karpart/woocommerce/single-product/rating.php",
+        "version": "3.6.0",
+        "core_version": "3.6.0"
+      },
+      {
+        "file": "wp-content/themes/karpart/woocommerce/single-product/tabs/tabs.php",
+        "version": "3.8.0",
+        "core_version": "9.8.0"
+      },
+      {
+        "file": "wp-content/themes/karpart/woocommerce/single-product-reviews.php",
+        "version": "4.3.0",
+        "core_version": "9.7.0"
+      }
+    ],
+    "parent_name": "Karpart",
+    "parent_version": "1.0.8",
+    "parent_version_latest": 0,
+    "parent_author_url": "https://wpopal.com/"
+  },
+  "settings": {
+    "api_enabled": false,
+    "force_ssl": false,
+    "currency": "AUD",
+    "currency_symbol": "&#36;",
+    "currency_position": "left",
+    "thousand_separator": ",",
+    "decimal_separator": ".",
+    "number_of_decimals": 2,
+    "geolocation_enabled": false,
+    "taxonomies": {
+      "external": "external",
+      "grouped": "grouped",
+      "simple": "simple",
+      "variable": "variable"
+    },
+    "product_visibility_terms": {
+      "exclude-from-catalog": "exclude-from-catalog",
+      "exclude-from-search": "exclude-from-search",
+      "featured": "featured",
+      "outofstock": "outofstock",
+      "rated-1": "rated-1",
+      "rated-2": "rated-2",
+      "rated-3": "rated-3",
+      "rated-4": "rated-4",
+      "rated-5": "rated-5"
+    },
+    "woocommerce_com_connected": "yes",
+    "enforce_approved_download_dirs": true,
+    "order_datastore": "Automattic\\WooCommerce\\Internal\\DataStores\\Orders\\OrdersTableDataStore",
+    "HPOS_enabled": true,
+    "HPOS_sync_enabled": false,
+    "enabled_features": [
+      "analytics",
+      "marketplace",
+      "order_attribution",
+      "remote_logging",
+      "email_improvements",
+      "blueprint",
+      "point_of_sale",
+      "custom_order_tables"
+    ]
+  },
+  "security": {
+    "secure_connection": true,
+    "hide_errors": true
+  },
+  "pages": [
+    {
+      "page_name": "Shop base",
+      "page_id": "10",
+      "page_set": true,
+      "page_exists": true,
+      "page_visible": true,
+      "shortcode": "",
+      "block": "",
+      "shortcode_required": false,
+      "shortcode_present": false,
+      "block_present": false,
+      "block_required": false
+    },
+    {
+      "page_name": "Cart",
+      "page_id": "11",
+      "page_set": true,
+      "page_exists": true,
+      "page_visible": true,
+      "shortcode": "[woocommerce_cart]",
+      "block": "woocommerce/cart",
+      "shortcode_required": true,
+      "shortcode_present": false,
+      "block_present": true,
+      "block_required": true
+    },
+    {
+      "page_name": "Checkout",
+      "page_id": "12",
+      "page_set": true,
+      "page_exists": true,
+      "page_visible": true,
+      "shortcode": "[woocommerce_checkout]",
+      "block": "woocommerce/checkout",
+      "shortcode_required": true,
+      "shortcode_present": false,
+      "block_present": true,
+      "block_required": true
+    },
+    {
+      "page_name": "My account",
+      "page_id": "13",
+      "page_set": true,
+      "page_exists": true,
+      "page_visible": true,
+      "shortcode": "[woocommerce_my_account]",
+      "block": "",
+      "shortcode_required": true,
+      "shortcode_present": true,
+      "block_present": false,
+      "block_required": false
+    },
+    {
+      "page_name": "Terms and conditions",
+      "page_id": "14",
+      "page_set": true,
+      "page_exists": true,
+      "page_visible": true,
+      "shortcode": "",
+      "block": "",
+      "shortcode_required": false,
+      "shortcode_present": false,
+      "block_present": false,
+      "block_required": false
+    }
+  ],
+  "post_type_counts": [
+    {
+      "type": "acf-field",
+      "count": "5"
+    },
+    {
+      "type": "acf-field-group",
+      "count": "5"
+    },
+    {
+      "type": "attachment",
+      "count": "1106"
+    },
+    {
+      "type": "e-landing-page",
+      "count": "1"
+    },
+    {
+      "type": "elementor_library",
+      "count": "12"
+    },
+    {
+      "type": "elementor-hf",
+      "count": "2"
+    },
+    {
+      "type": "karpart-breadcrumb",
+      "count": "8"
+    },
+    {
+      "type": "mc4wp-form",
+      "count": "1"
+    },
+    {
+      "type": "nav_menu_item",
+      "count": "19"
+    },
+    {
+      "type": "page",
+      "count": "14"
+    },
+    {
+      "type": "post",
+      "count": "12"
+    },
+    {
+      "type": "product",
+      "count": "317"
+    },
+    {
+      "type": "revision",
+      "count": "123"
+    },
+    {
+      "type": "shop_coupon",
+      "count": "3"
+    },
+    {
+      "type": "shop_order_placehold",
+      "count": "110"
+    },
+    {
+      "type": "vxc_zoho",
+      "count": "5"
+    },
+    {
+      "type": "wp_font_face",
+      "count": "36"
+    },
+    {
+      "type": "wp_font_family",
+      "count": "12"
+    },
+    {
+      "type": "wp_global_styles",
+      "count": "1"
+    },
+    {
+      "type": "wp_navigation",
+      "count": "1"
+    },
+    {
+      "type": "wp_template",
+      "count": "1"
+    },
+    {
+      "type": "wp_template_part",
+      "count": "2"
+    },
+    {
+      "type": "wpcf7_contact_form",
+      "count": "2"
+    },
+    {
+      "type": "wps_zoho_books_feed",
+      "count": "4"
+    }
+  ],
+  "logging": {
+    "logging_enabled": true,
+    "default_handler": "Automattic\\WooCommerce\\Internal\\Admin\\Logging\\LogHandlerFileV2",
+    "retention_period_days": 30,
+    "level_threshold": "",
+    "log_directory_size": "7 MB"
+  }
+}

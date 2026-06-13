@@ -1,0 +1,109 @@
+[
+  {
+    "id": 29,
+    "description": "",
+    "name": "Main Menu",
+    "slug": "main-menu",
+    "meta": [],
+    "locations": [
+      "primary",
+      "handheld"
+    ],
+    "auto_add": false,
+    "_links": {
+      "self": [
+        {
+          "href": "https://ydu.com.au/wp-json/wp/v2/menus/29",
+          "targetHints": {
+            "allow": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH",
+              "DELETE"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://ydu.com.au/wp-json/wp/v2/menus"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://ydu.com.au/wp-json/wp/v2/taxonomies/nav_menu"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://ydu.com.au/wp-json/wp/v2/menu-items?menus=29"
+        }
+      ],
+      "wp:menu-location": [
+        {
+          "embeddable": true,
+          "href": "https://ydu.com.au/wp-json/wp/v2/menu-locations/primary"
+        },
+        {
+          "embeddable": true,
+          "href": "https://ydu.com.au/wp-json/wp/v2/menu-locations/handheld"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 30,
+    "description": "",
+    "name": "Shop by categories",
+    "slug": "shop-by-categories",
+    "meta": [],
+    "locations": [],
+    "auto_add": false,
+    "_links": {
+      "self": [
+        {
+          "href": "https://ydu.com.au/wp-json/wp/v2/menus/30",
+          "targetHints": {
+            "allow": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH",
+              "DELETE"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://ydu.com.au/wp-json/wp/v2/menus"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://ydu.com.au/wp-json/wp/v2/taxonomies/nav_menu"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://ydu.com.au/wp-json/wp/v2/menu-items?menus=30"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  }
+]

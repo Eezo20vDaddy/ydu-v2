@@ -102,11 +102,49 @@ Verified sample: year 2021 (id 702) → Audi, Cupra, Seat, Skoda, Volkswagen.
 | `products-store-api.json` | All 302 products: name, sku, prices, stock, categories, images, attributes | Attributes only on 147 products (Store API hides non-visible attributes) **[needs 0.3]** |
 | `vehicles.json` | Meta + AJAX contract + per-product fitment term IDs (147 products) | Provisional **[needs 0.3]** |
 
-## Outstanding for task 0.3 (authenticated, needs Application Password)
+## Task 0.3 — authenticated export (DONE 2026-06-13, user `cocos`/shop_manager)
 
-- Full per-product attribute assignments via `wc/v3/products` (closes the 147/302 gap)
-- Pages, menus, widgets content; full plugin list (identify the exact Zoho connector,
-  any invoice/tracking/B2B plugins)
-- Where the finder PHP lives (child theme functions.php vs a mu-plugin vs custom plugin)
-  — determines what we must re-implement vs can consult
-- Customer/order counts (read-only sanity numbers for portal scoping)
+Exports in `data/export/`: `products-wc-v3.json` (**317** products incl. drafts, 156 with
+attributes), `pages.json` (13), `menus.json` (2) + `menu-items.json` (19),
+`product-categories.json` (21), `settings-general.json`, `shipping-zones.json`,
+`payment-gateways.json`, `system-status.json`. (`wp/v2/plugins` 403 for shop_manager —
+plugin list recovered from system status instead.)
+
+### Active plugins (production, from system status)
+
+| Plugin | Version | Disposition in rebuild |
+|---|---|---|
+| **YDU WooCommerce Filter** | 2.0 | **REPLACE** with `ydu-fitment` (this is the custom finder — it IS a standalone plugin, confirming our architecture) |
+| Integration for WooCommerce and Zoho **Pro** | 1.5.8 | **KEEP untouched** — Zoho connector (disable on clone) |
+| Integration for WooCommerce and Zoho | 1.6.2 | **KEEP untouched** — Zoho connector (paired) |
+| Print Invoice & Delivery Notes for WooCommerce | 7.1.2 | **KEEP + brand** — covers task 2.6 (PDF invoices already exist; no new plugin needed) |
+| WPC Smart Wishlist / Compare / Quick View | 6.0.4 / 6.5.7 / 4.3.2 | KEEP + restyle (task 2.4) |
+| Variation Swatches for WooCommerce | 2.3.0 | KEEP — variation UI |
+| WooPayments / PayPal Payments | 10.8.0 / 4.0.4 | KEEP — payments |
+| LiteSpeed Cache | 7.8.1 | KEEP — caching |
+| FOX Currency Switcher Pro | 1.4.8 | KEEP — multi-currency |
+| Google / Meta / Pinterest / TikTok for WooCommerce, Mailchimp (x2) | — | KEEP — marketing feeds |
+| Contact Form 7 | 6.1.6 | KEEP — contact forms |
+| Theme My Login | 7.1.14 | KEEP/evaluate — front-end login (My Account portal task 2.5) |
+| Product Import Export for WooCommerce | 2.6.4 | KEEP — used for catalog import (likely Zoho-adjacent) |
+| WP Armour Honeypot / Limit Login Attempts | 2.3.04 / 3.2.4 | KEEP — login security (note: blocks scripted login; use real browser) |
+| **Elementor + UAE + Slider Revolution** | 4.1.3 / 2.8.8 / 6.7.12 | **REMOVE** at cleanup (task 5.4) — owner mandate |
+
+Theme: **Karpart Child v1.0.8** (parent KarPart). Env: WC 10.8.1, WP 7.0, **PHP 8.1.34**
+(⇒ target PHP 8.1 compatibility, not just 8.2). HPOS not enabled (legacy post storage) —
+still use CRUD APIs per spec.
+
+### Scope deltas this export revealed
+
+1. **Task 2.6 (PDF invoices):** already solved by *Print Invoice & Delivery Notes* — rebuild
+   just brands its template. No new plugin / purchase.
+2. **Task 2.7 (trade/B2B pricing): NET-NEW — nothing on the live site provides it today.**
+   No B2B/wholesale plugin is installed. This is new functionality the owner requested, not
+   parity. **Autonomous decision (no paid plugin without approval):** implement native
+   role-based wholesale pricing — a `trade` customer role + role-priced display, applied via
+   Woo price hooks, compatible with the Zoho price sync (Zoho writes regular/sale price;
+   trade pricing is a computed display layer, never overwrites stored price). Owner can
+   later swap in B2BKing/Wholesale Suite if they want richer features — flagged for review.
+3. **My Account portal (task 2.5):** *Theme My Login* is active — evaluate whether to keep it
+   or use native Woo My Account; restyle whichever.
+4. Finder confirmed as plugin `YDU WooCommerce Filter v2.0` → clean replacement target.

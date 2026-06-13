@@ -1,0 +1,1862 @@
+[
+  {
+    "id": "ppcp-axo-gateway",
+    "title": "Debit & Credit Cards",
+    "description": "Enter your email address above to continue.",
+    "order": 26,
+    "enabled": false,
+    "method_title": "Fastlane Debit & Credit Cards",
+    "method_description": "Fastlane accelerates the checkout experience for guest shoppers and autofills their details so they can pay in seconds. When enabled, Fastlane is presented as the default payment method for guests.",
+    "method_supports": [
+      "products"
+    ],
+    "settings": [],
+    "needs_setup": false,
+    "post_install_scripts": [],
+    "settings_url": "https://ydu.com.au/wp-admin/admin.php?page=wc-settings&tab=checkout&section=ppcp-axo-gateway",
+    "connection_url": null,
+    "setup_help_text": null,
+    "required_settings_keys": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways/ppcp-axo-gateway",
+          "targetHints": {
+            "allow": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways"
+        }
+      ]
+    }
+  },
+  {
+    "id": "woocommerce_payments",
+    "title": null,
+    "description": "",
+    "order": 1,
+    "enabled": true,
+    "method_title": "WooPayments (Card)",
+    "method_description": "WooPayments gives your store flexibility to accept credit cards, debit cards, and Apple Pay. Enable popular local payment methods and other digital wallets like Google Pay to give customers even more choice.",
+    "method_supports": [
+      "products",
+      "refunds",
+      "tokenization",
+      "add_payment_method"
+    ],
+    "settings": {
+      "account_statement_descriptor": {
+        "id": "account_statement_descriptor",
+        "label": "Customer bank statement",
+        "description": "Edit the way your store name appears on your customers’ bank statements (read more about requirements <a href=\"https://woocommerce.com/document/woopayments/customization-and-translation/bank-statement-descriptor/\" target=\"_blank\" rel=\"noopener noreferrer\">here</a>).",
+        "type": "account_statement_descriptor",
+        "value": "",
+        "default": "",
+        "tip": "Edit the way your store name appears on your customers’ bank statements (read more about requirements <a href=\"https://woocommerce.com/document/woopayments/customization-and-translation/bank-statement-descriptor/\" target=\"_blank\" rel=\"noopener noreferrer\">here</a>).",
+        "placeholder": ""
+      },
+      "manual_capture": {
+        "id": "manual_capture",
+        "label": "Issue an authorisation on checkout, and capture later.",
+        "description": "Charge must be captured within 7 days of authorisation, otherwise the authorisation and order will be canceled.",
+        "type": "checkbox",
+        "value": "no",
+        "default": "no",
+        "tip": "Charge must be captured within 7 days of authorisation, otherwise the authorisation and order will be canceled.",
+        "placeholder": ""
+      },
+      "saved_cards": {
+        "id": "saved_cards",
+        "label": "Enable payment via saved cards",
+        "description": "If enabled, users will be able to pay with a saved card during checkout. Card details are saved on our platform, not on your store.",
+        "type": "checkbox",
+        "value": "yes",
+        "default": "yes",
+        "tip": "If enabled, users will be able to pay with a saved card during checkout. Card details are saved on our platform, not on your store.",
+        "placeholder": ""
+      },
+      "test_mode": {
+        "id": "test_mode",
+        "label": "Enable test mode",
+        "description": "Simulate transactions using test card numbers.",
+        "type": "checkbox",
+        "value": "no",
+        "default": "no",
+        "tip": "Simulate transactions using test card numbers.",
+        "placeholder": ""
+      },
+      "enable_logging": {
+        "id": "enable_logging",
+        "label": "When enabled debug notes will be added to the log.",
+        "description": "",
+        "type": "checkbox",
+        "value": "yes",
+        "default": "no",
+        "tip": "",
+        "placeholder": ""
+      },
+      "payment_request_details": {
+        "id": "payment_request_details",
+        "label": "Payment request buttons",
+        "description": "",
+        "type": "title",
+        "value": "",
+        "default": "",
+        "tip": "",
+        "placeholder": ""
+      },
+      "payment_request_button_type": {
+        "id": "payment_request_button_type",
+        "label": "Button type",
+        "description": "Select the button type you would like to show.",
+        "type": "select",
+        "value": "buy",
+        "default": "default",
+        "tip": "Select the button type you would like to show.",
+        "placeholder": "",
+        "options": {
+          "default": "Only icon",
+          "buy": "Buy",
+          "donate": "Donate",
+          "book": "Book"
+        }
+      },
+      "payment_request_button_theme": {
+        "id": "payment_request_button_theme",
+        "label": "Button theme",
+        "description": "Select the button theme you would like to show.",
+        "type": "select",
+        "value": "dark",
+        "default": "dark",
+        "tip": "Select the button theme you would like to show.",
+        "placeholder": "",
+        "options": {
+          "dark": "Dark",
+          "light": "Light",
+          "light-outline": "Light-Outline"
+        }
+      },
+      "payment_request_button_height": {
+        "id": "payment_request_button_height",
+        "label": "Button height",
+        "description": "Enter the height you would like the button to be in pixels. Width will always be 100%.",
+        "type": "text",
+        "value": "44",
+        "default": "44",
+        "tip": "Enter the height you would like the button to be in pixels. Width will always be 100%.",
+        "placeholder": ""
+      },
+      "payment_request_button_label": {
+        "id": "payment_request_button_label",
+        "label": "Custom button label",
+        "description": "Enter the custom text you would like the button to have.",
+        "type": "text",
+        "value": "Buy now",
+        "default": "Buy now",
+        "tip": "Enter the custom text you would like the button to have.",
+        "placeholder": ""
+      },
+      "payment_request_button_locations": {
+        "id": "payment_request_button_locations",
+        "label": "Button locations",
+        "description": "Select where you would like to display the button.",
+        "type": "multiselect",
+        "value": "",
+        "default": [
+          "product",
+          "cart",
+          "checkout"
+        ],
+        "tip": "Select where you would like to display the button.",
+        "placeholder": "",
+        "options": {
+          "product": "Product",
+          "cart": "Cart",
+          "checkout": "Checkout"
+        }
+      },
+      "upe_enabled_payment_method_ids": {
+        "id": "upe_enabled_payment_method_ids",
+        "label": "Payments accepted on checkout",
+        "description": "",
+        "type": "multiselect",
+        "value": [
+          "card",
+          "afterpay_clearpay"
+        ],
+        "default": [
+          "card"
+        ],
+        "tip": "",
+        "placeholder": ""
+      },
+      "payment_request_button_size": {
+        "id": "payment_request_button_size",
+        "label": "Size of the button displayed for Express Checkouts",
+        "description": "Select the size of the button.",
+        "type": "select",
+        "value": "medium",
+        "default": "medium",
+        "tip": "Select the size of the button.",
+        "placeholder": "",
+        "options": {
+          "small": "Small",
+          "medium": "Medium",
+          "large": "Large"
+        }
+      },
+      "express_checkout_product_methods": {
+        "id": "express_checkout_product_methods",
+        "label": "Express checkout methods on product page",
+        "description": "",
+        "type": "multiselect",
+        "value": [
+          "payment_request",
+          "woopay",
+          "amazon_pay"
+        ],
+        "default": [
+          "payment_request",
+          "woopay",
+          "amazon_pay"
+        ],
+        "tip": "",
+        "placeholder": "",
+        "options": {
+          "payment_request": "Apple Pay / Google Pay",
+          "woopay": "WooPay",
+          "amazon_pay": "Amazon Pay",
+          "link": "Link"
+        }
+      },
+      "express_checkout_cart_methods": {
+        "id": "express_checkout_cart_methods",
+        "label": "Express checkout methods on cart page",
+        "description": "",
+        "type": "multiselect",
+        "value": [
+          "payment_request",
+          "woopay",
+          "amazon_pay"
+        ],
+        "default": [
+          "payment_request",
+          "woopay",
+          "amazon_pay"
+        ],
+        "tip": "",
+        "placeholder": "",
+        "options": {
+          "payment_request": "Apple Pay / Google Pay",
+          "woopay": "WooPay",
+          "amazon_pay": "Amazon Pay",
+          "link": "Link"
+        }
+      },
+      "express_checkout_checkout_methods": {
+        "id": "express_checkout_checkout_methods",
+        "label": "Express checkout methods on checkout page",
+        "description": "",
+        "type": "multiselect",
+        "value": [
+          "payment_request",
+          "woopay",
+          "amazon_pay"
+        ],
+        "default": [
+          "payment_request",
+          "woopay",
+          "amazon_pay"
+        ],
+        "tip": "",
+        "placeholder": "",
+        "options": {
+          "payment_request": "Apple Pay / Google Pay",
+          "woopay": "WooPay",
+          "amazon_pay": "Amazon Pay",
+          "link": "Link"
+        }
+      }
+    },
+    "needs_setup": false,
+    "post_install_scripts": [],
+    "settings_url": "https://ydu.com.au/wp-admin/admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments",
+    "connection_url": "",
+    "setup_help_text": "Next we’ll ask you to share a few details about your business to create your account.",
+    "required_settings_keys": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways/woocommerce_payments",
+          "targetHints": {
+            "allow": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways"
+        }
+      ]
+    }
+  },
+  {
+    "id": "woocommerce_payments_affirm",
+    "title": null,
+    "description": "",
+    "order": 2,
+    "enabled": false,
+    "method_title": "WooPayments (Affirm)",
+    "method_description": "Allow customers to pay over time with Affirm.",
+    "method_supports": [
+      "products",
+      "refunds",
+      "tokenization",
+      "add_payment_method"
+    ],
+    "settings": [],
+    "needs_setup": false,
+    "post_install_scripts": [],
+    "settings_url": "https://ydu.com.au/wp-admin/admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments",
+    "connection_url": "",
+    "setup_help_text": "Next we’ll ask you to share a few details about your business to create your account.",
+    "required_settings_keys": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways/woocommerce_payments_affirm",
+          "targetHints": {
+            "allow": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways"
+        }
+      ]
+    }
+  },
+  {
+    "id": "woocommerce_payments_afterpay_clearpay",
+    "title": "Afterpay",
+    "description": "",
+    "order": 3,
+    "enabled": true,
+    "method_title": "WooPayments (Afterpay)",
+    "method_description": "Allow customers to pay over time with Afterpay.",
+    "method_supports": [
+      "products",
+      "refunds",
+      "tokenization",
+      "add_payment_method"
+    ],
+    "settings": [],
+    "needs_setup": false,
+    "post_install_scripts": [],
+    "settings_url": "https://ydu.com.au/wp-admin/admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments",
+    "connection_url": "",
+    "setup_help_text": "Next we’ll ask you to share a few details about your business to create your account.",
+    "required_settings_keys": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways/woocommerce_payments_afterpay_clearpay",
+          "targetHints": {
+            "allow": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways"
+        }
+      ]
+    }
+  },
+  {
+    "id": "woocommerce_payments_alipay",
+    "title": null,
+    "description": "",
+    "order": 4,
+    "enabled": false,
+    "method_title": "WooPayments (Alipay)",
+    "method_description": "A digital wallet for customers with mainland China Alipay accounts. Regional versions like AlipayHK are not supported.",
+    "method_supports": [
+      "products",
+      "refunds"
+    ],
+    "settings": [],
+    "needs_setup": false,
+    "post_install_scripts": [],
+    "settings_url": "https://ydu.com.au/wp-admin/admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments",
+    "connection_url": "",
+    "setup_help_text": "Next we’ll ask you to share a few details about your business to create your account.",
+    "required_settings_keys": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways/woocommerce_payments_alipay",
+          "targetHints": {
+            "allow": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways"
+        }
+      ]
+    }
+  },
+  {
+    "id": "woocommerce_payments_bancontact",
+    "title": null,
+    "description": "",
+    "order": 5,
+    "enabled": false,
+    "method_title": "WooPayments (Bancontact)",
+    "method_description": "Bancontact is a bank redirect payment method offered by more than 80% of online businesses in Belgium.",
+    "method_supports": [
+      "products",
+      "refunds",
+      "tokenization",
+      "add_payment_method"
+    ],
+    "settings": [],
+    "needs_setup": false,
+    "post_install_scripts": [],
+    "settings_url": "https://ydu.com.au/wp-admin/admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments",
+    "connection_url": "",
+    "setup_help_text": "Next we’ll ask you to share a few details about your business to create your account.",
+    "required_settings_keys": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways/woocommerce_payments_bancontact",
+          "targetHints": {
+            "allow": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways"
+        }
+      ]
+    }
+  },
+  {
+    "id": "woocommerce_payments_au_becs_debit",
+    "title": null,
+    "description": "",
+    "order": 6,
+    "enabled": false,
+    "method_title": "WooPayments (BECS Direct Debit)",
+    "method_description": "Bulk Electronic Clearing System — Accept secure bank transfer from Australia.",
+    "method_supports": [
+      "products",
+      "refunds",
+      "tokenization",
+      "add_payment_method"
+    ],
+    "settings": [],
+    "needs_setup": false,
+    "post_install_scripts": [],
+    "settings_url": "https://ydu.com.au/wp-admin/admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments",
+    "connection_url": "",
+    "setup_help_text": "Next we’ll ask you to share a few details about your business to create your account.",
+    "required_settings_keys": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways/woocommerce_payments_au_becs_debit",
+          "targetHints": {
+            "allow": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways"
+        }
+      ]
+    }
+  },
+  {
+    "id": "woocommerce_payments_eps",
+    "title": null,
+    "description": "",
+    "order": 7,
+    "enabled": false,
+    "method_title": "WooPayments (EPS)",
+    "method_description": "Accept your payment with EPS — a common payment method in Austria.",
+    "method_supports": [
+      "products",
+      "refunds",
+      "tokenization",
+      "add_payment_method"
+    ],
+    "settings": [],
+    "needs_setup": false,
+    "post_install_scripts": [],
+    "settings_url": "https://ydu.com.au/wp-admin/admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments",
+    "connection_url": "",
+    "setup_help_text": "Next we’ll ask you to share a few details about your business to create your account.",
+    "required_settings_keys": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways/woocommerce_payments_eps",
+          "targetHints": {
+            "allow": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways"
+        }
+      ]
+    }
+  },
+  {
+    "id": "woocommerce_payments_giropay",
+    "title": null,
+    "description": "",
+    "order": 8,
+    "enabled": false,
+    "method_title": "WooPayments (giropay)",
+    "method_description": "Expand your business with giropay — Germany's second most popular payment system.",
+    "method_supports": [
+      "products",
+      "refunds",
+      "tokenization",
+      "add_payment_method"
+    ],
+    "settings": [],
+    "needs_setup": false,
+    "post_install_scripts": [],
+    "settings_url": "https://ydu.com.au/wp-admin/admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments",
+    "connection_url": "",
+    "setup_help_text": "Next we’ll ask you to share a few details about your business to create your account.",
+    "required_settings_keys": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways/woocommerce_payments_giropay",
+          "targetHints": {
+            "allow": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways"
+        }
+      ]
+    }
+  },
+  {
+    "id": "woocommerce_payments_grabpay",
+    "title": null,
+    "description": "",
+    "order": 9,
+    "enabled": false,
+    "method_title": "WooPayments (GrabPay)",
+    "method_description": "A popular digital wallet for cashless payments in Singapore.",
+    "method_supports": [
+      "products",
+      "refunds"
+    ],
+    "settings": [],
+    "needs_setup": false,
+    "post_install_scripts": [],
+    "settings_url": "https://ydu.com.au/wp-admin/admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments",
+    "connection_url": "",
+    "setup_help_text": "Next we’ll ask you to share a few details about your business to create your account.",
+    "required_settings_keys": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways/woocommerce_payments_grabpay",
+          "targetHints": {
+            "allow": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways"
+        }
+      ]
+    }
+  },
+  {
+    "id": "woocommerce_payments_ideal",
+    "title": null,
+    "description": "",
+    "order": 10,
+    "enabled": false,
+    "method_title": "WooPayments (iDEAL | Wero)",
+    "method_description": "Expand your business with iDEAL | Wero — Netherlands's most popular payment method.",
+    "method_supports": [
+      "products",
+      "refunds",
+      "tokenization",
+      "add_payment_method"
+    ],
+    "settings": [],
+    "needs_setup": false,
+    "post_install_scripts": [],
+    "settings_url": "https://ydu.com.au/wp-admin/admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments",
+    "connection_url": "",
+    "setup_help_text": "Next we’ll ask you to share a few details about your business to create your account.",
+    "required_settings_keys": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways/woocommerce_payments_ideal",
+          "targetHints": {
+            "allow": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways"
+        }
+      ]
+    }
+  },
+  {
+    "id": "woocommerce_payments_multibanco",
+    "title": null,
+    "description": "",
+    "order": 12,
+    "enabled": false,
+    "method_title": "WooPayments (Multibanco)",
+    "method_description": "A voucher based payment method for your customers in Portugal.",
+    "method_supports": [
+      "products",
+      "refunds"
+    ],
+    "settings": [],
+    "needs_setup": false,
+    "post_install_scripts": [],
+    "settings_url": "https://ydu.com.au/wp-admin/admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments",
+    "connection_url": "",
+    "setup_help_text": "Next we’ll ask you to share a few details about your business to create your account.",
+    "required_settings_keys": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways/woocommerce_payments_multibanco",
+          "targetHints": {
+            "allow": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways"
+        }
+      ]
+    }
+  },
+  {
+    "id": "woocommerce_payments_klarna",
+    "title": null,
+    "description": "",
+    "order": 13,
+    "enabled": false,
+    "method_title": "WooPayments (Klarna)",
+    "method_description": "Allow customers to pay over time or pay now with Klarna.",
+    "method_supports": [
+      "products",
+      "refunds",
+      "tokenization",
+      "add_payment_method"
+    ],
+    "settings": [],
+    "needs_setup": false,
+    "post_install_scripts": [],
+    "settings_url": "https://ydu.com.au/wp-admin/admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments",
+    "connection_url": "",
+    "setup_help_text": "Next we’ll ask you to share a few details about your business to create your account.",
+    "required_settings_keys": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways/woocommerce_payments_klarna",
+          "targetHints": {
+            "allow": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways"
+        }
+      ]
+    }
+  },
+  {
+    "id": "woocommerce_payments_p24",
+    "title": null,
+    "description": "",
+    "order": 14,
+    "enabled": false,
+    "method_title": "WooPayments (Przelewy24 (P24))",
+    "method_description": "Accept payments with Przelewy24 (P24), the most popular payment method in Poland.",
+    "method_supports": [
+      "products",
+      "refunds",
+      "tokenization",
+      "add_payment_method"
+    ],
+    "settings": [],
+    "needs_setup": false,
+    "post_install_scripts": [],
+    "settings_url": "https://ydu.com.au/wp-admin/admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments",
+    "connection_url": "",
+    "setup_help_text": "Next we’ll ask you to share a few details about your business to create your account.",
+    "required_settings_keys": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways/woocommerce_payments_p24",
+          "targetHints": {
+            "allow": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways"
+        }
+      ]
+    }
+  },
+  {
+    "id": "woocommerce_payments_sepa_debit",
+    "title": null,
+    "description": "",
+    "order": 15,
+    "enabled": false,
+    "method_title": "WooPayments (SEPA Direct Debit)",
+    "method_description": "Reach 500 million customers and over 20 million businesses across the European Union.",
+    "method_supports": [
+      "products",
+      "refunds",
+      "tokenization",
+      "add_payment_method"
+    ],
+    "settings": [],
+    "needs_setup": false,
+    "post_install_scripts": [],
+    "settings_url": "https://ydu.com.au/wp-admin/admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments",
+    "connection_url": "",
+    "setup_help_text": "Next we’ll ask you to share a few details about your business to create your account.",
+    "required_settings_keys": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways/woocommerce_payments_sepa_debit",
+          "targetHints": {
+            "allow": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways"
+        }
+      ]
+    }
+  },
+  {
+    "id": "woocommerce_payments_sofort",
+    "title": null,
+    "description": "",
+    "order": 16,
+    "enabled": false,
+    "method_title": "WooPayments (Sofort)",
+    "method_description": "Accept secure bank transfers from Austria, Belgium, Germany, Italy, Netherlands, and Spain.",
+    "method_supports": [
+      "products",
+      "refunds",
+      "tokenization",
+      "add_payment_method"
+    ],
+    "settings": [],
+    "needs_setup": false,
+    "post_install_scripts": [],
+    "settings_url": "https://ydu.com.au/wp-admin/admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments",
+    "connection_url": "",
+    "setup_help_text": "Next we’ll ask you to share a few details about your business to create your account.",
+    "required_settings_keys": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways/woocommerce_payments_sofort",
+          "targetHints": {
+            "allow": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways"
+        }
+      ]
+    }
+  },
+  {
+    "id": "woocommerce_payments_wechat_pay",
+    "title": null,
+    "description": "",
+    "order": 17,
+    "enabled": false,
+    "method_title": "WooPayments (WeChat Pay)",
+    "method_description": "A digital wallet for customers with mainland China WeChat Pay wallets. Regional versions like WeChat Pay HK are not supported.",
+    "method_supports": [
+      "products",
+      "refunds"
+    ],
+    "settings": [],
+    "needs_setup": false,
+    "post_install_scripts": [],
+    "settings_url": "https://ydu.com.au/wp-admin/admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments",
+    "connection_url": "",
+    "setup_help_text": "Next we’ll ask you to share a few details about your business to create your account.",
+    "required_settings_keys": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways/woocommerce_payments_wechat_pay",
+          "targetHints": {
+            "allow": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways"
+        }
+      ]
+    }
+  },
+  {
+    "id": "woocommerce_payments_apple_pay",
+    "title": null,
+    "description": "",
+    "order": 18,
+    "enabled": true,
+    "method_title": "WooPayments (Apple Pay)",
+    "method_description": "Apple Pay is an easy and secure way for customers to pay on your store.",
+    "method_supports": [
+      "products",
+      "refunds"
+    ],
+    "settings": [],
+    "needs_setup": false,
+    "post_install_scripts": [],
+    "settings_url": "https://ydu.com.au/wp-admin/admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments",
+    "connection_url": "",
+    "setup_help_text": "Next we’ll ask you to share a few details about your business to create your account.",
+    "required_settings_keys": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways/woocommerce_payments_apple_pay",
+          "targetHints": {
+            "allow": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways"
+        }
+      ]
+    }
+  },
+  {
+    "id": "woocommerce_payments_google_pay",
+    "title": null,
+    "description": "",
+    "order": 19,
+    "enabled": true,
+    "method_title": "WooPayments (Google Pay)",
+    "method_description": "Offer customers a fast, secure checkout experience with Google Pay.",
+    "method_supports": [
+      "products",
+      "refunds"
+    ],
+    "settings": [],
+    "needs_setup": false,
+    "post_install_scripts": [],
+    "settings_url": "https://ydu.com.au/wp-admin/admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments",
+    "connection_url": "",
+    "setup_help_text": "Next we’ll ask you to share a few details about your business to create your account.",
+    "required_settings_keys": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways/woocommerce_payments_google_pay",
+          "targetHints": {
+            "allow": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways"
+        }
+      ]
+    }
+  },
+  {
+    "id": "woocommerce_payments_amazon_pay",
+    "title": null,
+    "description": "",
+    "order": 20,
+    "enabled": false,
+    "method_title": "WooPayments (Amazon Pay)",
+    "method_description": "Offer customers a fast, secure checkout experience with Amazon Pay.",
+    "method_supports": [
+      "products",
+      "refunds"
+    ],
+    "settings": [],
+    "needs_setup": false,
+    "post_install_scripts": [],
+    "settings_url": "https://ydu.com.au/wp-admin/admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments",
+    "connection_url": "",
+    "setup_help_text": "Next we’ll ask you to share a few details about your business to create your account.",
+    "required_settings_keys": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways/woocommerce_payments_amazon_pay",
+          "targetHints": {
+            "allow": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways"
+        }
+      ]
+    }
+  },
+  {
+    "id": "bacs",
+    "title": "Direct bank transfer",
+    "description": "Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account.",
+    "order": 22,
+    "enabled": false,
+    "method_title": "Direct bank transfer",
+    "method_description": "Take payments in person via BACS. More commonly known as direct bank/wire transfer.",
+    "method_supports": [
+      "products"
+    ],
+    "settings": {
+      "title": {
+        "id": "title",
+        "label": "Title",
+        "description": "This controls the title which the user sees during checkout.",
+        "type": "safe_text",
+        "value": "Direct bank transfer",
+        "default": "Direct bank transfer",
+        "tip": "This controls the title which the user sees during checkout.",
+        "placeholder": ""
+      },
+      "instructions": {
+        "id": "instructions",
+        "label": "Instructions",
+        "description": "Instructions that will be added to the thank you page and emails.",
+        "type": "textarea",
+        "value": "",
+        "default": "",
+        "tip": "Instructions that will be added to the thank you page and emails.",
+        "placeholder": ""
+      }
+    },
+    "needs_setup": false,
+    "post_install_scripts": [],
+    "settings_url": "https://ydu.com.au/wp-admin/admin.php?page=wc-settings&tab=checkout&path=/offline/bacs",
+    "connection_url": null,
+    "setup_help_text": null,
+    "required_settings_keys": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways/bacs",
+          "targetHints": {
+            "allow": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways"
+        }
+      ]
+    }
+  },
+  {
+    "id": "cheque",
+    "title": "Cheque payments",
+    "description": "Please send a cheque to Store Name, Store Street, Store Town, Store State / County, Store Postcode.",
+    "order": 23,
+    "enabled": false,
+    "method_title": "Cheque payments",
+    "method_description": "Take payments in person via cheques. This offline gateway can also be useful to test purchases.",
+    "method_supports": [
+      "products"
+    ],
+    "settings": {
+      "title": {
+        "id": "title",
+        "label": "Title",
+        "description": "This controls the title which the user sees during checkout.",
+        "type": "safe_text",
+        "value": "Cheque payments",
+        "default": "Cheque payments",
+        "tip": "This controls the title which the user sees during checkout.",
+        "placeholder": ""
+      },
+      "instructions": {
+        "id": "instructions",
+        "label": "Instructions",
+        "description": "Instructions that will be added to the thank you page and emails.",
+        "type": "textarea",
+        "value": "",
+        "default": "",
+        "tip": "Instructions that will be added to the thank you page and emails.",
+        "placeholder": ""
+      }
+    },
+    "needs_setup": false,
+    "post_install_scripts": [],
+    "settings_url": "https://ydu.com.au/wp-admin/admin.php?page=wc-settings&tab=checkout&path=/offline/cheque",
+    "connection_url": null,
+    "setup_help_text": null,
+    "required_settings_keys": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways/cheque",
+          "targetHints": {
+            "allow": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways"
+        }
+      ]
+    }
+  },
+  {
+    "id": "cod",
+    "title": "Cash on delivery",
+    "description": "Pay with cash upon delivery.",
+    "order": 24,
+    "enabled": false,
+    "method_title": "Cash on delivery",
+    "method_description": "Let your shoppers pay upon delivery — by cash or other methods of payment.",
+    "method_supports": [
+      "products"
+    ],
+    "settings": {
+      "title": {
+        "id": "title",
+        "label": "Title",
+        "description": "Payment method description that the customer will see on your checkout.",
+        "type": "safe_text",
+        "value": "Cash on delivery",
+        "default": "Cash on delivery",
+        "tip": "Payment method description that the customer will see on your checkout.",
+        "placeholder": ""
+      },
+      "instructions": {
+        "id": "instructions",
+        "label": "Instructions",
+        "description": "Instructions that will be added to the thank you page.",
+        "type": "textarea",
+        "value": "Pay with cash upon delivery.",
+        "default": "Pay with cash upon delivery.",
+        "tip": "Instructions that will be added to the thank you page.",
+        "placeholder": ""
+      },
+      "enable_for_methods": {
+        "id": "enable_for_methods",
+        "label": "Enable for shipping methods",
+        "description": "If COD is only available for certain methods, set it up here. Leave blank to enable for all methods.",
+        "type": "multiselect",
+        "value": "",
+        "default": "",
+        "tip": "If COD is only available for certain methods, set it up here. Leave blank to enable for all methods.",
+        "placeholder": "",
+        "options": {
+          "Flat rate": {
+            "flat_rate": "Any &quot;Flat rate&quot; method",
+            "flat_rate:1": "Australia &ndash; Flat rate (#1)"
+          },
+          "Free shipping": {
+            "free_shipping": "Any &quot;Free shipping&quot; method"
+          },
+          "Local pickup": {
+            "pickup_location": "Any &quot;Local pickup&quot; method"
+          }
+        }
+      },
+      "enable_for_virtual": {
+        "id": "enable_for_virtual",
+        "label": "Accept COD if the order is virtual",
+        "description": "",
+        "type": "checkbox",
+        "value": "yes",
+        "default": "yes",
+        "tip": "",
+        "placeholder": ""
+      }
+    },
+    "needs_setup": false,
+    "post_install_scripts": [],
+    "settings_url": "https://ydu.com.au/wp-admin/admin.php?page=wc-settings&tab=checkout&path=/offline/cod",
+    "connection_url": null,
+    "setup_help_text": null,
+    "required_settings_keys": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways/cod",
+          "targetHints": {
+            "allow": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways"
+        }
+      ]
+    }
+  },
+  {
+    "id": "ppcp-googlepay",
+    "title": "Google Pay",
+    "description": "",
+    "order": 27,
+    "enabled": false,
+    "method_title": "Google Pay (via PayPal) ",
+    "method_description": "The separate payment gateway with the Google Pay button. If disabled, the button is included in the PayPal gateway.",
+    "method_supports": [
+      "refunds",
+      "products"
+    ],
+    "settings": {
+      "title": {
+        "id": "title",
+        "label": "Title",
+        "description": "This controls the title which the user sees during checkout.",
+        "type": "text",
+        "value": "Google Pay",
+        "default": "Google Pay",
+        "tip": "This controls the title which the user sees during checkout.",
+        "placeholder": ""
+      }
+    },
+    "needs_setup": false,
+    "post_install_scripts": [],
+    "settings_url": "https://ydu.com.au/wp-admin/admin.php?page=wc-settings&tab=checkout&section=ppcp-googlepay",
+    "connection_url": null,
+    "setup_help_text": null,
+    "required_settings_keys": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways/ppcp-googlepay",
+          "targetHints": {
+            "allow": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways"
+        }
+      ]
+    }
+  },
+  {
+    "id": "ppcp-applepay",
+    "title": "Apple Pay",
+    "description": "",
+    "order": 28,
+    "enabled": false,
+    "method_title": "Apple Pay (via PayPal) ",
+    "method_description": "Display Apple Pay as a standalone payment option instead of bundling it with PayPal.",
+    "method_supports": [
+      "refunds",
+      "products"
+    ],
+    "settings": {
+      "title": {
+        "id": "title",
+        "label": "Title",
+        "description": "This controls the title which the user sees during checkout.",
+        "type": "text",
+        "value": "Apple Pay",
+        "default": "Apple Pay",
+        "tip": "This controls the title which the user sees during checkout.",
+        "placeholder": ""
+      }
+    },
+    "needs_setup": false,
+    "post_install_scripts": [],
+    "settings_url": "https://ydu.com.au/wp-admin/admin.php?page=wc-settings&tab=checkout&section=ppcp-applepay",
+    "connection_url": null,
+    "setup_help_text": null,
+    "required_settings_keys": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways/ppcp-applepay",
+          "targetHints": {
+            "allow": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways"
+        }
+      ]
+    }
+  },
+  {
+    "id": "ppcp-credit-card-gateway",
+    "title": "Debit & Credit Cards",
+    "description": "Pay with your credit card.",
+    "order": 29,
+    "enabled": false,
+    "method_title": "Debit & Credit Cards",
+    "method_description": "Accept debit and credit cards, and local payment methods with PayPal’s latest solution.",
+    "method_supports": [
+      "products",
+      "refunds"
+    ],
+    "settings": [],
+    "needs_setup": false,
+    "post_install_scripts": [],
+    "settings_url": "https://ydu.com.au/wp-admin/admin.php?page=wc-settings&tab=checkout&section=ppcp-credit-card-gateway",
+    "connection_url": null,
+    "setup_help_text": null,
+    "required_settings_keys": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways/ppcp-credit-card-gateway",
+          "targetHints": {
+            "allow": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways"
+        }
+      ]
+    }
+  },
+  {
+    "id": "ppcp-gateway",
+    "title": "PayPal",
+    "description": "Pay via PayPal.",
+    "order": 30,
+    "enabled": true,
+    "method_title": "PayPal",
+    "method_description": "Pay via PayPal.",
+    "method_supports": [
+      "products",
+      "refunds",
+      "tokenization",
+      "add_payment_method"
+    ],
+    "settings": [],
+    "needs_setup": false,
+    "post_install_scripts": [],
+    "settings_url": "https://ydu.com.au/wp-admin/admin.php?page=wc-settings&tab=checkout&section=ppcp-gateway",
+    "connection_url": null,
+    "setup_help_text": null,
+    "required_settings_keys": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways/ppcp-gateway",
+          "targetHints": {
+            "allow": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways"
+        }
+      ]
+    }
+  },
+  {
+    "id": "ppcp-bancontact",
+    "title": "Bancontact",
+    "description": "",
+    "order": 31,
+    "enabled": true,
+    "method_title": "Bancontact (via PayPal)",
+    "method_description": "A popular and trusted electronic payment method in Belgium, used by Belgian customers with Bancontact cards issued by local banks. Transactions are processed in EUR.",
+    "method_supports": [
+      "refunds",
+      "products"
+    ],
+    "settings": {
+      "title": {
+        "id": "title",
+        "label": "Title",
+        "description": "This controls the title which the user sees during checkout.",
+        "type": "text",
+        "value": "Bancontact",
+        "default": "Bancontact",
+        "tip": "This controls the title which the user sees during checkout.",
+        "placeholder": ""
+      }
+    },
+    "needs_setup": false,
+    "post_install_scripts": [],
+    "settings_url": "https://ydu.com.au/wp-admin/admin.php?page=wc-settings&tab=checkout&section=ppcp-bancontact",
+    "connection_url": null,
+    "setup_help_text": null,
+    "required_settings_keys": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways/ppcp-bancontact",
+          "targetHints": {
+            "allow": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways"
+        }
+      ]
+    }
+  },
+  {
+    "id": "ppcp-blik",
+    "title": "Blik",
+    "description": "",
+    "order": 32,
+    "enabled": true,
+    "method_title": "Blik (via PayPal)",
+    "method_description": "A widely used mobile payment method in Poland, allowing Polish customers to pay directly via their banking apps. Transactions are processed in PLN.",
+    "method_supports": [
+      "refunds",
+      "products"
+    ],
+    "settings": {
+      "title": {
+        "id": "title",
+        "label": "Title",
+        "description": "This controls the title which the user sees during checkout.",
+        "type": "text",
+        "value": "Blik",
+        "default": "Blik",
+        "tip": "This controls the title which the user sees during checkout.",
+        "placeholder": ""
+      }
+    },
+    "needs_setup": false,
+    "post_install_scripts": [],
+    "settings_url": "https://ydu.com.au/wp-admin/admin.php?page=wc-settings&tab=checkout&section=ppcp-blik",
+    "connection_url": null,
+    "setup_help_text": null,
+    "required_settings_keys": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways/ppcp-blik",
+          "targetHints": {
+            "allow": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways"
+        }
+      ]
+    }
+  },
+  {
+    "id": "ppcp-eps",
+    "title": "EPS",
+    "description": "",
+    "order": 33,
+    "enabled": true,
+    "method_title": "EPS (via PayPal)",
+    "method_description": "An online payment method in Austria, enabling Austrian buyers to make secure payments directly through their bank accounts. Transactions are processed in EUR.",
+    "method_supports": [
+      "refunds",
+      "products"
+    ],
+    "settings": {
+      "title": {
+        "id": "title",
+        "label": "Title",
+        "description": "This controls the title which the user sees during checkout.",
+        "type": "text",
+        "value": "EPS",
+        "default": "EPS",
+        "tip": "This controls the title which the user sees during checkout.",
+        "placeholder": ""
+      }
+    },
+    "needs_setup": false,
+    "post_install_scripts": [],
+    "settings_url": "https://ydu.com.au/wp-admin/admin.php?page=wc-settings&tab=checkout&section=ppcp-eps",
+    "connection_url": null,
+    "setup_help_text": null,
+    "required_settings_keys": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways/ppcp-eps",
+          "targetHints": {
+            "allow": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways"
+        }
+      ]
+    }
+  },
+  {
+    "id": "ppcp-ideal",
+    "title": "iDeal",
+    "description": "",
+    "order": 34,
+    "enabled": true,
+    "method_title": "iDeal (via PayPal)",
+    "method_description": "The most common payment method in the Netherlands, allowing Dutch buyers to pay directly through their preferred bank. Transactions are processed in EUR.",
+    "method_supports": [
+      "refunds",
+      "products"
+    ],
+    "settings": {
+      "title": {
+        "id": "title",
+        "label": "Title",
+        "description": "This controls the title which the user sees during checkout.",
+        "type": "text",
+        "value": "iDeal",
+        "default": "iDeal",
+        "tip": "This controls the title which the user sees during checkout.",
+        "placeholder": ""
+      }
+    },
+    "needs_setup": false,
+    "post_install_scripts": [],
+    "settings_url": "https://ydu.com.au/wp-admin/admin.php?page=wc-settings&tab=checkout&section=ppcp-ideal",
+    "connection_url": null,
+    "setup_help_text": null,
+    "required_settings_keys": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways/ppcp-ideal",
+          "targetHints": {
+            "allow": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways"
+        }
+      ]
+    }
+  },
+  {
+    "id": "ppcp-mybank",
+    "title": "MyBank",
+    "description": "",
+    "order": 35,
+    "enabled": true,
+    "method_title": "MyBank (via PayPal)",
+    "method_description": "A European online banking payment solution primarily used in Italy, enabling customers to make secure bank transfers during checkout. Transactions are processed in EUR.",
+    "method_supports": [
+      "refunds",
+      "products"
+    ],
+    "settings": {
+      "title": {
+        "id": "title",
+        "label": "Title",
+        "description": "This controls the title which the user sees during checkout.",
+        "type": "text",
+        "value": "MyBank",
+        "default": "MyBank",
+        "tip": "This controls the title which the user sees during checkout.",
+        "placeholder": ""
+      }
+    },
+    "needs_setup": false,
+    "post_install_scripts": [],
+    "settings_url": "https://ydu.com.au/wp-admin/admin.php?page=wc-settings&tab=checkout&section=ppcp-mybank",
+    "connection_url": null,
+    "setup_help_text": null,
+    "required_settings_keys": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways/ppcp-mybank",
+          "targetHints": {
+            "allow": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways"
+        }
+      ]
+    }
+  },
+  {
+    "id": "ppcp-p24",
+    "title": "Przelewy24",
+    "description": "",
+    "order": 36,
+    "enabled": true,
+    "method_title": "Przelewy24 (via PayPal)",
+    "method_description": "A popular online payment gateway in Poland, offering various payment options for Polish customers. Transactions can be processed in PLN or EUR.",
+    "method_supports": [
+      "refunds",
+      "products"
+    ],
+    "settings": {
+      "title": {
+        "id": "title",
+        "label": "Title",
+        "description": "This controls the title which the user sees during checkout.",
+        "type": "text",
+        "value": "Przelewy24",
+        "default": "Przelewy24",
+        "tip": "This controls the title which the user sees during checkout.",
+        "placeholder": ""
+      }
+    },
+    "needs_setup": false,
+    "post_install_scripts": [],
+    "settings_url": "https://ydu.com.au/wp-admin/admin.php?page=wc-settings&tab=checkout&section=ppcp-p24",
+    "connection_url": null,
+    "setup_help_text": null,
+    "required_settings_keys": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways/ppcp-p24",
+          "targetHints": {
+            "allow": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways"
+        }
+      ]
+    }
+  },
+  {
+    "id": "ppcp-trustly",
+    "title": "Trustly",
+    "description": "",
+    "order": 37,
+    "enabled": true,
+    "method_title": "Trustly (via PayPal)",
+    "method_description": "A European payment method that allows buyers to make payments directly from their bank accounts, suitable for customers across multiple European countries. Supported currencies include EUR, DKK, SEK, GBP, and NOK.",
+    "method_supports": [
+      "refunds",
+      "products"
+    ],
+    "settings": {
+      "title": {
+        "id": "title",
+        "label": "Title",
+        "description": "This controls the title which the user sees during checkout.",
+        "type": "text",
+        "value": "Trustly",
+        "default": "Trustly",
+        "tip": "This controls the title which the user sees during checkout.",
+        "placeholder": ""
+      }
+    },
+    "needs_setup": false,
+    "post_install_scripts": [],
+    "settings_url": "https://ydu.com.au/wp-admin/admin.php?page=wc-settings&tab=checkout&section=ppcp-trustly",
+    "connection_url": null,
+    "setup_help_text": null,
+    "required_settings_keys": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways/ppcp-trustly",
+          "targetHints": {
+            "allow": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways"
+        }
+      ]
+    }
+  },
+  {
+    "id": "ppcp-multibanco",
+    "title": "Multibanco",
+    "description": "",
+    "order": 38,
+    "enabled": true,
+    "method_title": "Multibanco (via PayPal)",
+    "method_description": "An online payment method in Portugal, enabling Portuguese buyers to make secure payments directly through their bank accounts. Transactions are processed in EUR.",
+    "method_supports": [
+      "refunds",
+      "products"
+    ],
+    "settings": {
+      "title": {
+        "id": "title",
+        "label": "Title",
+        "description": "This controls the title which the user sees during checkout.",
+        "type": "text",
+        "value": "Multibanco",
+        "default": "Multibanco",
+        "tip": "This controls the title which the user sees during checkout.",
+        "placeholder": ""
+      }
+    },
+    "needs_setup": false,
+    "post_install_scripts": [],
+    "settings_url": "https://ydu.com.au/wp-admin/admin.php?page=wc-settings&tab=checkout&section=ppcp-multibanco",
+    "connection_url": null,
+    "setup_help_text": null,
+    "required_settings_keys": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways/ppcp-multibanco",
+          "targetHints": {
+            "allow": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://ydu.com.au/wp-json/wc/v3/payment_gateways"
+        }
+      ]
+    }
+  }
+]
