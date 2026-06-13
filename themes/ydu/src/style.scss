@@ -314,6 +314,52 @@ a.pc-name-link:hover .pc-name { color: var(--primary); }
 .code-chip { font-family: var(--font-mono); font-weight: 700; font-size: 15px; letter-spacing: .08em; border: 2px dashed var(--primary); color: var(--primary); border-radius: var(--radius); padding: 8px 16px; background: #F4F9FE; }
 .btn-copy { height: 38px; padding: 0 16px; border: 1px solid var(--border); border-radius: var(--radius); font-size: 13px; font-weight: 700; color: var(--navy); background: none; cursor: pointer; transition: border-color var(--t), color var(--t), background var(--t); &:hover { border-color: var(--primary); color: var(--primary); } &.copied { background: var(--ok-bg); border-color: var(--ok); color: var(--ok); } }
 
+// ===== WooCommerce archive wrapper =====
+.woocommerce, .woocommerce-page { }
+.woocommerce .woocommerce-products-header,
+.woocommerce-products-header { max-width: 1320px; margin: 24px auto 0; padding: 0 16px; }
+.woocommerce-products-header__title, .woocommerce .page-title { font-family: var(--font-head); font-size: clamp(20px, 2.6vw, 28px); }
+.site-main > .woocommerce, .site-main .woocommerce-notices-wrapper, .woocommerce > .woocommerce-result-count, .woocommerce > .woocommerce-ordering, .woocommerce ul.products, .woocommerce nav.woocommerce-pagination { max-width: 1320px; margin-left: auto; margin-right: auto; padding-left: 16px; padding-right: 16px; }
+.woocommerce .woocommerce-result-count { color: var(--grey); font-size: 13px; }
+.woocommerce nav.woocommerce-pagination { padding-block: 32px; text-align: center; }
+.woocommerce nav.woocommerce-pagination ul { display: inline-flex; gap: 4px; border: 0; }
+.woocommerce nav.woocommerce-pagination ul li { border: 0; }
+.woocommerce nav.woocommerce-pagination ul li a, .woocommerce nav.woocommerce-pagination ul li span { border: 1px solid var(--border); border-radius: var(--radius); min-width: 38px; padding: 8px 10px; }
+.woocommerce nav.woocommerce-pagination ul li span.current { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+// Hide the default Woo loop add-to-cart that we replace inside the card foot's button styling is handled by .btn-cart.
+
+// ===== Single product =====
+.single-product div.product { max-width: 1320px; margin: 24px auto; padding: 0 16px; display: grid; gap: 32px; }
+@media (min-width:900px) { .single-product div.product { grid-template-columns: 1fr 1fr; align-items: start; } }
+.single-product div.product .woocommerce-product-gallery { margin: 0; }
+.single-product div.product .woocommerce-product-gallery img { border: 1px solid var(--border); border-radius: var(--radius); background: #fff; }
+.single-product .product_title { font-size: clamp(22px, 3vw, 32px); }
+.single-product .woocommerce-product-details__short-description { color: var(--grey); font-size: 14.5px; }
+.single-product .price, .single-product .price .amount { font-family: var(--font-head); font-weight: 700; color: var(--navy); }
+.single-product .sku_wrapper { font-family: var(--font-mono); font-size: 13px; color: var(--navy); }
+.single-product .single_add_to_cart_button.button { background: var(--navy); color: #fff; border-radius: var(--radius); font-weight: 700; padding: 14px 28px; transition: background var(--t); }
+.single-product .single_add_to_cart_button.button:hover { background: var(--primary); }
+.single-product .quantity input { border: 1px solid var(--border); border-radius: var(--radius); height: 48px; }
+.woocommerce-tabs ul.tabs { border: 0; padding: 0; display: flex; gap: 4px; flex-wrap: wrap; }
+.woocommerce-tabs ul.tabs::before { border-color: var(--border); }
+.woocommerce-tabs ul.tabs li { border: 1px solid var(--border); border-radius: var(--radius) var(--radius) 0 0; background: var(--bg); }
+.woocommerce-tabs ul.tabs li.active { background: #fff; border-bottom-color: #fff; }
+.woocommerce-tabs ul.tabs li a { font-weight: 600; color: var(--navy); }
+.shop_attributes th { color: var(--navy); }
+
+// "Fits these vehicles" panel
+.ydu-fitment-panel { max-width: 1320px; margin: 0 auto 32px; padding: 20px 16px; }
+.ydu-fitment-panel h2 { font-size: clamp(18px, 2.4vw, 24px); margin-bottom: 6px; }
+.ydu-fitment-help { color: var(--grey); font-size: 13.5px; margin-bottom: 16px; max-width: 70ch; }
+.ydu-fitment-list { display: grid; gap: 10px 16px; }
+@media (min-width:600px) { .ydu-fitment-list { grid-template-columns: 120px 1fr; }
+	.ydu-fitment-list dt { grid-column: 1; } .ydu-fitment-list dd { grid-column: 2; } }
+.ydu-fitment-list dt { font-family: var(--font-head); font-weight: 600; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--grey); padding-top: 4px; }
+.ydu-fitment-list dd { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; }
+.ydu-fit-chip { font-size: 12.5px; font-weight: 600; color: var(--navy); background: var(--bg); border: 1px solid var(--border); border-radius: 999px; padding: 4px 12px; transition: border-color var(--t), color var(--t), background var(--t); }
+.ydu-fit-chip:hover { border-color: var(--primary); color: var(--primary); background: #F4F9FE; }
+
 @media (prefers-reduced-motion:reduce) {
 	html { scroll-behavior: auto; }
 	*, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
