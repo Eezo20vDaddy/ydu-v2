@@ -23,6 +23,8 @@ function ydu_icon( string $name, int $size = 21 ): string {
 		'cart'     => '<circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>',
 		'search'   => '<circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>',
 		'car'      => '<path d="M5 11l1.5-4.5A2 2 0 0 1 8.4 5h7.2a2 2 0 0 1 1.9 1.5L19 11"/><rect x="3" y="11" width="18" height="6" rx="1.5"/><circle cx="7" cy="17" r="1.6"/><circle cx="17" cy="17" r="1.6"/>',
+		'image'    => '<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>',
+		'arrow'    => '<line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>',
 	);
 	$inner = $paths[ $name ] ?? '';
 	$sw    = ( 'search' === $name ) ? '2.2' : '2';
@@ -72,6 +74,73 @@ function ydu_compare_count(): ?int {
 		return (int) woosc_get_count();
 	}
 	return null;
+}
+
+/**
+ * Icon name for a product category, matched on slug/name keywords.
+ * Falls back to a generic grid icon.
+ */
+function ydu_category_icon_name( string $slug, string $name = '' ): string {
+	$haystack = strtolower( $slug . ' ' . $name );
+	$map = array(
+		'engine'       => 'cog',
+		'gasket'       => 'layers',
+		'seal'         => 'layers',
+		'filter'       => 'filter',
+		'cool'         => 'snow',
+		'radiator'     => 'snow',
+		'transmission' => 'cog',
+		'clutch'       => 'cog',
+		'electric'     => 'bolt',
+		'sensor'       => 'bolt',
+		'fuel'         => 'droplet',
+		'suspension'   => 'activity',
+		'brake'        => 'disc',
+		'body'         => 'truck',
+		'performance'  => 'gauge',
+		'interior'     => 'seat',
+	);
+	foreach ( $map as $needle => $icon ) {
+		if ( str_contains( $haystack, $needle ) ) {
+			return $icon;
+		}
+	}
+	return 'grid';
+}
+
+/** Extended icon set for category tiles (returns trusted inline SVG). */
+function ydu_category_icon( string $icon, int $size = 26 ): string {
+	$paths = array(
+		'cog'      => '<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>',
+		'layers'   => '<polygon points="12 2 22 8.5 12 15 2 8.5 12 2"/><polyline points="2 13 12 19.5 22 13"/>',
+		'filter'   => '<polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>',
+		'snow'     => '<line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="4.9" y1="4.9" x2="19.1" y2="19.1"/><line x1="19.1" y1="4.9" x2="4.9" y2="19.1"/>',
+		'bolt'     => '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>',
+		'droplet'  => '<path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>',
+		'activity' => '<path d="M5 21c4-1.5 2-5 6-6.5S17 9 17 9"/><circle cx="18.5" cy="5.5" r="2.5"/><circle cx="5" cy="20.5" r="1.8"/>',
+		'disc'     => '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/>',
+		'truck'    => '<path d="M3 13l1.5-4.5A2 2 0 0 1 6.4 7h11.2a2 2 0 0 1 1.9 1.5L21 13"/><rect x="2" y="13" width="20" height="5" rx="1.5"/><circle cx="6.5" cy="18" r="1.8"/><circle cx="17.5" cy="18" r="1.8"/>',
+		'gauge'    => '<path d="M12 20a8 8 0 1 1 8-8"/><path d="M12 12l5-3"/>',
+		'seat'     => '<path d="M7 18V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v12"/><path d="M5 18h12a2 2 0 0 1 2 2v1H5a2 2 0 0 1-2-2v-7"/>',
+		'grid'     => '<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',
+	);
+	$inner = $paths[ $icon ] ?? $paths['grid'];
+	return sprintf(
+		'<svg width="%1$d" height="%1$d" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">%2$s</svg>',
+		$size,
+		$inner
+	);
+}
+
+/** Rounded published-product count for the hero stat, e.g. "300+". */
+function ydu_catalog_count_label(): string {
+	$counts = wp_count_posts( 'product' );
+	$n      = isset( $counts->publish ) ? (int) $counts->publish : 0;
+	if ( $n < 50 ) {
+		return (string) max( $n, 0 );
+	}
+	$rounded = (int) ( floor( $n / 50 ) * 50 );
+	return number_format_i18n( $rounded ) . '+';
 }
 
 /** Top-level product categories for the search scope dropdown. */
