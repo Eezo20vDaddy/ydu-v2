@@ -37,9 +37,10 @@
     <h1>YDU PARTS Rebuild — Build Status</h1>
     <p>Autonomous build session · 2026-06-13 · everything local on wp-env, nothing deployed</p>
     <div class="badges">
-      <span class="badge">12 tasks done</span>
-      <span class="badge">18 unit tests green</span>
-      <span class="badge">2 installable zips</span>
+      <span class="badge">14 tasks done</span>
+      <span class="badge">36 unit tests green</span>
+      <span class="badge">3 installable zips</span>
+      <span class="badge">6-level finder</span>
       <span class="badge">live store untouched</span>
     </div>
   </header>
@@ -63,7 +64,9 @@
     <tr><td>4.1</td><td>Home page — hero, trust stats, category grid, featured products, promos</td><td><span class="st done">DONE</span></td></tr>
     <tr><td>2.1 / 2.2</td><td>Shop &amp; category archives (Variant C cards); single product + “Fits these vehicles”</td><td><span class="st done">DONE</span></td></tr>
     <tr><td>2.3</td><td>Block cart &amp; checkout brand styling pass</td><td><span class="st done">DONE</span></td></tr>
-    <tr><td>5.1 prep</td><td>Installable zips packaged; launch runbook + QA checklist written</td><td><span class="st done">DONE</span></td></tr>
+    <tr><td>Finder v2</td><td><b>6-level finder</b> (Make→Model→Submodel→Variant→Engine Code→Year) per your decision</td><td><span class="st done">DONE</span></td></tr>
+    <tr><td>2.7a</td><td><b>Trade pricing foundation</b> — <code>ydu-trade</code>: role, per-customer price store, display, ingestion endpoint (15 tests)</td><td><span class="st done">DONE</span></td></tr>
+    <tr><td>5.1 prep</td><td>3 installable zips packaged; launch runbook + QA checklist written</td><td><span class="st done">DONE</span></td></tr>
   </table></div>
 
   <h2 class="sec">Remaining (needs plugins, your input, or more build time)</h2>
@@ -72,30 +75,31 @@
     <tr><td>2.4</td><td>Restyle WPClever wishlist/compare/quick-view — those plugins aren't in the local env; needs them installed to style against</td><td><span class="st def">DEFERRED</span></td></tr>
     <tr><td>2.5</td><td>My Account portal restyle (orders, tracking) — base styling done; full restyle pending</td><td><span class="st def">DEFERRED</span></td></tr>
     <tr><td>2.6</td><td>Branded PDF invoices — the existing <em>Print Invoice &amp; Delivery Notes</em> plugin covers this; just needs template branding on staging</td><td><span class="st def">DEFERRED</span></td></tr>
-    <tr><td>2.7</td><td>Trade/B2B wholesale pricing — <b>net-new</b> (nothing exists today). Deliberately not half-built: needs your discount tiers + careful tax/Zoho-sync testing</td><td><span class="st def">NEEDS INPUT</span></td></tr>
+    <tr><td>2.7b</td><td>Trade pricing <b>Zoho feedback sync</b> — read edited invoice prices from Zoho, send to the ingestion endpoint. Foundation done; this leg needs Zoho API credentials + connector discovery</td><td><span class="st def">NEEDS ZOHO API</span></td></tr>
     <tr><td>4.2 / 4.3</td><td>Recreate static pages as clean blocks; SEO parity (301s, metas) — exports are in hand; build pending</td><td><span class="st def">DEFERRED</span></td></tr>
     <tr><td>4.4</td><td>Performance pass (Lighthouse ≥ 90) — done as part of staging QA on real hosting</td><td><span class="st def">DEFERRED</span></td></tr>
   </table></div>
 
-  <h2 class="sec">Decisions I need from you</h2>
+  <h2 class="sec">Your two decisions — actioned</h2>
+  <div class="callout">
+    <strong>1 — Finder: DONE.</strong> Rebuilt to <b>6 levels, Make first</b>:
+    Make → Model → Submodel → Variant → Engine Code → Year (engine code &amp; year at the end,
+    as you asked). Cascade, endpoints, widget and tests all updated; 21 fitment tests green.
+  </div>
+  <div class="callout">
+    <strong>2 — Trade pricing: foundation BUILT, Zoho sync needs credentials.</strong> Built the
+    per-customer “last price paid” engine (new <code>ydu-trade</code> plugin): a <code>trade</code>
+    role, a per-(customer, item) price store, display that shows each trade customer their own
+    price (standard if none), and a secure <code>trade/v1/price</code> endpoint to receive prices —
+    15 tests green. <b>The one missing piece</b> is the Zoho feedback leg (read the edited invoice
+    price out of Zoho and send it back here). I can't build that blind — it needs <b>Zoho API
+    access</b> and a look at how your current Zoho connector works. That's the next step on this.
+  </div>
   <div class="callout warn">
-    <strong>1 — Finder breadth (the one that matters).</strong> Your stated finder is
-    Make → Model → Submodel → Variant (4 levels). The live site actually cascades
-    <b>Year → Make → Model → Submodel → Variant → Engine Code</b> (6 levels). Because parts are
-    tagged for multiple vehicles, a Make-first cascade shows broad results (e.g. “models for
-    Audi” currently lists most models). Starting at <b>Year</b> like the live site narrows this
-    a lot. <b>Options:</b> (a) keep 4-level Make-first (simpler, your stated spec), or (b) match
-    the live 6-level Year-first cascade (tighter results, full parity). I built (a); switching to
-    (b) is straightforward. <b>Which do you want?</b>
-  </div>
-  <div class="callout">
-    <strong>2 — Trade/B2B pricing:</strong> what wholesale discount(s) and for which customers?
-    (e.g. a flat % for a “trade” role, or per-category tiers.) I'll build it once you confirm.
-  </div>
-  <div class="callout">
-    <strong>3 — When ready,</strong> create <code>test.ydu.com.au</code> (host one-click staging,
-    or the <code>test</code> subdomain) and give an admin the go to install the two zips so you can
-    see it side-by-side. See <code>docs/launch-runbook.md</code>.
+    <strong>What I need from you, when convenient:</strong> (a) <b>Zoho API credentials</b> (or a
+    look at the Zoho connector settings) to wire the price feedback loop; (b) create
+    <code>test.ydu.com.au</code> (host one-click staging or the <code>test</code> subdomain) and an
+    admin go-ahead to install the 3 zips for side-by-side review. See <code>docs/launch-runbook.md</code>.
   </div>
 
   <h2 class="sec">Deliverables on disk</h2>
