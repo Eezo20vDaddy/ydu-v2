@@ -360,6 +360,17 @@ a.pc-name-link:hover .pc-name { color: var(--primary); }
 .ydu-fit-chip { font-size: 12.5px; font-weight: 600; color: var(--navy); background: var(--bg); border: 1px solid var(--border); border-radius: 999px; padding: 4px 12px; transition: border-color var(--t), color var(--t), background var(--t); }
 .ydu-fit-chip:hover { border-color: var(--primary); color: var(--primary); background: #F4F9FE; }
 
+// ===== Block cart & checkout =====
+.wp-block-woocommerce-cart, .wp-block-woocommerce-checkout { max-width: 1320px; margin: 24px auto; padding: 0 16px; overflow-x: hidden; }
+.wc-block-components-button, .wc-block-cart__submit-button, .wc-block-components-checkout-place-order-button {
+	background: var(--navy) !important; color: #fff !important; border-radius: var(--radius) !important; font-weight: 700 !important;
+}
+.wc-block-components-button:hover, .wc-block-cart__submit-button:hover { background: var(--primary) !important; }
+.wc-block-components-totals-item__value, .wc-block-formatted-money-amount { font-family: var(--font-head); }
+.woocommerce-cart .cart_totals, .woocommerce-checkout #payment { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); }
+// Empty-cart recommendations grid: keep tidy and prevent overflow.
+.wc-block-cart__empty-cart__title { font-family: var(--font-head); }
+
 @media (prefers-reduced-motion:reduce) {
 	html { scroll-behavior: auto; }
 	*, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
