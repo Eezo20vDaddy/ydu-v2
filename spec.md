@@ -114,6 +114,10 @@ reused.**
   an active vehicle selection (intersection, not union).
 - All existing product attributes (`pa_*`) and their term assignments are preserved.
 - Product cards: image, name, price, stock state, add-to-cart, wishlist, compare, quick view.
+- **Every product always displays an image** (owner requirement 2026-06-13): cards and
+  product pages render a clean YDU-branded placeholder when a product has no photo —
+  never a broken or empty image slot. (Data note: 20 of 302 live products currently have
+  no photo at all; owner to add real photos at source.)
 
 ### 5.3 Commerce parity
 - WooCommerce 10.x with WooPayments — checkout must complete a real test order on staging
