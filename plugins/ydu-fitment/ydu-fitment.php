@@ -23,16 +23,18 @@ define( 'YDU_FITMENT_URL', plugin_dir_url( __FILE__ ) );
 
 /**
  * Ordered cascade levels: attribute taxonomy => WooCommerce layered-nav query var.
- * The four levels the owner specified (Make > Model > Submodel > Variant). The live
- * site also carries pa_year_alt and pa_engine_code; they remain available as
- * attributes and can be added to this map without code changes elsewhere.
+ * CEO decision 2026-06-13: six levels, Make first, with Engine Code and Year at the
+ * end — Make > Model > Submodel > Variant > Engine Code > Year. This map is the single
+ * source of truth; the REST routes, finder widget, and tests all derive from it.
  */
 function ydu_fitment_levels(): array {
 	return array(
-		'make'     => array( 'taxonomy' => 'pa_make', 'filter' => 'filter_make' ),
-		'model'    => array( 'taxonomy' => 'pa_model', 'filter' => 'filter_model' ),
-		'submodel' => array( 'taxonomy' => 'pa_submodel', 'filter' => 'filter_submodel' ),
-		'variant'  => array( 'taxonomy' => 'pa_variant', 'filter' => 'filter_variant' ),
+		'make'        => array( 'taxonomy' => 'pa_make', 'filter' => 'filter_make', 'label' => 'Make' ),
+		'model'       => array( 'taxonomy' => 'pa_model', 'filter' => 'filter_model', 'label' => 'Model' ),
+		'submodel'    => array( 'taxonomy' => 'pa_submodel', 'filter' => 'filter_submodel', 'label' => 'Submodel' ),
+		'variant'     => array( 'taxonomy' => 'pa_variant', 'filter' => 'filter_variant', 'label' => 'Variant' ),
+		'engine_code' => array( 'taxonomy' => 'pa_engine_code', 'filter' => 'filter_engine_code', 'label' => 'Engine Code' ),
+		'year'        => array( 'taxonomy' => 'pa_year_alt', 'filter' => 'filter_year_alt', 'label' => 'Year' ),
 	);
 }
 

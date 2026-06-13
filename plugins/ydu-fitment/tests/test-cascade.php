@@ -75,6 +75,20 @@ class Test_YDU_Fitment_Cascade extends YDU_Fitment_TestCase {
 		$this->assertSame( array( '1-8-tfsi', '2-0-tfsi' ), $this->slugs( $audi_variants ) );
 	}
 
+	public function test_engine_code_level_filters_to_chain(): void {
+		$codes = $this->cascade->get_terms_for_level( 'engine_code', array(
+			'make' => 'volkswagen', 'model' => 'golf-mk5', 'submodel' => 'hatch', 'variant' => 'gti',
+		) );
+		$this->assertSame( array( 'bwa' ), $this->slugs( $codes ) );
+	}
+
+	public function test_year_is_the_final_level(): void {
+		$years = $this->cascade->get_terms_for_level( 'year', array(
+			'make' => 'volkswagen', 'model' => 'golf-mk5', 'submodel' => 'hatch', 'variant' => 'gti', 'engine_code' => 'bwa',
+		) );
+		$this->assertSame( array( '2008' ), $this->slugs( $years ) );
+	}
+
 	public function test_flush_increments_cache_version(): void {
 		$before = (int) get_option( YDU_Fitment_Cascade::VER_OPTION, 1 );
 		YDU_Fitment_Cascade::flush_cache();

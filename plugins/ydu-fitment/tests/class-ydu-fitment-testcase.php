@@ -43,11 +43,11 @@ abstract class YDU_Fitment_TestCase extends WP_UnitTestCase {
 	}
 
 	private function seed_catalogue(): void {
-		$this->make_product( array( 'pa_make' => 'Volkswagen', 'pa_model' => 'Golf Mk5', 'pa_submodel' => 'Hatch', 'pa_variant' => 'GTI' ) );
-		$this->make_product( array( 'pa_make' => 'Volkswagen', 'pa_model' => 'Golf Mk5', 'pa_submodel' => 'Hatch', 'pa_variant' => '2.0 FSI' ) );
-		$this->make_product( array( 'pa_make' => 'Volkswagen', 'pa_model' => 'Golf Mk6', 'pa_submodel' => 'Hatch', 'pa_variant' => 'R' ) );
-		$this->make_product( array( 'pa_make' => 'Audi', 'pa_model' => 'A3 8P', 'pa_submodel' => 'Sportback', 'pa_variant' => '2.0 TFSI' ) );
-		$this->make_product( array( 'pa_make' => 'Audi', 'pa_model' => 'A3 8P', 'pa_submodel' => 'Sportback', 'pa_variant' => '1.8 TFSI' ) );
+		$this->make_product( array( 'pa_make' => 'Volkswagen', 'pa_model' => 'Golf Mk5', 'pa_submodel' => 'Hatch', 'pa_variant' => 'GTI', 'pa_engine_code' => 'BWA', 'pa_year_alt' => '2008' ) );
+		$this->make_product( array( 'pa_make' => 'Volkswagen', 'pa_model' => 'Golf Mk5', 'pa_submodel' => 'Hatch', 'pa_variant' => '2.0 FSI', 'pa_engine_code' => 'BVY', 'pa_year_alt' => '2007' ) );
+		$this->make_product( array( 'pa_make' => 'Volkswagen', 'pa_model' => 'Golf Mk6', 'pa_submodel' => 'Hatch', 'pa_variant' => 'R', 'pa_engine_code' => 'CDLA', 'pa_year_alt' => '2011' ) );
+		$this->make_product( array( 'pa_make' => 'Audi', 'pa_model' => 'A3 8P', 'pa_submodel' => 'Sportback', 'pa_variant' => '2.0 TFSI', 'pa_engine_code' => 'BWA', 'pa_year_alt' => '2008' ) );
+		$this->make_product( array( 'pa_make' => 'Audi', 'pa_model' => 'A3 8P', 'pa_submodel' => 'Sportback', 'pa_variant' => '1.8 TFSI', 'pa_engine_code' => 'BYT', 'pa_year_alt' => '2009' ) );
 	}
 
 	/** Adds one part tagged for both a VW Golf Mk5 GTI and an Audi A3 8P 2.0 TFSI. */

@@ -12,12 +12,23 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$ydu_levels = array(
-	'make'     => __( 'Make', 'ydu' ),
-	'model'    => __( 'Model', 'ydu' ),
-	'submodel' => __( 'Submodel', 'ydu' ),
-	'variant'  => __( 'Variant', 'ydu' ),
-);
+// Derive the levels from the fitment plugin when active so the bar stays in sync
+// with the cascade; otherwise fall back to the agreed 6-level order.
+if ( function_exists( 'ydu_fitment_levels' ) ) {
+	$ydu_levels = array();
+	foreach ( ydu_fitment_levels() as $ydu_key => $ydu_def ) {
+		$ydu_levels[ $ydu_key ] = $ydu_def['label'] ?? ucwords( str_replace( '_', ' ', $ydu_key ) );
+	}
+} else {
+	$ydu_levels = array(
+		'make'        => __( 'Make', 'ydu' ),
+		'model'       => __( 'Model', 'ydu' ),
+		'submodel'    => __( 'Submodel', 'ydu' ),
+		'variant'     => __( 'Variant', 'ydu' ),
+		'engine_code' => __( 'Engine Code', 'ydu' ),
+		'year'        => __( 'Year', 'ydu' ),
+	);
+}
 ?>
 <section class="vehicle-bar on-dark" aria-label="<?php esc_attr_e( 'Vehicle finder', 'ydu' ); ?>" data-ydu-fitment>
 	<div class="container vehicle-bar-inner">

@@ -21,10 +21,12 @@ class YDU_Fitment_REST {
 	/** route slug => [ level, required-ancestor-level-keys ] */
 	private function route_map(): array {
 		return array(
-			'makes'      => array( 'level' => 'make', 'parents' => array() ),
-			'models'     => array( 'level' => 'model', 'parents' => array( 'make' ) ),
-			'submodels'  => array( 'level' => 'submodel', 'parents' => array( 'make', 'model' ) ),
-			'variants'   => array( 'level' => 'variant', 'parents' => array( 'make', 'model', 'submodel' ) ),
+			'makes'        => array( 'level' => 'make', 'parents' => array() ),
+			'models'       => array( 'level' => 'model', 'parents' => array( 'make' ) ),
+			'submodels'    => array( 'level' => 'submodel', 'parents' => array( 'make', 'model' ) ),
+			'variants'     => array( 'level' => 'variant', 'parents' => array( 'make', 'model', 'submodel' ) ),
+			'engine_codes' => array( 'level' => 'engine_code', 'parents' => array( 'make', 'model', 'submodel', 'variant' ) ),
+			'years'        => array( 'level' => 'year', 'parents' => array( 'make', 'model', 'submodel', 'variant', 'engine_code' ) ),
 		);
 	}
 

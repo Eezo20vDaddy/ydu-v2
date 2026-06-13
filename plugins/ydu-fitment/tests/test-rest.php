@@ -24,9 +24,23 @@ class Test_YDU_Fitment_REST extends YDU_Fitment_TestCase {
 
 	public function test_routes_are_registered(): void {
 		$routes = rest_get_server()->get_routes();
-		foreach ( array( 'makes', 'models', 'submodels', 'variants' ) as $r ) {
+		foreach ( array( 'makes', 'models', 'submodels', 'variants', 'engine_codes', 'years' ) as $r ) {
 			$this->assertArrayHasKey( '/fitment/v1/' . $r, $routes );
 		}
+	}
+
+	public function test_engine_codes_and_years_endpoints(): void {
+		$codes = $this->get( 'engine_codes', array(
+			'make' => 'volkswagen', 'model' => 'golf-mk5', 'submodel' => 'hatch', 'variant' => 'gti',
+		) );
+		$this->assertSame( 200, $codes->get_status() );
+		$this->assertSame( array( 'bwa' ), array_map( static fn( $t ) => $t['slug'], $codes->get_data() ) );
+
+		$years = $this->get( 'years', array(
+			'make' => 'volkswagen', 'model' => 'golf-mk5', 'submodel' => 'hatch', 'variant' => 'gti', 'engine_code' => 'bwa',
+		) );
+		$this->assertSame( 200, $years->get_status() );
+		$this->assertSame( array( '2008' ), array_map( static fn( $t ) => $t['slug'], $years->get_data() ) );
 	}
 
 	public function test_makes_endpoint_returns_makes(): void {
