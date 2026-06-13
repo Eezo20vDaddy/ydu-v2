@@ -1,7 +1,10 @@
 {
 	"phpVersion": "8.2",
 	"themes": [ "./themes/ydu" ],
-	"plugins": [ "https://downloads.wordpress.org/plugin/woocommerce.zip" ],
+	"plugins": [
+		"https://downloads.wordpress.org/plugin/woocommerce.zip",
+		"./plugins/ydu-fitment"
+	],
 	"mappings": {
 		"wp-content/ydu-seed/data": "./data",
 		"wp-content/ydu-seed/tools": "./tools"

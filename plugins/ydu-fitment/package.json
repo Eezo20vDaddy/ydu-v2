@@ -1,0 +1,14 @@
+{
+	"name": "ydu-fitment",
+	"version": "0.1.0",
+	"private": true,
+	"description": "YDU Fitment vehicle finder plugin",
+	"scripts": {
+		"build": "wp-scripts build src/finder.js --output-path=build",
+		"start": "wp-scripts start src/finder.js --output-path=build",
+		"lint:js": "wp-scripts lint-js src"
+	},
+	"devDependencies": {
+		"@wordpress/scripts": "^31.0.0"
+	}
+}
