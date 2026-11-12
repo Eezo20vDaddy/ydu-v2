@@ -11,3 +11,6 @@ dist/
 studio/var/
 __pycache__/
 .phpunit.result.cache
+.local-wp-plugins/
+data/studio-media/
+data/studio.db
