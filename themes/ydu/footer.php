@@ -80,6 +80,13 @@ defined( 'ABSPATH' ) || exit;
 	</div>
 </footer>
 
+<dialog class="ydu-quick" id="yduQuickView" aria-labelledby="yduQuickTitle">
+	<button type="button" class="ydu-quick__close" data-ydu-quick-close aria-label="<?php esc_attr_e( 'Close', 'ydu' ); ?>">
+		<?php echo ydu_icon( 'close', 18 ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+	</button>
+	<div class="ydu-quick__body" data-ydu-quick-body></div>
+</dialog>
+
 <?php wp_footer(); ?>
 </body>
 </html>

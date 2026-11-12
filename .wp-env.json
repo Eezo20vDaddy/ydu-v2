@@ -1,8 +1,20 @@
 {
-	"phpVersion": "8.2",
+	"testsEnvironment": false,
+	"phpVersion": "8.5",
 	"themes": [ "./themes/ydu" ],
 	"plugins": [
-		"https://downloads.wordpress.org/plugin/woocommerce.zip",
+		"./.local-wp-plugins/woocommerce",
+		"./.local-wp-plugins/product-import-export-for-woo",
+		"./.local-wp-plugins/contact-form-7",
+		"./.local-wp-plugins/litespeed-cache",
+		"./.local-wp-plugins/honeypot",
+		"./.local-wp-plugins/limit-login-attempts-reloaded",
+		"./.local-wp-plugins/google-listings-and-ads",
+		"./.local-wp-plugins/facebook-for-woocommerce",
+		"./.local-wp-plugins/woocommerce-paypal-payments",
+		"./.local-wp-plugins/woocommerce-services",
+		"./.local-wp-plugins/theme-my-login",
+		"./.local-wp-plugins/woocommerce-payments",
 		"./plugins/ydu-fitment",
 		"./plugins/ydu-trade"
 	],
@@ -11,6 +23,7 @@
 		"wp-content/ydu-seed/tools": "./tools"
 	},
 	"config": {
+		"WP_MEMORY_LIMIT": "512M",
 		"WP_DEBUG": true,
 		"WP_DEBUG_LOG": true,
 		"WP_DEBUG_DISPLAY": false,

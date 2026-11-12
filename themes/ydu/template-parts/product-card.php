@@ -13,13 +13,19 @@ if ( ! $product instanceof WC_Product ) {
 	return;
 }
 
-$ydu_sku       = $product->get_sku();
 $ydu_permalink = get_permalink( $product->get_id() );
-$ydu_cats      = wc_get_product_category_list( $product->get_id() );
-$ydu_cat_name  = '';
-$ydu_terms     = get_the_terms( $product->get_id(), 'product_cat' );
-if ( $ydu_terms && ! is_wp_error( $ydu_terms ) ) {
-	$ydu_cat_name = $ydu_terms[0]->name;
+$ydu_cat_name  = ydu_product_card_category_label( $product->get_id() );
+
+$ydu_image_ids = array();
+$thumb_id      = $product->get_image_id();
+if ( $thumb_id ) {
+	$ydu_image_ids[] = (int) $thumb_id;
+}
+foreach ( $product->get_gallery_image_ids() as $gallery_id ) {
+	$gallery_id = (int) $gallery_id;
+	if ( $gallery_id && ! in_array( $gallery_id, $ydu_image_ids, true ) ) {
+		$ydu_image_ids[] = $gallery_id;
+	}
 }
 
 // Stock badge.
@@ -37,31 +43,39 @@ if ( ! $product->is_in_stock() ) {
 <li <?php wc_product_class( 'product-card', $product ); ?>>
 	<div class="pc-media">
 		<a href="<?php echo esc_url( $ydu_permalink ); ?>" tabindex="-1" aria-hidden="true">
-			<?php
-			if ( has_post_thumbnail( $product->get_id() ) ) {
-				echo wp_get_attachment_image(
-					get_post_thumbnail_id( $product->get_id() ),
-					'woocommerce_thumbnail',
-					false,
-					array( 'loading' => 'lazy', 'alt' => esc_attr( $product->get_name() ) )
-				);
-			} else {
-				?>
-				<div class="pc-placeholder" role="img" aria-label="<?php echo esc_attr( sprintf( /* translators: %s: part number */ __( 'Image coming soon for %s', 'ydu' ), $ydu_sku ?: $product->get_name() ) ); ?>">
+			<?php if ( empty( $ydu_image_ids ) ) : ?>
+				<div class="pc-placeholder" role="img" aria-label="<?php esc_attr_e( 'Image coming soon', 'ydu' ); ?>">
 					<?php echo ydu_icon( 'image', 34 ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-					<span><?php echo esc_html( $ydu_sku ?: 'YDU' ); ?></span>
+					<span><?php esc_html_e( 'Image coming soon', 'ydu' ); ?></span>
 				</div>
-				<?php
-			}
-			?>
+			<?php else : ?>
+				<div class="pc-gallery" data-pc-interval="5000">
+					<?php
+					foreach ( $ydu_image_ids as $ydu_index => $ydu_attachment_id ) {
+						$ydu_slide_class = 'pc-gallery__slide';
+						if ( 0 === $ydu_index ) {
+							$ydu_slide_class .= ' is-active';
+						}
+						echo wp_get_attachment_image(
+							$ydu_attachment_id,
+							'woocommerce_thumbnail',
+							false,
+							array(
+								'loading' => 0 === $ydu_index ? 'lazy' : 'lazy',
+								'alt'     => esc_attr( $product->get_name() ),
+								'class'   => $ydu_slide_class,
+							)
+						);
+					}
+					?>
+				</div>
+			<?php endif; ?>
 		</a>
 	</div>
 	<div class="pc-body">
 		<div class="pc-topline">
-			<?php if ( $ydu_sku ) : ?>
-				<span class="part-no"><?php echo esc_html( $ydu_sku ); ?></span>
-			<?php else : ?>
-				<span class="part-no">YDU</span>
+			<?php if ( $ydu_cat_name ) : ?>
+				<span class="part-no"><?php echo esc_html( $ydu_cat_name ); ?></span>
 			<?php endif; ?>
 			<span class="stock-badge <?php echo esc_attr( $ydu_badge_class ); ?>"><?php echo esc_html( $ydu_badge_text ); ?></span>
 		</div>
@@ -71,6 +85,7 @@ if ( ! $product->is_in_stock() ) {
 		<?php if ( $ydu_cat_name ) : ?>
 			<span class="pc-chip"><?php echo esc_html( $ydu_cat_name ); ?></span>
 		<?php endif; ?>
+		<?php ydu_list_actions( $product, 'card' ); ?>
 		<div class="pc-foot">
 			<span class="pc-price"><?php echo wp_kses_post( $product->get_price_html() ); ?></span>
 			<?php

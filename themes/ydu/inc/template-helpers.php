@@ -22,6 +22,7 @@ function ydu_icon( string $name, int $size = 21 ): string {
 		'compare'  => '<polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/>',
 		'cart'     => '<circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>',
 		'search'   => '<circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>',
+		'eye'      => '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>',
 		'car'      => '<path d="M5 11l1.5-4.5A2 2 0 0 1 8.4 5h7.2a2 2 0 0 1 1.9 1.5L19 11"/><rect x="3" y="11" width="18" height="6" rx="1.5"/><circle cx="7" cy="17" r="1.6"/><circle cx="17" cy="17" r="1.6"/>',
 		'image'    => '<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>',
 		'arrow'    => '<line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>',
@@ -39,16 +40,23 @@ function ydu_icon( string $name, int $size = 21 ): string {
 /**
  * Site logo: custom logo when set, otherwise the YDU banner.
  */
-function ydu_logo( int $height = 40 ): string {
+function ydu_logo( int $height = 0 ): string {
 	if ( has_custom_logo() ) {
 		return get_custom_logo();
 	}
 	$fallback = 'https://ydu.com.au/wp-content/uploads/2024/11/banner-300x103.png';
+	if ( $height > 0 ) {
+		return sprintf(
+			'<img class="custom-logo" src="%1$s" alt="%2$s" width="300" height="103" style="height:%3$dpx;width:auto">',
+			esc_url( $fallback ),
+			esc_attr( get_bloginfo( 'name' ) ),
+			(int) $height
+		);
+	}
 	return sprintf(
-		'<img class="custom-logo" src="%1$s" alt="%2$s" width="300" height="103" style="height:%3$dpx;width:auto">',
+		'<img class="custom-logo" src="%1$s" alt="%2$s" width="300" height="103">',
 		esc_url( $fallback ),
-		esc_attr( get_bloginfo( 'name' ) ),
-		(int) $height
+		esc_attr( get_bloginfo( 'name' ) )
 	);
 }
 
@@ -60,20 +68,17 @@ function ydu_cart_count(): int {
 	return 0;
 }
 
-/** WPClever wishlist count, or null when the plugin is inactive. */
-function ydu_wishlist_count(): ?int {
-	if ( function_exists( 'woosw_get_count' ) ) {
-		return (int) woosw_get_count();
-	}
-	return null;
+/**
+ * Saved-parts count for the logged-in customer. Guests are filled in by the
+ * browser after load, because the page cache must not store one visitor's list.
+ */
+function ydu_wishlist_count(): int {
+	return ydu_saved_count( 'wishlist' );
 }
 
-/** WPClever compare count, or null when the plugin is inactive. */
-function ydu_compare_count(): ?int {
-	if ( function_exists( 'woosc_get_count' ) ) {
-		return (int) woosc_get_count();
-	}
-	return null;
+/** Compare-list count for the logged-in customer. Guests are filled in by the browser. */
+function ydu_compare_count(): int {
+	return ydu_saved_count( 'compare' );
 }
 
 /**
@@ -141,6 +146,55 @@ function ydu_catalog_count_label(): string {
 	}
 	$rounded = (int) ( floor( $n / 50 ) * 50 );
 	return number_format_i18n( $rounded ) . '+';
+}
+
+/**
+ * Most specific product_cat label for product cards (deepest assigned term).
+ *
+ * @param int $product_id Product post ID.
+ */
+function ydu_product_card_category_label( int $product_id ): string {
+	$terms = get_the_terms( $product_id, 'product_cat' );
+	if ( ! $terms || is_wp_error( $terms ) ) {
+		return '';
+	}
+
+	$assigned_ids = array_map( 'intval', wp_list_pluck( $terms, 'term_id' ) );
+	$leaves       = array();
+
+	foreach ( $terms as $term ) {
+		$is_ancestor = false;
+		foreach ( $assigned_ids as $other_id ) {
+			if ( (int) $term->term_id === $other_id ) {
+				continue;
+			}
+			if ( term_is_ancestor_of( (int) $term->term_id, $other_id, 'product_cat' ) ) {
+				$is_ancestor = true;
+				break;
+			}
+		}
+		if ( ! $is_ancestor ) {
+			$leaves[] = array(
+				'term'  => $term,
+				'depth' => count( get_ancestors( $term->term_id, 'product_cat', 'taxonomy' ) ),
+			);
+		}
+	}
+
+	if ( empty( $leaves ) ) {
+		return $terms[0]->name;
+	}
+
+	$max_depth = max( array_column( $leaves, 'depth' ) );
+	foreach ( $terms as $term ) {
+		foreach ( $leaves as $leaf ) {
+			if ( (int) $leaf['term']->term_id === (int) $term->term_id && $leaf['depth'] === $max_depth ) {
+				return $term->name;
+			}
+		}
+	}
+
+	return $leaves[0]['term']->name;
 }
 
 /** Top-level product categories for the search scope dropdown. */

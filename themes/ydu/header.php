@@ -51,25 +51,21 @@ $ydu_cart     = ydu_cart_count();
 				<?php echo ydu_icon( 'menu', 22 ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 			</button>
 			<a class="logo-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php esc_attr_e( 'YDU PARTS home', 'ydu' ); ?>">
-				<?php echo ydu_logo( 40 ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+				<?php echo ydu_logo(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 			</a>
 			<span class="tagline"><?php esc_html_e( 'VW, AUDI and VAG Specialists', 'ydu' ); ?></span>
 			<div class="header-icons">
 				<a class="icon-btn icon-hide-mobile" href="<?php echo esc_url( wc_get_page_permalink( 'myaccount' ) ); ?>" aria-label="<?php esc_attr_e( 'My account', 'ydu' ); ?>">
 					<?php echo ydu_icon( 'user' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 				</a>
-				<?php if ( null !== $ydu_wishlist ) : ?>
-					<a class="icon-btn icon-hide-mobile" href="<?php echo esc_url( home_url( '/wishlist/' ) ); ?>" aria-label="<?php echo esc_attr( sprintf( /* translators: %d: count */ __( 'Wishlist, %d items', 'ydu' ), $ydu_wishlist ) ); ?>">
-						<?php echo ydu_icon( 'heart' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-						<?php if ( $ydu_wishlist > 0 ) : ?><span class="badge" aria-hidden="true"><?php echo esc_html( $ydu_wishlist ); ?></span><?php endif; ?>
-					</a>
-				<?php endif; ?>
-				<?php if ( null !== $ydu_compare ) : ?>
-					<a class="icon-btn icon-hide-mobile" href="<?php echo esc_url( home_url( '/compare/' ) ); ?>" aria-label="<?php echo esc_attr( sprintf( /* translators: %d: count */ __( 'Compare, %d items', 'ydu' ), $ydu_compare ) ); ?>">
-						<?php echo ydu_icon( 'compare' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-						<?php if ( $ydu_compare > 0 ) : ?><span class="badge" aria-hidden="true"><?php echo esc_html( $ydu_compare ); ?></span><?php endif; ?>
-					</a>
-				<?php endif; ?>
+				<a class="icon-btn icon-hide-mobile" href="<?php echo esc_url( home_url( '/wishlist/' ) ); ?>" data-ydu-count-link="wishlist" aria-label="<?php echo esc_attr( sprintf( /* translators: %d: count */ __( 'Saved parts, %d items', 'ydu' ), $ydu_wishlist ) ); ?>">
+					<?php echo ydu_icon( 'heart' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+					<span class="badge" data-ydu-count="wishlist" <?php echo $ydu_wishlist > 0 ? '' : 'hidden'; ?>><?php echo esc_html( (string) $ydu_wishlist ); ?></span>
+				</a>
+				<a class="icon-btn icon-hide-mobile" href="<?php echo esc_url( home_url( '/compare/' ) ); ?>" data-ydu-count-link="compare" aria-label="<?php echo esc_attr( sprintf( /* translators: %d: count */ __( 'Compare, %d items', 'ydu' ), $ydu_compare ) ); ?>">
+					<?php echo ydu_icon( 'compare' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+					<span class="badge" data-ydu-count="compare" <?php echo $ydu_compare > 0 ? '' : 'hidden'; ?>><?php echo esc_html( (string) $ydu_compare ); ?></span>
+				</a>
 				<a class="icon-btn" href="<?php echo esc_url( wc_get_cart_url() ); ?>" aria-label="<?php echo esc_attr( sprintf( /* translators: %d: count */ __( 'Cart, %d items', 'ydu' ), $ydu_cart ) ); ?>">
 					<?php echo ydu_icon( 'cart' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					<?php if ( $ydu_cart > 0 ) : ?><span class="badge" id="yduCartCount" aria-hidden="true"><?php echo esc_html( $ydu_cart ); ?></span><?php endif; ?>
@@ -148,6 +144,8 @@ $ydu_cart     = ydu_cart_count();
 			<?php
 		}
 		?>
+		<a href="<?php echo esc_url( home_url( '/wishlist/' ) ); ?>"><?php esc_html_e( 'Saved parts', 'ydu' ); ?></a>
+		<a href="<?php echo esc_url( home_url( '/compare/' ) ); ?>"><?php esc_html_e( 'Compare', 'ydu' ); ?></a>
 		<a href="<?php echo esc_url( wc_get_page_permalink( 'myaccount' ) ); ?>"><?php esc_html_e( 'My Account', 'ydu' ); ?></a>
 	</nav>
 	<div class="drawer-foot">
