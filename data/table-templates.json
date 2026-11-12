@@ -1,0 +1,59 @@
+[
+  {
+    "fingerprint": "make|model|year|submodel|variant|engine|notes",
+    "label": "Make / Model / Year / Submodel / Variant / Engine / Notes",
+    "headers": [
+      "Make",
+      "Model",
+      "Year",
+      "Submodel",
+      "Variant",
+      "Engine",
+      "Notes"
+    ],
+    "columns": [
+      {
+        "source_header": "Make",
+        "position": 0,
+        "target": "make",
+        "extract": "whole_cell"
+      },
+      {
+        "source_header": "Model",
+        "position": 1,
+        "target": "model",
+        "extract": "whole_cell"
+      },
+      {
+        "source_header": "Year",
+        "position": 2,
+        "target": "year",
+        "extract": "whole_cell"
+      },
+      {
+        "source_header": "Submodel",
+        "position": 3,
+        "target": "submodel",
+        "extract": "whole_cell"
+      },
+      {
+        "source_header": "Variant",
+        "position": 4,
+        "target": "variant",
+        "extract": "one_row_per_code"
+      },
+      {
+        "source_header": "Engine",
+        "position": 5,
+        "target": "skip",
+        "extract": "whole_cell"
+      },
+      {
+        "source_header": "Notes",
+        "position": 6,
+        "target": "skip",
+        "extract": "whole_cell"
+      }
+    ]
+  }
+]

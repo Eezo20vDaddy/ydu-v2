@@ -7,7 +7,7 @@ description: >
   coverage, license/GPL compliance, and producing Audit Reports. READ-ONLY.
   Reports directly to CEO. Cannot be overridden by CTO.
 tools: Read, Grep, Glob
-model: opus
+model: grok-4.7-high
 ---
 
 # Auditor Agent — "Watchkeeper"

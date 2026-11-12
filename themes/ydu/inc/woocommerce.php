@@ -12,6 +12,36 @@ defined( 'ABSPATH' ) || exit;
 // via theme.json tokens + style.scss. Shop cards: woocommerce/content-product.php.
 
 /**
+ * Storefront prices: currency symbol before the amount (e.g. $2,087.23).
+ * Runs after currency-switcher plugins so local/catalog display stays consistent.
+ */
+add_filter( 'option_woocommerce_currency_pos', 'ydu_storefront_currency_pos_left', 10001 );
+function ydu_storefront_currency_pos_left( $position ) {
+	if ( is_admin() && ! wp_doing_ajax() ) {
+		return $position;
+	}
+	return 'left';
+}
+
+add_filter( 'woocommerce_price_format', 'ydu_storefront_price_format', 10001, 2 );
+function ydu_storefront_price_format( $format, $currency_pos ) {
+	if ( is_admin() && ! wp_doing_ajax() ) {
+		return $format;
+	}
+	switch ( $currency_pos ) {
+		case 'left':
+			return '%1$s%2$s';
+		case 'right':
+			return '%2$s%1$s';
+		case 'left_space':
+			return '%1$s&nbsp;%2$s';
+		case 'right_space':
+			return '%2$s&nbsp;%1$s';
+	}
+	return $format;
+}
+
+/**
  * "Fits these vehicles" panel on the single product page, built from the
  * product's fitment attribute terms (pa_make > pa_model > pa_submodel >
  * pa_variant). Read-only display; links to the filtered catalogue.

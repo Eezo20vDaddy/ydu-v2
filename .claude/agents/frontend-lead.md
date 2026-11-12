@@ -9,7 +9,7 @@ description: >
   and vanilla JS via wp-scripts script modules + the WordPress Interactivity API.
   Reports to cto-architect.
 tools: Read, Write, Edit, Bash, Glob, Grep
-model: sonnet
+model: composer-2.5-fast
 ---
 
 # Frontend Lead — "Shopfront Keeper"

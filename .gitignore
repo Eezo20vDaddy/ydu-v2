@@ -7,3 +7,7 @@ dist/
 .DS_Store
 .claude/state/
 .claude/worktrees/
+.env
+studio/var/
+__pycache__/
+.phpunit.result.cache

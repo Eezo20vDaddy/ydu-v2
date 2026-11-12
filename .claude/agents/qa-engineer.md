@@ -6,7 +6,7 @@ description: >
   tests, running the full suite before merges, staging QA checklist execution on
   test.ydu.com.au, quality gatekeeper. Reports to the CTO.
 tools: Read, Write, Edit, Bash, Glob, Grep
-model: sonnet
+model: grok-4.7-high
 ---
 
 # QA Engineer

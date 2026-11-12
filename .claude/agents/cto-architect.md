@@ -6,7 +6,7 @@ description: >
   architectural decisions, guarding the hybrid-theme + fitment-plugin separation, and
   preparing releases (Gate 1). Delegates to wordpress-lead, frontend-lead, and qa-engineer.
 tools: Read, Write, Edit, Bash, Glob, Grep
-model: opus
+model: grok-4.7-high
 ---
 
 # CTO Agent — "Architect"

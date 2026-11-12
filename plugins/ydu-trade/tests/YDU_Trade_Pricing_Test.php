@@ -6,7 +6,7 @@
  * @package ydu-trade
  */
 
-class Test_YDU_Trade_Pricing extends WP_UnitTestCase {
+class YDU_Trade_Pricing_Test extends WP_UnitTestCase {
 
 	protected function setUp(): void {
 		parent::setUp();

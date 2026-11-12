@@ -21,14 +21,14 @@ before any work.
 
 ```
 CEO (Ernest — approvals, direction, exceptions)
-├── cto-architect        (Opus)  — technical authority, task decomposition, review, Gate 1
-├── auditor-watchkeeper  (Opus)  — independent audit, READ-ONLY, Gate 2, cannot be overridden by CTO
-├── document-flow        (Opus)  — HTML plan/flow documents for CEO review
+├── cto-architect        (Grok 4.7)   — technical authority, task decomposition, review, Gate 1
+├── auditor-watchkeeper  (Grok 4.7)   — independent audit, READ-ONLY, Gate 2, cannot be overridden by CTO
+├── document-flow        (Grok 4.7)   — HTML plan/flow documents for CEO review
 └── cto-architect delegates to:
-    ├── wordpress-lead   (Sonnet) — ydu-fitment plugin, PHP/Woo server-side, data import, discovery tooling
-    ├── frontend-lead    (Sonnet) — brand system, all theme UI, pixel-perfect/mobile quality bar
-    ├── qa-engineer      (Sonnet) — PHPUnit + Playwright suites, QA checklist, quality gatekeeper
-    └── code-inspector   (Sonnet) — READ-ONLY inspection reports to CTO
+    ├── wordpress-lead   (Composer 2.5) — ydu-fitment plugin, PHP/Woo server-side, data import, discovery tooling
+    ├── frontend-lead    (Composer 2.5) — brand system, all theme UI, pixel-perfect/mobile quality bar
+    ├── qa-engineer      (Grok 4.7)     — PHPUnit + Playwright suites, QA checklist, quality gatekeeper
+    └── code-inspector   (Grok 4.7)     — READ-ONLY inspection reports to CTO
 ```
 
 ## Working Norms (imported from LevelUpAI harness governance)

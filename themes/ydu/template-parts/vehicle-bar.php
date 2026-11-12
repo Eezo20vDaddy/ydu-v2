@@ -21,12 +21,12 @@ if ( function_exists( 'ydu_fitment_levels' ) ) {
 	}
 } else {
 	$ydu_levels = array(
+		'year'        => __( 'Year', 'ydu' ),
 		'make'        => __( 'Make', 'ydu' ),
 		'model'       => __( 'Model', 'ydu' ),
 		'submodel'    => __( 'Submodel', 'ydu' ),
 		'variant'     => __( 'Variant', 'ydu' ),
 		'engine_code' => __( 'Engine Code', 'ydu' ),
-		'year'        => __( 'Year', 'ydu' ),
 	);
 }
 ?>
@@ -38,15 +38,13 @@ if ( function_exists( 'ydu_fitment_levels' ) ) {
 		</span>
 		<form class="vb-form" data-ydu-fitment-form>
 			<?php
-			$ydu_first = true;
 			foreach ( $ydu_levels as $ydu_key => $ydu_label ) :
 				?>
 				<label class="visually-hidden" for="ydu-sel-<?php echo esc_attr( $ydu_key ); ?>"><?php echo esc_html( $ydu_label ); ?></label>
-				<select class="vb-select" id="ydu-sel-<?php echo esc_attr( $ydu_key ); ?>" data-ydu-level="<?php echo esc_attr( $ydu_key ); ?>" <?php disabled( ! $ydu_first ); ?>>
+				<select class="vb-select" id="ydu-sel-<?php echo esc_attr( $ydu_key ); ?>" data-ydu-level="<?php echo esc_attr( $ydu_key ); ?>">
 					<option value=""><?php echo esc_html( $ydu_label ); ?></option>
 				</select>
 				<?php
-				$ydu_first = false;
 			endforeach;
 			?>
 			<div class="vb-actions">

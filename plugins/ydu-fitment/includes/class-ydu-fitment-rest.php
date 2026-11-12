@@ -1,13 +1,8 @@
 <?php
 /**
- * fitment/v1 REST endpoints — public, GET-only, cacheable. One route per cascade
- * level; each requires its ancestor slugs as query args.
- *
- * Routes:
- *   GET /fitment/v1/makes
- *   GET /fitment/v1/models?make=<slug>
- *   GET /fitment/v1/submodels?make=<slug>&model=<slug>
- *   GET /fitment/v1/variants?make=<slug>&model=<slug>&submodel=<slug>
+ * fitment/v1 REST endpoints — public, GET-only, cacheable.
+ * GET /fitment/v1/index is the catalog the finder filters locally.
+ * The per-level routes accept any other level as an optional constraint.
  *
  * @package ydu-fitment
  */
@@ -31,16 +26,27 @@ class YDU_Fitment_REST {
 	}
 
 	public function register_routes(): void {
+		register_rest_route(
+			self::NAMESPACE,
+			'/index',
+			array(
+				'methods'             => WP_REST_Server::READABLE,
+				'callback'            => array( $this, 'index' ),
+				'permission_callback' => '__return_true',
+			)
+		);
+
+		$level_keys = array_keys( ydu_fitment_levels() );
 		foreach ( $this->route_map() as $route => $config ) {
 			$args = array();
-			foreach ( $config['parents'] as $parent ) {
-				$args[ $parent ] = array(
-					'required'          => true,
+			foreach ( $level_keys as $key ) {
+				if ( $key === $config['level'] ) {
+					continue;
+				}
+				$args[ $key ] = array(
+					'required'          => false,
 					'type'              => 'string',
 					'sanitize_callback' => 'sanitize_title',
-					'validate_callback' => static function ( $value ) {
-						return is_string( $value ) && '' !== trim( $value );
-					},
 				);
 			}
 
@@ -49,28 +55,46 @@ class YDU_Fitment_REST {
 				'/' . $route,
 				array(
 					'methods'             => WP_REST_Server::READABLE,
-					'callback'            => function ( WP_REST_Request $request ) use ( $config ) {
-						return $this->handle( $config['level'], $config['parents'], $request );
+					'callback'            => function ( WP_REST_Request $request ) use ( $config, $level_keys ) {
+						return $this->handle( $config['level'], $level_keys, $request );
 					},
-					'permission_callback' => '__return_true', // public read-only fitment data
+					'permission_callback' => '__return_true',
 					'args'                => $args,
 				)
 			);
 		}
 	}
 
+	public function index(): WP_REST_Response {
+		$cascade = new YDU_Fitment_Cascade();
+		$data    = $cascade->index();
+		$data['version'] = (int) get_option( YDU_Fitment_Cascade::VER_OPTION, 1 );
+		$response = new WP_REST_Response( $data, 200 );
+		return self::cacheable_response( $response );
+	}
+
 	private function handle( string $level, array $parent_keys, WP_REST_Request $request ) {
 		$parents = array();
 		foreach ( $parent_keys as $key ) {
-			$parents[ $key ] = (string) $request->get_param( $key );
+			$value = $request->get_param( $key );
+			if ( is_string( $value ) && '' !== $value ) {
+				$parents[ $key ] = $value;
+			}
 		}
 
 		$cascade = new YDU_Fitment_Cascade();
 		$terms   = $cascade->get_terms_for_level( $level, $parents );
 
 		$response = new WP_REST_Response( $terms, 200 );
-		// Public, cacheable for an hour at the edge; cleared server-side on catalog change.
-		$response->header( 'Cache-Control', 'public, max-age=3600' );
+		return self::cacheable_response( $response );
+	}
+
+	/**
+	 * Cache headers for public fitment reads. Short TTL + SWR avoids edge caches
+	 * serving empty/stale JSON while the cold index builds.
+	 */
+	private static function cacheable_response( WP_REST_Response $response ): WP_REST_Response {
+		$response->header( 'Cache-Control', 'public, max-age=60, stale-while-revalidate=300' );
 		return $response;
 	}
 }

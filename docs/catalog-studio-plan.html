@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catalog Studio — proposal for Ernest</title>
+<style>
+  :root {
+    --blue:#4A90E2;
+    --navy:#1B3A4B;
+    --navy-d:#142E3C;
+    --bg:#f4f7fb;
+    --card:#fff;
+    --ink:#1c2733;
+    --muted:#5b6b7a;
+    --ok:#1a7f4e;
+    --ok-bg:#e9f6ef;
+    --warn:#b46900;
+    --warn-bg:#fbf1de;
+    --line:#dde6f0;
+    --red:#c0392b;
+    --red-bg:#fdecea;
+  }
+  * { box-sizing:border-box; margin:0; }
+  body {
+    font-family:'Segoe UI', system-ui, sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.55;
+    padding:28px 16px 64px;
+  }
+  .wrap { max-width:980px; margin:0 auto; }
+  h1 { font-size:13px; letter-spacing:1.4px; text-transform:uppercase; color:var(--navy); }
+  h2 { font-size:22px; color:var(--navy); letter-spacing:.2px; }
+  h3 { font-size:15px; color:var(--navy); margin:18px 0 8px; }
+  p { margin:0 0 10px; }
+  a { color:var(--navy); }
+  code {
+    font-family:Consolas, 'Courier New', monospace;
+    font-size:12.5px;
+    background:#eef3f9;
+    border-radius:4px;
+    padding:1px 5px;
+  }
+  .req {
+    background:var(--card);
+    border:1px solid var(--line);
+    border-left:6px solid var(--navy);
+    border-radius:14px;
+    padding:22px 26px 18px;
+    margin-bottom:14px;
+  }
+  .req .meta {
+    margin-top:4px;
+    color:var(--muted);
+    font-size:13px;
+  }
+  .req h1.follow { margin-top:22px; }
+  blockquote.words {
+    margin:16px 0 12px;
+    padding:0;
+    border:0;
+    font-size:18.5px;
+    line-height:1.45;
+    font-weight:550;
+    color:var(--ink);
+    white-space:pre-wrap;
+  }
+  blockquote.words::before {
+    content:"\201C";
+    display:block;
+    font-family:Georgia, 'Times New Roman', serif;
+    font-size:48px;
+    line-height:.8;
+    color:var(--blue);
+    font-weight:700;
+  }
+  .cutoff {
+    background:#eaf1fa;
+    border-radius:10px;
+    padding:10px 14px;
+    font-size:14px;
+    color:var(--navy);
+    margin-bottom:10px;
+  }
+  .banner {
+    background:var(--warn-bg);
+    border:1px solid #f0d3a8;
+    border-radius:12px;
+    padding:14px 16px;
+    margin-bottom:14px;
+    font-size:15px;
+  }
+  .banner .tag {
+    display:inline-block;
+    background:var(--warn);
+    color:#fff;
+    font-weight:800;
+    letter-spacing:.7px;
+    font-size:12px;
+    padding:3px 8px;
+    border-radius:6px;
+    margin-right:8px;
+    vertical-align:1px;
+  }
+  .answer {
+    background:var(--ok-bg);
+    border-left:4px solid var(--ok);
+    border-radius:0 12px 12px 0;
+    padding:16px 18px;
+    margin-bottom:14px;
+    font-size:15.5px;
+  }
+  .answer strong { color:var(--ok); }
+  .grid3 {
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+    gap:12px;
+    margin-bottom:14px;
+  }
+  .decisions {
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(340px, 1fr));
+    gap:12px;
+    margin-bottom:14px;
+  }
+  .card {
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:16px 16px 14px;
+  }
+  .card .n {
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:28px;
+    height:28px;
+    border-radius:8px;
+    background:var(--blue);
+    color:#fff;
+    font-weight:800;
+    font-size:14px;
+    margin-bottom:8px;
+  }
+  .card h3 { margin:0 0 8px; font-size:16px; }
+  .card p, .card li { font-size:14px; }
+  .card ul { padding-left:18px; }
+  .card li { margin-bottom:6px; }
+  .warnbox {
+    border-left:4px solid var(--red);
+    background:var(--red-bg);
+    border-radius:0 12px 12px 0;
+    padding:14px 16px;
+    margin-bottom:18px;
+    font-size:14.5px;
+  }
+  .warnbox strong { color:var(--red); }
+  .stick {
+    position:sticky;
+    top:0;
+    z-index:5;
+    background:rgba(244,247,251,.96);
+    padding:8px 0 10px;
+    margin:0 0 18px;
+    border-bottom:1px solid var(--line);
+  }
+  .stick nav { display:flex; flex-wrap:wrap; gap:6px; }
+  .stick a {
+    text-decoration:none;
+    color:var(--navy);
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:6px 11px;
+    font-size:13px;
+    font-weight:650;
+  }
+  .stick a[aria-current="true"] {
+    background:var(--navy);
+    color:#fff;
+    border-color:var(--navy);
+  }
+  .stick a:hover { border-color:var(--blue); }
+  .stick-warn {
+    margin:8px 0 0;
+    font-size:13px;
+    color:#8a2a22;
+    font-weight:650;
+  }
+  section { scroll-margin-top:220px; margin-bottom:28px; }
+  .sec-k {
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:1.2px;
+    text-transform:uppercase;
+    color:var(--blue);
+    margin-bottom:4px;
+  }
+  .table-wrap {
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:12px;
+    overflow-x:auto;
+    margin:10px 0 14px;
+  }
+  table { width:100%; border-collapse:collapse; font-size:14px; }
+  th {
+    text-align:left;
+    padding:9px 14px;
+    color:var(--muted);
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.6px;
+    border-bottom:1px solid var(--line);
+    background:#f8fbfe;
+  }
+  td { padding:10px 14px; border-bottom:1px solid #eef3f9; vertical-align:top; }
+  tr:last-child td { border-bottom:none; }
+  .callout {
+    border-left:4px solid var(--blue);
+    background:#eaf1fa;
+    border-radius:0 10px 10px 0;
+    padding:12px 16px;
+    font-size:14.5px;
+    margin:12px 0;
+  }
+  .callout.amber { border-color:var(--warn); background:var(--warn-bg); }
+  .callout.red { border-color:var(--red); background:var(--red-bg); }
+  .callout.green { border-color:var(--ok); background:var(--ok-bg); }
+  .phase {
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:12px;
+    margin-bottom:12px;
+    overflow:hidden;
+  }
+  .phase-h {
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:12px 16px;
+    background:#eaf1fa;
+  }
+  .phase-h .num {
+    background:var(--blue);
+    color:#fff;
+    font-weight:800;
+    min-width:42px;
+    height:32px;
+    padding:0 8px;
+    border-radius:8px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:14px;
+    flex:none;
+  }
+  .phase-h h3 { margin:0; font-size:16px; flex:1; }
+  .phase-b { padding:12px 16px 14px; font-size:14.5px; }
+  .phase-b p:last-child { margin-bottom:0; }
+  .phase.blocked { border-color:#e7c48a; }
+  .phase.blocked .phase-h { background:#fdecd3; }
+  .phase.blocked .phase-h .num { background:var(--warn); }
+  .st {
+    font-size:11px;
+    font-weight:700;
+    padding:3px 9px;
+    border-radius:999px;
+    white-space:nowrap;
+    flex:none;
+  }
+  .st.todo { background:#e8eef6; color:#3c5a7d; }
+  .st.blocked { background:#fdecd3; color:var(--warn); }
+  .st.core { background:var(--ok-bg); color:var(--ok); }
+  .db-hero {
+    background:linear-gradient(135deg, var(--navy), var(--navy-d));
+    color:#fff;
+    border-radius:14px;
+    padding:26px 28px;
+    margin-bottom:14px;
+  }
+  .db-hero h2 { color:#fff; }
+  .db-hero p { color:rgba(255,255,255,.92); font-size:16px; margin:8px 0 0; max-width:40em; }
+  .db-hero .huge {
+    display:block;
+    margin-top:12px;
+    font-size:18px;
+    font-weight:750;
+    color:#fff;
+  }
+  .tiny { color:var(--muted); font-size:13px; }
+  .no { list-style:none; padding:0; margin:0; }
+  .no li {
+    background:#fff;
+    border:1px solid var(--line);
+    border-left:4px solid var(--red);
+    border-radius:10px;
+    padding:10px 14px;
+    margin-bottom:8px;
+    font-size:14.5px;
+  }
+  .screen {
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:12px;
+    overflow:hidden;
+    margin:12px 0 8px;
+  }
+  .screen-bar {
+    background:#eaf1fa;
+    color:var(--navy);
+    padding:10px 14px;
+    font-size:13.5px;
+    font-weight:650;
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px 14px;
+    align-items:center;
+  }
+  .screen-bar .sp { flex:1; }
+  .pill {
+    display:inline-block;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:3px 8px;
+    font-weight:650;
+    color:var(--muted);
+  }
+  .pill.go {
+    background:var(--navy);
+    color:#fff;
+    border-color:var(--navy);
+  }
+  .screen-cols {
+    display:grid;
+    grid-template-columns:1fr 1.15fr 1.2fr;
+  }
+  .screen-cols > div {
+    padding:12px 14px 14px;
+    border-top:1px solid var(--line);
+    font-size:13.5px;
+    min-height:168px;
+  }
+  .screen-cols > div + div { border-left:1px solid var(--line); }
+  .screen-cols h3 {
+    margin:0 0 8px;
+    font-size:12px;
+    letter-spacing:.8px;
+    text-transform:uppercase;
+    color:var(--blue);
+  }
+  .screen-cols ul { margin:0; padding-left:18px; }
+  .screen-cols li { margin-bottom:4px; }
+  .film {
+    display:flex;
+    gap:6px;
+    margin:8px 0;
+  }
+  .ph {
+    background:#eaf1fa;
+    border:1px solid var(--line);
+    border-radius:6px;
+    color:var(--navy);
+    font-size:11px;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .ph.hero-box { width:100%; height:72px; }
+  .ph.thumb { width:36px; height:28px; }
+  .ph.on { outline:2px solid var(--blue); }
+  footer {
+    text-align:center;
+    font-size:12.5px;
+    color:var(--muted);
+    margin-top:28px;
+  }
+  footer a { color:var(--muted); }
+  :focus-visible { outline:2px solid var(--blue); outline-offset:2px; }
+  @media (max-width:720px) {
+    .screen-cols { grid-template-columns:1fr; }
+    .screen-cols > div + div { border-left:none; }
+  }
+  @media print {
+    body { padding:0; background:#fff; }
+    .stick { position:static; }
+    .db-hero { background:#1B3A4B; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="req" id="request">
+    <h1>His request</h1>
+    <blockquote class="words">we need a comprehensive plan for me to be able to import and export items into the catalog. we work on VAG Group car parts adn the part number situations are hectic.
+
+I need an interface that will allow me to create the catalog item off system so i can fine tune the entire product using ai assistance, then have it sync to Zoho and Wordpress.
+
+so i dont know which is master and which is slave between zoho and wordpress, there's also a multitude of actions that need to take place, ie syncing to meta and syncing to google. I need a separate local website to setup the catalog and have it push to both Zoho and Wordpress. M</blockquote>
+    <h1 class="follow">His follow-up</h1>
+    <blockquote class="words">1. I need to be able to paste in ebay links, and from those links you will need to retrieve the photos, list of supported cars, list of superceded part number etc.
+2. i also need the ai to research the part number and come up with all the variations of the part number (superceded part numbers, alternate manufacturer part numbers becuase VW number may be different to audi and porsche, skoda etc). This item needs to be able to pull down pictures and links from the evidence its providing.
+3. We need to auto generate titles to be SEO optimised so that when a customer searches google with any of the variations of a single part number, our store comes up first.
+4. This tool needs the ability to convert the images from the ebay format to the zoho format (png)
+5. This tool needs to allow me to select the hero picture
+
+all of the above needs to be able to be done on a single screen, so layout is important.</blockquote>
+    <p class="cutoff"><strong>Cut off at M.</strong> The last character of the first message is a cut-off “M”. Nothing after it was received. This plan does not guess the rest of that word. Spelling in both messages is unchanged.</p>
+    <p class="cutoff"><strong>The follow-up replaces one earlier line.</strong> Points 1–5 are answered in the one-screen, evidence, image, and title sections below. An earlier draft said AI may only repeat a number you already typed. That line is replaced. AI may propose cross-brand and superseded numbers. Each proposal must bring its link and its picture. A number with no evidence cannot be ticked. An unticked number cannot publish.</p>
+    <p class="meta">Catalog Studio · a proposal for Ernest · 3 November 2026</p>
+  </header>
+
+  <div class="banner" id="status">
+    <span class="tag">PROPOSAL</span>
+    <strong>Not approved.</strong> This does not change the website rebuild plan. The product spec and the theme task list stay as they are. You can say yes or no. No spend. No new plugin on the shop. Opening this file does nothing to the website.
+  </div>
+
+  <div class="answer" id="decision">
+    <strong>The decision.</strong> Four yes-or-no decisions are below. The website rebuild does not wait on them, and this proposal does not write the shop.
+    <p style="margin-top:10px">Neither Zoho nor WordPress is the place to build a VAG part. <strong>The local Catalog Studio is the authoring master.</strong> It runs on your PC. Zoho stays the stock, order, and invoice system. WordPress stays the shop. Google and Meta stay downstream of WordPress, through the plugins already on the live site.</p>
+    <p>You import the current catalog into the studio, fine-tune one item, and use AI only where you accept the draft. Publish then writes the shop content to WordPress and the stocked item to Zoho. It never writes a stock quantity. It never talks to Google or Meta itself.</p>
+  </div>
+
+  <div class="decisions" aria-label="Four decisions">
+    <article class="card">
+      <div class="n">1</div>
+      <h3>Accept the workstream</h3>
+      <p>Accept this as a separate piece of work. The theme launch does not wait on it. It does not write the shop until phase C7, and C7 stays blocked on you.</p>
+      <p>A no leaves the website rebuild exactly where it is. This proposal is not added to the spec or the task list.</p>
+    </article>
+    <article class="card">
+      <div class="n">2</div>
+      <h3>Accept who owns what</h3>
+      <p>The studio on your PC writes the part: numbers, fitment, words, photos, and the shelf price. Zoho owns stock and orders. WordPress owns the shop. Google and Meta stay on the plugins already installed.</p>
+      <p>The full table is in the next section.</p>
+    </article>
+    <article class="card">
+      <div class="n">3</div>
+      <h3>Accept the later price switch</h3>
+      <p>A live publish, later, requires you to turn off the connector’s price feed after we have read it. You are not asked to turn anything off today. The live map has not been read, so this page does not name the feed.</p>
+      <p>That switch is a change to the connector. Current rules say to leave the connector untouched. C7 cannot start without your yes to this.</p>
+    </article>
+    <article class="card">
+      <div class="n">4</div>
+      <h3>Accept the screen rules</h3>
+      <p>eBay is reached only through their official API. You create a free developer key on this PC. AI numbers stay only when the row has a link and a downloaded picture. The hero is a PNG under 7 MB. A photo is sent only after you tick that you can use it.</p>
+      <p>Google rank is not part of the build. This page does not contain a key, a password, or a price.</p>
+    </article>
+  </div>
+  <p class="tiny" style="margin:-6px 0 14px">No shop spend. No new plugin on the shop. No new image package. The Zoho practice login is the same kind of access already blocking the trade-price task (Plans 2.7b). eBay keys are a separate free developer application.</p>
+
+  <div class="warnbox" id="feed-warning">
+    <strong>The live Zoho feed map has not been read.</strong>
+    The shop runs CRM Perks Integration for WooCommerce and Zoho 1.6.2, plus Pro 1.5.8. The product spec says the working sync sends stock and prices toward the site, and orders toward Zoho. The plugin’s public page says it pushes shop orders and products into Zoho, with a field map that can be changed. Both can be true at the same time only for the feeds that are actually switched on. Those feeds are not in this project.
+    <p style="margin-top:8px;margin-bottom:0">Until a read-only export of the WooCommerce → Zoho feeds exists, nobody should add a second writer. This page does not say which way price travels today. It does not say which way stock travels today.</p>
+  </div>
+
+  <div class="stick">
+    <nav aria-label="On this page">
+      <a href="#request">His request</a>
+      <a href="#owns">Who owns what</a>
+      <a href="#screen">One screen</a>
+      <a href="#numbers">Part numbers</a>
+      <a href="#publish">Publish</a>
+      <a href="#database">Database</a>
+      <a href="#phases">Phases</a>
+      <a href="#reject">Will not do</a>
+    </nav>
+    <p class="stick-warn">Warning stays in force: the live Zoho feed map has not been read. Price direction and stock direction are unknown.</p>
+  </div>
+
+  <section id="owns">
+    <p class="sec-k">Section 2</p>
+    <h2>Who owns what</h2>
+    <p>One job each. The studio is where you build the part. The other systems keep the jobs they already have.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>What</th><th>Who is in charge</th><th>What the others do</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Part numbers, old numbers, which cars it fits, titles, descriptions, photos, categories, and the shelf price you intend</td>
+            <td>Catalog Studio, on this PC only</td>
+            <td>Sends a copy when you publish</td>
+          </tr>
+          <tr>
+            <td>How many you have in stock</td>
+            <td>Zoho Inventory</td>
+            <td>The connector already on the shop may still update shop stock. The studio can show the quantity. It never sends one.</td>
+          </tr>
+          <tr>
+            <td>Orders, invoices, a price you change on an invoice, and a trade customer’s last price</td>
+            <td>Zoho</td>
+            <td>The shop takes the order. The trade last price stays in its own list (<code>ydu_trade_prices</code>) and never replaces the shelf price. That split is already the product rule.</td>
+          </tr>
+          <tr>
+            <td>Shop pages, cart, checkout, web addresses, and the vehicle filter pages</td>
+            <td>WordPress / WooCommerce</td>
+            <td>Receives the product write-up only. It is not the place you build the part.</td>
+          </tr>
+          <tr>
+            <td>Google, Meta, Pinterest, TikTok</td>
+            <td>The channel plugins already installed on the shop</td>
+            <td>Google Listings &amp; Ads and Meta for WooCommerce read the shop product. The studio only shows whether the fields those plugins need are filled in. It does not call them. Pinterest and TikTok stay on whatever channel plugins are already there. This page does not add new ones.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Why the part is not built in Zoho</h3>
+    <p>Zoho Inventory stores one item: a name, one SKU, a rate, and stock. It does not store a Volkswagen / Audi / Skoda / Seat chain of old numbers, and it does not store the six fitment levels already on the shop: year, make, model, submodel, variant, and engine code.</p>
+    <p>Zoho’s own public help for their WooCommerce integration describes copying items from the shop into Zoho, then pushing stock from Zoho back to the shop. That describes a stock pipe. It does not describe an editor for a VAG part. That sentence is their public help. It is not a reading of your live feeds.</p>
+
+    <h3>Why the part is not built in WordPress</h3>
+    <p>The shop is the storefront. Pages, cart, checkout, and the filter addresses stay there. The live connector is the CRM Perks plugin named above. Its public page describes pushing shop orders and products into Zoho. The product spec describes stock and prices moving toward the site. Nobody in this project has opened the live field map. Until that read-only export exists, a second writer does not get added, and the shop admin does not become the AI workbench.</p>
+
+    <h3>Shelf price, as a target only</h3>
+    <div class="callout amber">
+      <strong>Target, after the feed map is read.</strong> Shelf price is written in the studio. On a publish that you have allowed, the same number is written to the shop’s regular price and to the Zoho item rate. After that, the product feed must stop copying price in either direction. Invoice line prices and trade last-price stay separate. The studio does not invent a sale price in the first version.
+      <p style="margin:8px 0 0">This target is blocked until the feed export says what the connector does today. If a feed already owns price, you turn that mapping off before the first live publish. Nothing is switched off by this page. The direction of today’s price feed is unknown.</p>
+    </div>
+
+    <div class="card">
+      <h3>Words used below</h3>
+      <ul>
+        <li><strong>SKU</strong> — the stock number already on the item. Publish does not replace it.</li>
+        <li><strong>Shelf price</strong> — the price you intend for the product page. No example price is in this proposal.</li>
+        <li><strong>Rate</strong> — Zoho’s price on that item. The target is the same number as the shelf price, only after you allow a publish.</li>
+        <li><strong>Hero</strong> — the one photo you click. That click is the only way a photo becomes the Zoho primary image and the shop’s featured image.</li>
+        <li><strong>Rights tick</strong> — your tick on a photo that says you can use it. Without that tick the photo stays on this PC.</li>
+        <li><strong>Also known as</strong> — the list of ticked numbers written on the product page, in the words a customer would type.</li>
+        <li><strong>Evidence</strong> — the link a number came from, and the picture downloaded from that page.</li>
+        <li><strong>Feed</strong> — a saved mapping inside the Zoho connector. Yours has not been read.</li>
+        <li><strong>Sandbox</strong> — a practice Zoho organisation. Not the live one.</li>
+        <li><strong>Receipt</strong> — a saved note of one publish attempt: where it went, whether it worked, and the error if it failed.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="screen">
+    <p class="sec-k">Section 3</p>
+    <h2>One screen</h2>
+    <p>All five jobs from the follow-up happen on one page. There is no wizard and no second page. On a wide desktop window, about 1440 pixels wide and 900 pixels tall, five regions are visible together: the paste bar, the photos, the evidence, the item, and the publish bar. On a narrower window the columns stack on that same page.</p>
+
+    <div class="screen" aria-label="One screen layout">
+      <div class="screen-bar">
+        <span>eBay link</span>
+        <span class="pill">paste the listing link</span>
+        <span class="pill go">Pull</span>
+        <span class="sp"></span>
+        <span>SKU</span>
+        <span class="pill">______</span>
+        <span>Price</span>
+        <span class="pill">______</span>
+      </div>
+      <div class="screen-cols">
+        <div>
+          <h3>Photos</h3>
+          <div class="ph hero-box">Hero — the photo you click</div>
+          <div class="film" aria-hidden="true">
+            <div class="ph thumb on">1</div>
+            <div class="ph thumb">2</div>
+            <div class="ph thumb">3</div>
+          </div>
+          <ul>
+            <li>Large hero, filmstrip under it.</li>
+            <li>Click a photo to set the hero.</li>
+            <li>PNG ready, or the reason it is not.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Evidence</h3>
+          <ul>
+            <li>Cars from the listing.</li>
+            <li>Superseded numbers from the listing.</li>
+            <li>AI cross-brand numbers.</li>
+            <li>Each row: number, brand, link, picture.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>The item</h3>
+          <ul>
+            <li>Numbers, each with a link, a picture, and a tick.</li>
+            <li>Fitment rows.</li>
+            <li>SEO title, editable.</li>
+            <li>Short description.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="screen-bar">
+        <span>Hero set</span>
+        <span>PNG under 7 MB</span>
+        <span>Unticked rows blocked</span>
+        <span class="sp"></span>
+        <span class="pill go">Publish</span>
+      </div>
+    </div>
+    <p class="tiny">The boxes above are the layout, not a live tool. The blank SKU and price marks are labels only. No price is filled in on this page.</p>
+
+    <h3>eBay link</h3>
+    <p>You paste an <code>ebay.com.au</code> or <code>ebay.com</code> item link. The studio reads the item number from the link. Photos and item specifics come from eBay’s Browse API. The car list is the compatibility table on the listing.</p>
+    <div class="callout">
+      <strong>Item 137092930759 is the test.</strong> The heading says this part fits 38 vehicles. The table has two pages. Columns are Make, Model, Year, Submodel, Variant, Engine, and Notes. Page 1 is Volkswagen Amarok, 2022 down to 2013. The studio walks page 1 and page 2 and stores each unique row. Unique means all seven cells together, so a 2022 Amarok and a 2013 Amarok are both kept. It is finished when 38 unique rows are stored. The first page alone is a fail. If the count and the rows disagree, the gap stays on screen and no cars are invented.
+    </div>
+    <p>The Variant cell on this listing holds the engine codes (<code>CNEA</code>, <code>CSHA</code>, <code>CNFB</code>). The Engine cell (<code>1968cc 132kW (Diesel)</code>) is size and power. That split is true for this header only.</p>
+    <div class="callout">
+      <strong>Each different header is its own template.</strong> Columns and cell contents change from part to part. The version is the header row, in order. A header already on file is extracted with that saved mapping. A header the studio has never stored pauses on that page: you map each column once, save, and the walk continues. The mapping is written to the studio database and to a template file at the same time. The next part with the same header does not ask again. A later page with a new header asks once, then, and is stored the same way. Every original cell is kept, so a mapping you fix later can be applied again without going back to eBay.
+    </div>
+    <h3>Vehicle catalog</h3>
+    <p>Each extracted vehicle is matched to the vehicle catalog. A match is the same year, make, model, submodel, variant, and engine code already on that list. Those six are the shop’s existing filters.</p>
+    <p>A vehicle that is not in the catalog is highlighted on the part screen. Confirm adds that path to the catalog. Delete takes it off this part. A highlighted row you have not confirmed is not published. A deleted row is not published.</p>
+    <p>The catalog is its own page. The reference order is year, make, model, submodel, variant, engine code. It starts from the vehicles already on the shop. The shop dropdowns are left as they are for a later session.</p>
+    <h3>Zoho and WordPress, side by side</h3>
+    <p>Another page pulls the Zoho item and the WordPress product for one SKU and shows them side by side. Zoho is the left column. WordPress is the right column. The SKU is the only key that joins them. Every field from both systems is a row, including WordPress product meta and Zoho custom fields. A value that matches is marked aligned. A value that differs is marked not aligned. A field that exists on only one side leaves the other cell blank. A SKU that exists in only one system shows an empty column. This page does not copy anything across and does not publish.</p>
+    <p>eBay’s item API can return this table in one response to the seller. A change dated 6 Oct 2026 limits that list, outside the US and Canada, to the seller or someone the seller authorises. This listing is on ebay.com.au. When the API returns only “38” and not the rows, the studio follows the listing’s own page 1, page 2, and any further page until the unique rows equal that heading.</p>
+    <div class="callout amber">
+      <strong>Locked catalogs stay locked.</strong> ETKA, Partslink24, and anything behind a login are not opened and not bypassed. If the evidence is a public page, the studio stores the link and downloads the public image. If it is behind a login, you type the number and attach a photo yourself.
+    </div>
+
+    <h3>AI research and evidence</h3>
+    <p>You give it the stocked number. It may propose other numbers: superseded numbers, and the Volkswagen, Audi, Porsche, Skoda, Seat, and Cupra equivalents, plus the aftermarket brand. Each proposal is a row on this same screen:</p>
+    <ul>
+      <li>the number and the brand</li>
+      <li>the page it came from (the link stays visible)</li>
+      <li>the picture downloaded from that evidence</li>
+      <li>a tick, off until you turn it on</li>
+    </ul>
+    <p>A row missing the link or the picture stays blocked. You cannot tick it. Unticked rows do not publish. You can still type a number you looked up yourself and attach one of the photos already on the screen.</p>
+
+    <h3>Numbers Google can crawl</h3>
+    <div class="callout">
+      <strong>Both numbers are plain text on the page Shopping and Search crawl.</strong> If you stock <code>03L198119B</code> and the same part was <code>03L198119F</code>, both exact strings are in the product HTML. Search reads that page. Shopping reads the title and description the Google plugin builds from that same page. A number that exists only in a photo, a script, or this studio does not count.
+    </div>
+    <p>Worked page: the title reads <code>Oil cooler 03L198119B replaces 03L198119F</code>. Any ticked number that does not fit in the 150-character title is repeated in the first line under the title. The feed receives that title and that line. One product, one address.</p>
+    <p>Before publish, the screen lists every ticked number and marks it “on the page” or “missing”. Publish is refused while any ticked number is missing from the page or from the Shopping text.</p>
+
+    <h3>Photos to PNG</h3>
+    <p>eBay serves JPEG or WebP. Zoho Inventory accepts gif, png, jpeg, jpg, bmp, and webp, up to 7 MB per file, and can set the primary image on upload. You asked for PNG. The studio converts the photo you clicked as hero, and any gallery photo you keep, to PNG with PHP GD. PHP GD is already on the local WordPress PHP. No new image package.</p>
+    <p>If the PNG is over 7 MB it is scaled down until it is under 7 MB, and it stays a PNG. The publish bar shows “PNG ready” or the reason it is not. Zoho receives the hero as the primary image. WordPress receives the same hero as the featured image. The other photos you keep are the gallery.</p>
+    <div class="callout amber">
+      <strong>A photo is sent only after you tick that you can use it.</strong> A photo from someone else’s listing is stored as evidence either way. It is sent to Zoho and to the shop only after you tick “I can use this photo” on that picture. Your own listing photos are the normal case for that tick. The hero is the picture you click. That click is the only way a photo becomes the Zoho primary image and the shop featured image.
+    </div>
+  </section>
+
+  <section id="numbers">
+    <p class="sec-k">Section 4</p>
+    <h2>Part numbers</h2>
+    <p>One stocked item. Many numbers. The number you invoice stays the SKU you already have. Import does not renumber the 317 products named in this proposal. Phase C0 still takes a fresh product file, one row per product you actually have. This page does not recount the shop.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Field</th><th>In the shop</th><th>Rule</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Canonical SKU</td>
+            <td>The stock number you already invoice</td>
+            <td>Must match the shop SKU and the Zoho SKU exactly, including capitals. A publish never rewrites it.</td>
+          </tr>
+          <tr>
+            <td>Alias</td>
+            <td>Another number customers or suppliers use for that same stocked item</td>
+            <td>Many aliases can sit on one item. They are not a second stock item. Each proposed number needs a link and a downloaded picture before you can tick it.</td>
+          </tr>
+          <tr>
+            <td>Kind</td>
+            <td>What sort of number it is</td>
+            <td>Only these: OEM, aftermarket, superseded, replaces, barcode. Stored as <code>oem</code>, <code>aftermarket</code>, <code>superseded</code>, <code>replaces</code>, <code>barcode</code>.</td>
+          </tr>
+          <tr>
+            <td>Brand</td>
+            <td>Whose number it is</td>
+            <td>Volkswagen, Audi, Porsche, Skoda, Seat, Cupra, or the aftermarket brand.</td>
+          </tr>
+          <tr>
+            <td>Raw</td>
+            <td>As printed</td>
+            <td>Spaces and dashes stay. This is what a person would read off the box.</td>
+          </tr>
+          <tr>
+            <td>Normalized</td>
+            <td>The matching key</td>
+            <td>Capitals, with spaces and hyphens removed. <code>06L 145 612 L</code> and <code>06L145612L</code> are the same key. That pair is an example of the rule, not a claim about a named product.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="grid3">
+      <article class="card">
+        <h3>A clash waits for you</h3>
+        <p>The same cleaned number is not meant to sit on two stocked items. The studio flags the clash. It does not merge the two items by itself.</p>
+      </article>
+      <article class="card">
+        <h3>Old numbers stay findable</h3>
+        <p>A superseded number stays on the item so a search can still find it. A second stock item is created only when you still stock both the old part and the new part.</p>
+      </article>
+      <article class="card">
+        <h3>A number needs evidence</h3>
+        <p>AI may propose Volkswagen, Audi, Porsche, Skoda, Seat, Cupra, and superseded numbers. Every proposed number must show the link it came from and a picture saved from that evidence. You tick it. A row with no link or no picture cannot be ticked. Unticked rows do not publish.</p>
+      </article>
+    </div>
+
+    <div class="callout amber">
+      <strong>Fitment stays the shop’s flat filters.</strong> The studio stores real rows: year, make, model, submodel, variant, engine code. Publish turns those rows into the existing shop attributes (<code>pa_year_alt</code>, <code>pa_make</code>, <code>pa_model</code>, <code>pa_submodel</code>, <code>pa_variant</code>, <code>pa_engine_code</code>). No new vehicle tree. That matches your decision of 13 June 2026.
+      <p style="margin:8px 0 0">Known limit: a part that fits two makes can leak odd combinations in the finder. A Volkswagen row and an Audi row on the same part can pair the wrong make with the wrong model. That leak already exists on the live site. The studio must show it before publish. It does not fix it by inventing a tree.</p>
+    </div>
+  </section>
+
+  <section id="publish">
+    <p class="sec-k">Section 5</p>
+    <h2>What Publish does</h2>
+    <p>Publish is one confirmed action. You start it. It does not run by itself. It finds the item by SKU. Run it again and it updates that same item. It does not create a second copy.</p>
+    <p>The full sequence, once you have allowed every step, runs in this order. Early phases stop earlier. The live shop is not in the early phases.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Step</th><th>What happens</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1. Check</td>
+            <td>SKU present. At least one number. A shelf price. A category. A hero PNG under 7 MB with the rights tick. Every number that is publishing is ticked and holds a link and a picture. An SEO title of 150 characters or fewer. And either fitment rows, or an explicit mark that the part is universal.</td>
+          </tr>
+          <tr>
+            <td>2. Zoho item</td>
+            <td>Create or update the item: name, SKU, rate, short description. Upload the hero PNG as the primary image, and the kept PNGs as the rest. Stock, reorder level, and opening stock are not sent. A payload with a stock field is refused. A hero that is not a PNG is refused. The practice organisation comes before any live Zoho call.</td>
+          </tr>
+          <tr>
+            <td>3. Shop product</td>
+            <td>Create or update: the SEO title, the also-known-as list in the description, the images, categories, brand, the primary number as the manufacturer part number, a barcode only if you entered one, and the compiled vehicle filters. Stock is not sent. Sale price is not sent. A photo without the rights tick is not uploaded.</td>
+          </tr>
+          <tr>
+            <td>4. Receipt</td>
+            <td>Save the Zoho item id, the shop product id, fingerprints of the fields, the time, and any error text. The id fields live on the item. The receipt row stores where it went and whether it worked. See the database section.</td>
+          </tr>
+          <tr>
+            <td>5. Stop</td>
+            <td>Google Listings &amp; Ads and Meta for WooCommerce, already on the live shop, read the shop product on their own schedule. The studio shows a readiness line: photo, price, availability, brand, and either a barcode or a manufacturer part number plus brand. VAG parts often have no barcode. A missing barcode is allowed when manufacturer part number and brand are set. The studio does not call Google or Meta.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>What it refuses</h3>
+    <ul class="no">
+      <li><strong>No stock write.</strong> No quantity, no reorder level, no opening stock. A Zoho payload that contains a stock field is refused.</li>
+      <li><strong>No Google or Meta call.</strong> No file uploaded to those channels either. Readiness is a checklist on screen only. Rank is not a deliverable.</li>
+      <li><strong>Not installed on the live site.</strong> Not on ydu.com.au. Not on test.ydu.com.au. The script that packs the theme (<code>tools/package-zips.ps1</code>) does not include this app.</li>
+      <li><strong>No unticked number.</strong> A row with no link or no picture cannot be ticked. An unticked row does not publish.</li>
+      <li><strong>No photo without the rights tick.</strong> Evidence can sit on this PC. It is not sent to Zoho or the shop until you tick that you can use it. The hero must be a PNG under 7 MB.</li>
+      <li><strong>No silent publish.</strong> Auto-publish is refused. Each run is a confirmed action.</li>
+      <li><strong>No sale price invented by the studio</strong> in the first version, and no trade last-price sent as the shelf price.</li>
+    </ul>
+
+    <h3>Where a publish is allowed to go</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th></th><th>Practice shop on this PC</th><th>Zoho practice organisation</th><th>Live shop and live Zoho</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Phase</td>
+            <td>C3</td>
+            <td>C4</td>
+            <td>C7, blocked on your approval</td>
+          </tr>
+          <tr>
+            <td>Photos</td>
+            <td>Hero PNG and kept PNGs, and only after the rights tick. Local stock count stays as it was.</td>
+            <td>Hero PNG is the primary image. Refused if a stock field is present or the hero is not a PNG. Live Zoho receives no call.</td>
+            <td>Not sent until you approve C7. Stock stays unchanged.</td>
+          </tr>
+          <tr>
+            <td>Google and Meta</td>
+            <td>Not called</td>
+            <td>Not called</td>
+            <td>Not called</td>
+          </tr>
+          <tr>
+            <td>Installed on the website</td>
+            <td>No. It talks to the practice shop from your PC.</td>
+            <td>No</td>
+            <td>No. The app stays off the live site and off the test site.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout red">
+      <strong>A Zoho call from this PC hits the live organisation</strong> even when the connector on the test site is switched off. That is why C4 uses a sandbox, and why C7 waits for you. First publishes go to the local practice shop and, for Zoho, a sandbox organisation only.
+    </div>
+
+    <h3>Import and export</h3>
+    <p>This is the “off system” workshop you asked for: bring the catalog in, edit it, send a copy out.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Direction</th><th>First version</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>In</td>
+            <td>A shop product export. WebToffee Product Import Export 2.6.4 is already on the live site. Zoho items can come in once the practice-organisation login exists. Match on SKU. A row that matches nothing is a report. It is not quietly created as a new product.</td>
+          </tr>
+          <tr>
+            <td>Out</td>
+            <td>A studio file you can import again, and a shop-shaped spreadsheet the existing importer can load if the direct connection is down.</td>
+          </tr>
+          <tr>
+            <td>Not in the first version</td>
+            <td>A file aimed straight at Google or Meta. Those channels already have plugins.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tiny">The June product file (<code>data/export/products-wc-v3.json</code>) is not in the project now. Import will not start from memory of that export. It needs the fresh read-only pull in phase C0.</p>
+  </section>
+
+  <section id="database">
+    <p class="sec-k">Section 6 · Database</p>
+    <div class="db-hero">
+      <h2>Database</h2>
+      <p>One new file, on this PC only. It is not uploaded. It is not part of the theme. It is not part of the fitment plugin.</p>
+      <span class="huge">There is no change to the WordPress shop database in this proposal.</span>
+    </div>
+
+    <div class="callout green">
+      <strong>Shop database: untouched.</strong> No new WordPress tables. No new <code>pa_*</code> vehicle attributes. No change to trade prices (<code>ydu_trade_prices</code>). No migration run against the shop. No copy of any database over the live shop. The test site and the live site do not receive this file.
+    </div>
+
+    <p>The new store is a <strong>SQLite file</strong>: a single database file that lives on this machine. SQLite is not the shop. Closing the studio does not close the website. The lists below are closed. Status words, number kinds, and photo roles are only the ones named here. There is no extra vocabulary stored in WordPress.</p>
+
+    <h3><code>items</code> — one stocked thing you sell</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Column</th><th>What you would call it</th><th>Rule in this proposal</th></tr></thead>
+        <tbody>
+          <tr><td><code>id</code></td><td>The row’s own number</td><td>Primary key. The studio assigns it.</td></tr>
+          <tr><td><code>canonical_sku</code></td><td>The SKU</td><td>Required. Unique. Never rewritten by a publish. Capitals matter.</td></tr>
+          <tr><td><code>name</code></td><td>Product name</td><td>The name sent to Zoho with the item.</td></tr>
+          <tr><td><code>seo_title</code></td><td>SEO title</td><td>The title generated on the one screen. You can edit it. Publish refuses a title longer than 150 characters. It leads with the primary number.</td></tr>
+          <tr><td><code>primary_alias_id</code></td><td>The primary number</td><td>Points at the alias that leads the SEO title. May be empty until you mark one.</td></tr>
+          <tr><td><code>short_description</code></td><td>Short text</td><td>Sent to Zoho. Also the short shop text.</td></tr>
+          <tr><td><code>long_description</code></td><td>Long text</td><td>The longer shop text. Publish writes the also-known-as list into the shop description. The Zoho step sends the short text.</td></tr>
+          <tr><td><code>shelf_price</code></td><td>Shelf price</td><td>A number. The target is to write this same number to the shop regular price and the Zoho rate. No sample amount is set here.</td></tr>
+          <tr><td><code>brand</code></td><td>Brand</td><td>Vehicle brand or aftermarket brand.</td></tr>
+          <tr><td><code>mpn</code></td><td>Manufacturer part number</td><td>The primary number Google Merchant receives. This proposal does not mark the column required in the table list. The readiness line wants a manufacturer number or a barcode.</td></tr>
+          <tr><td><code>gtin</code></td><td>Barcode</td><td>May be empty. Many VAG parts have none. Empty is allowed when manufacturer part number and brand are set.</td></tr>
+          <tr><td><code>woo_product_id</code></td><td>Shop product id</td><td>Empty until a publish has a shop id to store.</td></tr>
+          <tr><td><code>zoho_item_id</code></td><td>Zoho item id</td><td>Empty until a Zoho publish has an id to store.</td></tr>
+          <tr><td><code>status</code></td><td>Where the draft is</td><td>Only <code>draft</code>, <code>ready</code>, <code>published</code>, or <code>error</code>.</td></tr>
+          <tr><td><code>universal_part</code></td><td>Fits without a vehicle row</td><td>Whole number. Defaults to 0. You set it when you mean the part is universal.</td></tr>
+          <tr><td><code>updated_at</code></td><td>Last change</td><td>When this row was last saved.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3><code>aliases</code> — every other number</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Column</th><th>What you would call it</th><th>Rule in this proposal</th></tr></thead>
+        <tbody>
+          <tr><td><code>id</code></td><td>Row number</td><td>Primary key.</td></tr>
+          <tr><td><code>item_id</code></td><td>Which stocked item</td><td>Points at <code>items</code>. Required link.</td></tr>
+          <tr><td><code>kind</code></td><td>Sort of number</td><td><code>oem</code>, <code>aftermarket</code>, <code>superseded</code>, <code>replaces</code>, <code>barcode</code>.</td></tr>
+          <tr><td><code>brand</code></td><td>Whose number</td><td>The brand printed with that number.</td></tr>
+          <tr><td><code>raw</code></td><td>As printed</td><td>Spaces and dashes kept.</td></tr>
+          <tr><td><code>normalized</code></td><td>Matching key</td><td>Uppercase, spaces and hyphens removed.</td></tr>
+          <tr><td><code>source</code></td><td>Who supplied it</td><td>Only <code>import</code>, <code>user</code>, <code>ebay</code>, or <code>ai</code>.</td></tr>
+          <tr><td><code>evidence_url</code></td><td>The evidence link</td><td>The page the number came from. The link stays visible. A row with no link cannot be ticked.</td></tr>
+          <tr><td><code>evidence_media_id</code></td><td>The evidence picture</td><td>Points at a row in <code>media</code>. May be empty while you are still drafting. A row with no picture cannot be ticked.</td></tr>
+          <tr><td><code>confirmed</code></td><td>Your tick</td><td>Stored as a whole number. Off until you turn it on. An unticked number does not publish.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tiny">The same item cannot store the same kind, brand, and cleaned number twice. That rule is per item. It does not, by itself, stop two different items from carrying the same cleaned number. The studio flags that clash on screen. It does not merge them.</p>
+
+    <h3><code>fitment_rows</code> — cars, before they become filters</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Column</th><th>What you would call it</th><th>Rule in this proposal</th></tr></thead>
+        <tbody>
+          <tr><td><code>id</code></td><td>Row number</td><td>Primary key.</td></tr>
+          <tr><td><code>item_id</code></td><td>Which stocked item</td><td>Points at <code>items</code>.</td></tr>
+          <tr><td><code>template_id</code></td><td>Which table version</td><td>Points at the header template used for this page. Shop fields are filled from that template.</td></tr>
+          <tr><td><code>page_number</code></td><td>Which page</td><td>The compatibility page this row was read from.</td></tr>
+          <tr><td><code>raw_json</code></td><td>The cells as read</td><td>Every column, under the header it came with. Kept so a corrected template can be run again.</td></tr>
+          <tr><td><code>year</code></td><td>Year</td><td>Filled only when the template points a column at year. Becomes the existing year filter on publish.</td></tr>
+          <tr><td><code>make</code></td><td>Make</td><td>Filled from the template. Compiled into the existing make filter.</td></tr>
+          <tr><td><code>model</code></td><td>Model</td><td>Filled from the template.</td></tr>
+          <tr><td><code>submodel</code></td><td>Submodel</td><td>Filled from the template.</td></tr>
+          <tr><td><code>variant</code></td><td>Variant</td><td>Filled from the template.</td></tr>
+          <tr><td><code>engine_display</code></td><td>Engine as printed</td><td>Size and power when the template says that column is the engine display. Not the engine code.</td></tr>
+          <tr><td><code>engine_code</code></td><td>Engine code</td><td>Filled from the column the template marks as the code source.</td></tr>
+          <tr><td><code>notes</code></td><td>Notes</td><td>Filled from the template. Blank cells stay blank.</td></tr>
+          <tr><td><code>source</code></td><td>Who supplied the row</td><td><code>ebay-table</code>, <code>user</code>, or <code>ai</code>.</td></tr>
+          <tr><td><code>evidence_url</code></td><td>The evidence link</td><td>The listing this row came from.</td></tr>
+          <tr><td><code>ebay_item_id</code></td><td>eBay item number</td><td>The item id from the pasted URL.</td></tr>
+          <tr><td><code>confirmed</code></td><td>Your tick</td><td>An unticked row does not publish. Rows from an unsaved mapping stay unticked.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Two more local tables hold the versions. <code>table_templates</code> is one header row: a fingerprint, a label, and a sample row. <code>template_columns</code> is one source column: its position, the shop field it fills, and whether the cell is taken whole or searched for engine codes inside the text. Saving on screen writes both tables and the file <code>data/table-templates.json</code>.</p>
+
+    <h3><code>sources</code> — one pasted eBay listing</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Column</th><th>What you would call it</th><th>Rule in this proposal</th></tr></thead>
+        <tbody>
+          <tr><td><code>id</code></td><td>Row number</td><td>Primary key.</td></tr>
+          <tr><td><code>item_id</code></td><td>Which stocked item</td><td>Points at <code>items</code>.</td></tr>
+          <tr><td><code>url</code></td><td>The link you pasted</td><td>The eBay listing address. Kept with the item.</td></tr>
+          <tr><td><code>ebay_legacy_id</code></td><td>The eBay item number</td><td>Read from the link. Used for the official API calls. Not a password and not a key.</td></tr>
+          <tr><td><code>fetched_at</code></td><td>When it was pulled</td><td>The time of that pull.</td></tr>
+          <tr><td><code>raw_path</code></td><td>The saved reply</td><td>A file on this PC holding what eBay returned. It is not uploaded to the shop.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3><code>media</code> — picture files on this PC</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Column</th><th>What you would call it</th><th>Rule in this proposal</th></tr></thead>
+        <tbody>
+          <tr><td><code>id</code></td><td>Row number</td><td>Primary key.</td></tr>
+          <tr><td><code>item_id</code></td><td>Which stocked item</td><td>Points at <code>items</code>.</td></tr>
+          <tr><td><code>source_url</code></td><td>Where the file came from</td><td>The address the picture was downloaded from, when it has one.</td></tr>
+          <tr><td><code>original_path</code></td><td>The file as downloaded</td><td>JPEG or WebP from eBay, saved on this PC.</td></tr>
+          <tr><td><code>png_path</code></td><td>The PNG</td><td>The converted file. This is what can be sent, after the rights tick, and only if it is under 7 MB.</td></tr>
+          <tr><td><code>bytes</code></td><td>File size</td><td>Whole number. Used to show whether the PNG is under 7 MB.</td></tr>
+          <tr><td><code>is_hero</code></td><td>The photo you clicked</td><td>Whole number. Defaults to 0. Only one hero per item. That click marks the Zoho primary image and the shop featured image.</td></tr>
+          <tr><td><code>rights_confirmed</code></td><td>Your rights tick</td><td>Whole number. Defaults to 0. A photo is sent only after this is ticked.</td></tr>
+          <tr><td><code>role</code></td><td>How the photo is used</td><td>Only <code>hero</code>, <code>gallery</code>, or <code>evidence</code>.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3><code>receipts</code> — one row per publish attempt</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Column</th><th>What you would call it</th><th>Rule in this proposal</th></tr></thead>
+        <tbody>
+          <tr><td><code>id</code></td><td>Row number</td><td>Primary key.</td></tr>
+          <tr><td><code>item_id</code></td><td>Which stocked item</td><td>Points at <code>items</code>.</td></tr>
+          <tr><td><code>target</code></td><td>Where it was sent</td><td>Only <code>woo-local</code>, <code>woo-live</code>, <code>zoho-sandbox</code>, <code>zoho-live</code>. The live labels exist in the list. This proposal does not use them until you approve C7.</td></tr>
+          <tr><td><code>ok</code></td><td>Did it work</td><td>A whole number. Success or failure of that attempt.</td></tr>
+          <tr><td><code>request_hash</code></td><td>Fingerprint of what was sent</td><td>So a repeat can be compared with the last attempt.</td></tr>
+          <tr><td><code>response_excerpt</code></td><td>Short reply or error</td><td>A short extract of the reply, or the error text.</td></tr>
+          <tr><td><code>created_at</code></td><td>When</td><td>Time of that attempt.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>Indexes</h3>
+      <ul>
+        <li><code>items.canonical_sku</code> — find the stocked item by its SKU. The SKU is also unique.</li>
+        <li><code>aliases.normalized</code> — find a cleaned number quickly.</li>
+        <li><code>receipts.item_id</code> — list every publish attempt for one item.</li>
+        <li>One hero per item — only one <code>media.is_hero = 1</code> for each stocked item.</li>
+      </ul>
+    </div>
+
+    <div class="callout amber">
+      <strong>Publish asks for a shop category. These tables do not add a category column.</strong> This page does not invent one. The build has to make that check explicit before a real publish.
+      <p style="margin:8px 0 0">Publish also says the receipt saves the Zoho id, the shop id, field fingerprints, the time, and the error. In the table list, the two ids sit on the item. The receipt stores the target, the success flag, one request fingerprint, a short reply, and the time. This page does not add extra receipt columns.</p>
+    </div>
+  </section>
+
+  <section id="phases">
+    <p class="sec-k">Section 7</p>
+    <h2>Phases</h2>
+    <p>Theme phases 0–5 stay as they are. This work does not hold up the website launch. None of these phases start unless you accept the workstream. All of them are proposed. None are started. The one screen is the finished tool. The phases below build it in pieces. C7 stays blocked even after a yes to the workstream, until you approve the live exception.</p>
+    <p>The first job after a yes is C0 only. Read-only. No publish code in that task.</p>
+
+    <article class="phase">
+      <div class="phase-h">
+        <span class="num">C0</span>
+        <h3>Read the feed map and take a fresh product file</h3>
+        <span class="st core">Required</span>
+        <span class="st todo">Proposed</span>
+      </div>
+      <div class="phase-b">
+        <p><strong>Done when.</strong> A note in the docs lists each WooCommerce → Zoho feed, its direction, and whether price or stock is mapped. The product file has one row per current product.</p>
+        <p>No writes. This is the step that replaces the warning with a fact. Until it exists, price direction stays unknown. This page does not guess which way price travels today.</p>
+        <p class="tiny">Waits on nothing. Starts only if you accept the workstream.</p>
+      </div>
+    </article>
+
+    <article class="phase">
+      <div class="phase-h">
+        <span class="num">C1</span>
+        <h3>Studio on this PC, with numbers and a clash report</h3>
+        <span class="st core">Required</span>
+        <span class="st todo">Proposed</span>
+      </div>
+      <div class="phase-b">
+        <p><strong>Done when.</strong> A stocked item opens with its SKU unchanged and its numbers listed. Two items that share a cleaned number are flagged. Nothing is written over the network.</p>
+        <p class="tiny">Waits on C0.</p>
+      </div>
+    </article>
+
+    <article class="phase">
+      <div class="phase-h">
+        <span class="num">C2</span>
+        <h3>One screen: paste bar, photos, evidence, the item, publish bar</h3>
+        <span class="st core">Required</span>
+        <span class="st todo">Proposed</span>
+      </div>
+      <div class="phase-b">
+        <p><strong>Done when.</strong> Those five regions are visible together on a wide desktop, about 1440 by 900. A click on a thumbnail sets the hero. A narrower window stacks the columns on the same page. There is no second page and no wizard.</p>
+        <p class="tiny">Waits on C1. eBay pull, AI rows, PNG conversion, and the SEO title are the phases after this shell.</p>
+      </div>
+    </article>
+
+    <article class="phase">
+      <div class="phase-h">
+        <span class="num">C8</span>
+        <h3>Paste an eBay link. Official API only</h3>
+        <span class="st core">Required</span>
+        <span class="st todo">Proposed</span>
+      </div>
+      <div class="phase-b">
+        <p><strong>Done when.</strong> Photos land in the filmstrip. Superseded specifics become rows with that listing’s link and photo. Cars from the compatibility table are labelled as the table. Cars only found in the description are labelled as text. The Browse API is not used as a full car list. No browser workaround.</p>
+        <p class="tiny">Waits on C2.</p>
+      </div>
+    </article>
+
+    <article class="phase">
+      <div class="phase-h">
+        <span class="num">C9</span>
+        <h3>AI numbers on the same screen, each with evidence</h3>
+        <span class="st core">Required</span>
+        <span class="st todo">Proposed</span>
+      </div>
+      <div class="phase-b">
+        <p><strong>Done when.</strong> AI can propose Volkswagen, Audi, Porsche, Skoda, Seat, Cupra, and superseded numbers. Each row shows a link and a downloaded picture. A row missing either cannot be ticked. An unticked row cannot publish.</p>
+        <p class="tiny">Waits on C2. Does not open ETKA, Partslink24, or any logged-in catalog.</p>
+      </div>
+    </article>
+
+    <article class="phase">
+      <div class="phase-h">
+        <span class="num">C10</span>
+        <h3>Convert kept photos to PNG, under 7 MB</h3>
+        <span class="st core">Required</span>
+        <span class="st todo">Proposed</span>
+      </div>
+      <div class="phase-b">
+        <p><strong>Done when.</strong> PHP GD converts the kept photos. The hero you clicked is the PNG marked primary. The publish bar shows ready, or the reason it is not. No new image package. Files over 7 MB are scaled down and stay PNG.</p>
+        <p class="tiny">Waits on C8.</p>
+      </div>
+    </article>
+
+    <article class="phase">
+      <div class="phase-h">
+        <span class="num">C11</span>
+        <h3>SEO title, and the also-known-as list</h3>
+        <span class="st core">Required</span>
+        <span class="st todo">Proposed</span>
+      </div>
+      <div class="phase-b">
+        <p><strong>Done when.</strong> Stocking <code>03L198119B</code> with ticked <code>03L198119F</code>, the page source contains both exact strings, and the Shopping title or description contains both. A number that appears only in a photo or a script fails.</p>
+        <p class="tiny">Waits on C9.</p>
+      </div>
+    </article>
+
+    <article class="phase">
+      <div class="phase-h">
+        <span class="num">C3</span>
+        <h3>Publish to the practice shop on this PC</h3>
+        <span class="st core">Required</span>
+        <span class="st todo">Proposed</span>
+      </div>
+      <div class="phase-b">
+        <p><strong>Done when.</strong> The practice shop receives the SEO title, the also-known-as list, the hero PNG, the gallery PNGs, and fitment compiled into the existing filters. Stock and sale price are not sent. Publishing again updates the same SKU. The practice shop’s stock quantity is unchanged. A photo without the rights tick is not uploaded.</p>
+        <p class="tiny">Waits on C2, C10, and C11. Does not call Zoho. Does not touch ydu.com.au.</p>
+      </div>
+    </article>
+
+    <article class="phase">
+      <div class="phase-h">
+        <span class="num">C4</span>
+        <h3>Zoho practice organisation: name, SKU, rate, short text, hero PNG</h3>
+        <span class="st todo">Recommended</span>
+        <span class="st todo">Proposed</span>
+      </div>
+      <div class="phase-b">
+        <p><strong>Done when.</strong> The sandbox item matches the SKU, the rate, and the primary image. If the payload contains a stock field, the send is refused. If the hero is not a PNG, the send is refused. The live Zoho organisation receives zero calls.</p>
+        <p class="tiny">Waits on C0 and C3. The sandbox login is the same class of access already blocking the trade-price Zoho task (Plans 2.7b). This proposal does not create a new kind of login, and it does not spend money. No password is written here.</p>
+      </div>
+    </article>
+
+    <article class="phase">
+      <div class="phase-h">
+        <span class="num">C5</span>
+        <h3>Readiness line for the plugins you already have</h3>
+        <span class="st todo">Recommended</span>
+        <span class="st todo">Proposed</span>
+      </div>
+      <div class="phase-b">
+        <p><strong>Done when.</strong> Each item shows pass or fail for photo, price, brand, and manufacturer number or barcode. No call to Google or Meta.</p>
+        <p class="tiny">Waits on C3.</p>
+      </div>
+    </article>
+
+    <article class="phase">
+      <div class="phase-h">
+        <span class="num">C6</span>
+        <h3>Export a studio file and a shop spreadsheet</h3>
+        <span class="st todo">Recommended</span>
+        <span class="st todo">Proposed</span>
+      </div>
+      <div class="phase-b">
+        <p><strong>Done when.</strong> Round trip: export, import again, same SKUs and same extra numbers.</p>
+        <p class="tiny">Waits on C1.</p>
+      </div>
+    </article>
+
+    <article class="phase blocked">
+      <div class="phase-h">
+        <span class="num">C7</span>
+        <h3>One existing product on the live shop</h3>
+        <span class="st blocked">Blocked on your approval</span>
+      </div>
+      <div class="phase-b">
+        <p><strong>Done when.</strong> You have approved the feed-map change and the exception to the rule against catalog edits. One existing SKU is published. A receipt is stored. Stock is unchanged. If it is wrong, the way back is to publish the previous studio file again.</p>
+        <p>Blocked until that approval. Accepting the workstream does not unlock C7. Turning off the price feed is not done in C0. C0 only shows which feed owns the shelf price, once the map has been read. You turn that mapping off before this phase runs. This page still does not say which feed that is.</p>
+        <p class="tiny">Waits on C4, C5, and you.</p>
+      </div>
+    </article>
+
+    <h3>Why C7 is a separate yes</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th></th><th>Blocker</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Current rules forbid catalog edits on the live shop and on the test clone. C7 would be a named exception you approve. It is not a side effect of launching the new theme.</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>A Zoho call from this PC hits the live organisation even when the test-site connector is off. C4 uses a sandbox. C7 waits for you.</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Compiling fitment into the existing filters changes which cars a part shows under. There is no product file in the project to compare against, and parts that fit more than one make already leak odd combinations. C3 proves the conversion on the practice shop first.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tiny">Not in these phases: shop search of the extra numbers, a picture of supersession chains, and kits. Those are optional later ideas, not part of this yes.</p>
+  </section>
+
+  <section id="reject">
+    <p class="sec-k">Section 8</p>
+    <h2>What we will not do</h2>
+    <ul class="no">
+      <li>Use Zoho, or the WordPress admin, as the place an AI edits the catalog.</li>
+      <li>Install the studio on ydu.com.au or on test.ydu.com.au.</li>
+      <li>Send stock, opening stock, or a trade customer’s last price.</li>
+      <li>Call Google or Meta directly in the first version.</li>
+      <li>Publish by itself, without a confirmed action from you.</li>
+      <li>Promise that the shop ranks first on Google.</li>
+      <li>Stuff every part-number spelling into the title.</li>
+      <li>Open ETKA, Partslink24, or any logged-in catalog.</li>
+      <li>Work around an eBay block page in a browser.</li>
+      <li>Send another seller’s photo to Zoho or the shop without the rights tick.</li>
+      <li>Add a new vehicle category tree.</li>
+      <li>Copy any database over the live shop.</li>
+      <li>Fold this into the theme launch. The new theme still does not import a catalog.</li>
+    </ul>
+
+    <div class="answer">
+      <strong>Yes or no.</strong> Saying nothing changes nothing. A yes starts phase C0 only: read the feed map, take a fresh product file, write nothing. It does not publish, it does not turn a feed off, and it does not change the website rebuild. C7 stays blocked on a later approval.
+    </div>
+  </section>
+
+  <footer>
+    <p>3 November 2026 · Proposal only · Not approved · Not in the product spec · Not on the theme task list</p>
+    <p>Source: <a href="changes/2026-11-03-catalog-studio.md">changes/2026-11-03-catalog-studio.md</a> · <a href="#request">Back to his request</a></p>
+  </footer>
+</div>
+<script>
+(function () {
+  var links = [].slice.call(document.querySelectorAll('.stick a'));
+  var items = links.map(function (a) {
+    return { a: a, el: document.getElementById(a.getAttribute('href').slice(1)) };
+  }).filter(function (item) { return item.el; });
+  function mark() {
+    var y = window.scrollY + 230;
+    var current = items[0];
+    items.forEach(function (item) {
+      if (item.el.offsetTop <= y) current = item;
+    });
+    items.forEach(function (item) {
+      if (item === current) item.a.setAttribute('aria-current', 'true');
+      else item.a.removeAttribute('aria-current');
+    });
+  }
+  document.addEventListener('scroll', mark, { passive: true });
+  mark();
+})();
+</script>
+</body>
+</html>

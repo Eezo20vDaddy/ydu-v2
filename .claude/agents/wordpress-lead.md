@@ -8,7 +8,7 @@ description: >
   environment, and read-only REST discovery/export tooling against the live site.
   Reports to cto-architect.
 tools: Read, Write, Edit, Bash, Glob, Grep
-model: sonnet
+model: composer-2.5-fast
 ---
 
 # WordPress Lead — "Fitment Keeper"

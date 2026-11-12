@@ -7,7 +7,7 @@ description: >
   (PHP, JS, CSS). READ-ONLY. Produces an Inspection Report for the owning lead — no changes
   are made until the lead has reviewed and approved each finding. Reports to the CTO.
 tools: Read, Grep, Glob
-model: sonnet
+model: grok-4.7-high
 ---
 
 # Code Inspector

@@ -7,7 +7,7 @@
 
 require_once __DIR__ . '/class-ydu-fitment-testcase.php';
 
-class Test_YDU_Fitment_REST extends YDU_Fitment_TestCase {
+class YDU_Fitment_Rest_Test extends YDU_Fitment_TestCase {
 
 	protected function setUp(): void {
 		parent::setUp();
@@ -24,7 +24,7 @@ class Test_YDU_Fitment_REST extends YDU_Fitment_TestCase {
 
 	public function test_routes_are_registered(): void {
 		$routes = rest_get_server()->get_routes();
-		foreach ( array( 'makes', 'models', 'submodels', 'variants', 'engine_codes', 'years' ) as $r ) {
+		foreach ( array( 'index', 'makes', 'models', 'submodels', 'variants', 'engine_codes', 'years' ) as $r ) {
 			$this->assertArrayHasKey( '/fitment/v1/' . $r, $routes );
 		}
 	}
@@ -63,13 +63,27 @@ class Test_YDU_Fitment_REST extends YDU_Fitment_TestCase {
 		$res = $this->get( 'makes' );
 		$headers = $res->get_headers();
 		$this->assertArrayHasKey( 'Cache-Control', $headers );
-		$this->assertStringContainsString( 'max-age=3600', $headers['Cache-Control'] );
+		$this->assertStringContainsString( 'max-age=60', $headers['Cache-Control'] );
 	}
 
-	public function test_models_requires_make_param(): void {
-		// Missing required 'make' → 400 from the REST args validation.
+	public function test_models_open_without_a_make(): void {
 		$res = $this->get( 'models' );
-		$this->assertSame( 400, $res->get_status() );
+		$this->assertSame( 200, $res->get_status() );
+		$slugs = array_map( static fn( $t ) => $t['slug'], $res->get_data() );
+		sort( $slugs );
+		$this->assertSame( array( 'a3-8p', 'golf-mk5', 'golf-mk6' ), $slugs );
+	}
+
+	public function test_index_is_cached_and_lists_every_level(): void {
+		$res = $this->get( 'index' );
+		$this->assertSame( 200, $res->get_status() );
+		$data = $res->get_data();
+		$this->assertArrayHasKey( 'rows', $data );
+		$this->assertCount( 5, $data['rows'] );
+		$makes = array_column( $data['terms']['make'], 'slug' );
+		sort( $makes );
+		$this->assertSame( array( 'audi', 'volkswagen' ), $makes );
+		$this->assertStringContainsString( 'max-age=60', $res->get_headers()['Cache-Control'] );
 	}
 
 	public function test_variants_endpoint_full_chain(): void {

@@ -48,7 +48,12 @@ class YDU_Fitment_Widget {
 		return array(
 			'restUrl' => esc_url_raw( rest_url( YDU_Fitment_REST::NAMESPACE ) ),
 			'shopUrl' => wc_get_page_permalink( 'shop' ),
-			'levels'  => array_keys( ydu_fitment_levels() ),
+			'levels'   => array_keys( ydu_fitment_levels() ),
+			'labels'   => array_map(
+				static fn( $l ) => $l['label'],
+				ydu_fitment_levels()
+			),
+			'cacheVer' => (int) get_option( YDU_Fitment_Cascade::VER_OPTION, 1 ),
 			'filters' => array_map(
 				static fn( $l ) => $l['filter'],
 				ydu_fitment_levels()
@@ -71,15 +76,12 @@ class YDU_Fitment_Widget {
 	private static function fallback_markup(): void {
 		$levels = ydu_fitment_levels();
 		echo '<form class="ydu-finder" data-ydu-fitment-form>';
-		$first = true;
 		foreach ( $levels as $key => $config ) {
 			printf(
-				'<select data-ydu-level="%1$s"%2$s><option value="">%3$s</option></select>',
+				'<select data-ydu-level="%1$s"><option value="">%2$s</option></select>',
 				esc_attr( $key ),
-				$first ? '' : ' disabled',
-				esc_html( ucfirst( $key ) )
+				esc_html( $config['label'] )
 			);
-			$first = false;
 		}
 		echo '<button type="submit" data-ydu-find disabled>' . esc_html__( 'Find Parts', 'ydu-fitment' ) . '</button>';
 		echo '<button type="reset" data-ydu-reset>' . esc_html__( 'Reset', 'ydu-fitment' ) . '</button>';

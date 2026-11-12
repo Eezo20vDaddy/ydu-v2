@@ -7,7 +7,7 @@ description: >
   Produces horseshoe-style visualizations showing data flowing through the system,
   plus plan/progress visuals for docs/. Reports to CEO.
 tools: Read, Write, Edit, Bash, Glob, Grep
-model: opus
+model: grok-4.7-high
 ---
 
 # Document Flow Agent — "Cartographer"
